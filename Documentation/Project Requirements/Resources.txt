@@ -1,0 +1,4 @@
+https://asana.com/resources/software-requirement-document-template
+https://www.lucidchart.com/blog/software-requirements-documentation
+https://www.perforce.com/blog/alm/how-write-software-requirements-specification-srs-document
+https://blog.bit.ai/software-requirements-document/
