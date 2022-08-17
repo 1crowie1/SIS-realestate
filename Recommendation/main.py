@@ -8,7 +8,7 @@ def main():
     logging.basicConfig(level=level, format=fmt)
 
     logging.info(f'{model.log_style.UNDERLINE}{model.log_style.GREEN}Application Started{model.log_style.RESET}')
-    model.start()
+    model.start()  # Call machine learning model
 
 if __name__ == '__main__':
     main()
