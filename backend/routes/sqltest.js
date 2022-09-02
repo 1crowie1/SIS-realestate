@@ -52,7 +52,6 @@ connection.on("connect", err => {
     console.error(err.message);
   } else {
     queryDatabase();
-    // console.log('HelloWorld!')
   }
 });
 
@@ -62,8 +61,9 @@ function queryDatabase() {
   console.log('Query DB info')
 
   const request = new Request(
-  `SELECT TOP (1000) [algoID], 
-  [last_run] FROM [dbo].[Algorithm]`,
+  `SELECT TOP (100) [postcode]
+  ,[name]
+  FROM [dbo].[suburb]`,
   (err, rowCount) => {
       if (err) {
         console.error(err.message);
