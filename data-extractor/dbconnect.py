@@ -1,6 +1,5 @@
 import re
 import json
-import mysql.connector
 import pyodbc
 
 SELECT_ALL = 'SELECT * FROM Algorithm;'
