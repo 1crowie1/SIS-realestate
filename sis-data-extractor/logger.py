@@ -7,6 +7,3 @@ class Logger:
 
     def log(self, log: str) -> None:
         self.logger.info(log)
-
-def create_logger() -> Logger:
-    return Logger()
