@@ -7,7 +7,31 @@ function App() {
     <div className="div-1">
         <h1>HomeFinder</h1>
         <div className="div-2">
-        <h1>here Landing Page</h1>
+        <h1>Landing Page</h1>
+        <div className="divi">
+            <div className="div-6">
+                <div className="gap">
+                -
+                </div>
+                <div className="div-3">
+                Average property price
+                </div>
+                
+                <div className="gap">
+                -
+                </div>
+                <div className="div-3">
+                Average Mortgage price
+                </div>
+                
+                <div className="div-4">
+                Get a personalised recommendation!
+                </div>
+        </div>
+        <div className="div-5">
+        HeatMap 
+        </div>
+        </div>
         </div>
 
 
