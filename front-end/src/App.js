@@ -5,7 +5,7 @@ function App() {
   return (
 
     <div className="div-1">
-        <h1>HomeFinder</h1>
+        <h1 className="Mid-header">HomeFinder</h1>
         <div className="div-2">
         <h1>Landing Page</h1>
         <div className="divi">
