@@ -2,14 +2,13 @@ import pyodbc
 from kink import inject
 from logger import Logger
 
-DEFAULT_SERVER = 'tcp:sis-realestate.database.windows.net,1433'
-DEFAULT_PORT = 1433
-DEFAULT_DATABASE = 'SIS-realestate'
-DEFAULT_USERNAME = 'sis-realestate-admin'
+DEFAULT_SIS_SERVER = 'tcp:sis-realestate.database.windows.net,1433'
+DEFAULT_SIS_DATABASE = 'SIS-realestate'
+DEFAULT_SIS_USERNAME = 'sis-realestate-admin'
 
 @inject
 class AzureDBC:
-    def __init__(self, password = input('Password: '), server = DEFAULT_SERVER, database = DEFAULT_DATABASE, username = DEFAULT_USERNAME):
+    def __init__(self, password = input('Password: '), server = DEFAULT_SIS_SERVER, database = DEFAULT_SIS_DATABASE, username = DEFAULT_SIS_USERNAME):
         self.broken_statements = []
         self.connection = pyodbc.connect(
             driver = '{SQL Server Native Client 11.0};',

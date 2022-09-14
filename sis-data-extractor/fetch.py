@@ -229,7 +229,7 @@ def run():
         #os._exit(0)
         return ALL_CANDIDATES
 
-def main():
+def main(manual_anonymity = None):
     global options
 
     if "--raw" in sys.argv:
@@ -279,10 +279,11 @@ def main():
         sys.stdout.flush()
         raise
 
+    options.anonymity = manual_anonymity
     return run()
 
 def get_proxies():
-    return main()
+    return main('elite')
 
 # get_proxies()
 

@@ -1,11 +1,14 @@
-from bootstrap_di import bootstrap_di
-from real_estate_extractor import RealEstateExtractor
+from bootstrap_di import bootstrap_di_all
+from kink import di
+from suburb_extractor import SuburbExtractor
+from menu import main_menu
 
-def bootstrap():
-    bootstrap_di()
 
 def main():
-    bootstrap()
-    real_estate_extractor = RealEstateExtractor()
+    bootstrap_di_all()
+    suburb_extractor = di[SuburbExtractor]
+    suburbs = suburb_extractor.getTableRows()
+    print(suburbs)
+    main_menu()
 
 main()
