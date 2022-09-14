@@ -97,9 +97,11 @@
   border-color: #000000;
   padding-left:10px;
 }
-/* div-4 is to hold the get recommendation button*/
+/* div-4 is to hold the get recommendation section */
 .div-4{
   position: static;
+  padding-top: 15px;
+  padding-left: 15px;
   background-color: #ffffff;
   height: 150px;
   border: 2px solid;
@@ -122,11 +124,11 @@
 /* div-6 is to hold the Avg Mortgage and Avg House price elements , with the get recommendation button. */
 .div-6{
   position: static;
-  padding-left:10px;
+  padding-left:100px;
   background-color: #ffffff;
   height: 500px;
   border: 2px solid;
-  width: 600px;
+  width: 700px;
   border-color: #ffffff;
 }
 /*the gap is to help there be spacing between elements */
