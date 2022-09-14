@@ -7,7 +7,7 @@ function App() {
     <div className="div-1">
         <h1 className="Mid-header">HomeFinder</h1>
         <div className="div-2">
-            <h1>Landing Page</h1>
+            <h1>Makes Home Finding Painless</h1>
         <div className="divi">
             <div className="div-6">
                 <div className="gap">
