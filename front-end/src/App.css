@@ -62,16 +62,83 @@
 }
 
 .div-1 {
-  background-color: #2dabf9;
+  
+  background-color: rgb(45, 171, 249);
   height: 2000px;
   margin: 20px;
-  border: 5px solid;
+  
 }
 
 .div-2 {
   background-color: #ffffff;
-  height: 500px;
+  height: 600px;
   margin: 20px;
   border: 5px solid;
+  border-color: #ffffff;
 }
 
+.divi{
+  position: static;
+  display : flex;
+  background-color: #ffffff;
+  height: 400px;
+  margin: 20px;
+  border: 5px solid;
+  border-color: #ffffff;
+}
+/* div-3 is for where the Avg Mortgage and , Avg house price to be held. */
+.div-3{
+  position: static;
+  display: inline-block;
+  background-color: #ffffff;
+  height: 250px;
+  border: 2px solid;
+  width: 200px;
+  border-color: #000000;
+  padding-left:10px;
+}
+/* div-4 is to hold the get recommendation section */
+.div-4{
+  position: static;
+  padding-top: 15px;
+  padding-left: 40px;
+  background-color: #ffffff;
+  height: 150px;
+  border: 2px solid;
+  width: 500px;
+  border-color: #000000;
+}
+
+/* div-5 is for where the heatmap will be  */
+.div-5{  
+  position: static;
+  padding-left:50px;
+  background-color: #ffffff;
+  height: 450px;
+  border: 2px solid;
+  width: 800px;
+  border-color: #000000;
+ 
+}
+
+/* div-6 is to hold the Avg Mortgage and Avg House price elements , with the get recommendation button. */
+.div-6{
+  position: static;
+  padding-left:100px;
+  background-color: #ffffff;
+  height: 500px;
+  border: 2px solid;
+  width: 700px;
+  border-color: #ffffff;
+}
+/*the gap is to help there be spacing between elements */
+.gap{
+  position: static;
+  display: inline-block;
+  height: 250px;
+  width:50px;
+}
+
+.Mid-header{
+  text-align: center;
+}
