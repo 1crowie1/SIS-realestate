@@ -36,15 +36,15 @@ function App() {
 
 
         <div className="div-2">
-        <h1>Recommendations</h1>
-        <h1>Himanshu code here</h1>
-        <button className="blue-Button">Get Recommendation </button>
+            <h1>Recommendations</h1>
+            <h1>Himanshu code here</h1>
+            <button className="blue-Button">Get Recommendation </button>
         </div>
 
 
         <div className="div-2">
-        <h1>Results</h1>
-        <h1>Amana Results page</h1>
+            <h1>Results</h1>
+            <h1>Amana Results page</h1>
         </div>
               
       
