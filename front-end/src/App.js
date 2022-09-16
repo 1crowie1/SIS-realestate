@@ -7,11 +7,10 @@ function App() {
       <header className="App-header">
         RESULTS 
         <h1>Hello, world</h1>
-        <div>
-          <div className="Property-1"></div>
+        
 
 
-        </div>
+      
 
         <div>
           <div className="Property-2"></div>
