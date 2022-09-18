@@ -5,13 +5,14 @@ from logger import Logger
 DEFAULT_SIS_SERVER = 'tcp:sis-realestate.database.windows.net,1433'
 DEFAULT_SIS_DATABASE = 'SIS-realestate'
 DEFAULT_SIS_USERNAME = 'sis-realestate-admin'
+DEFAULT_SQL_DRIVER = '{SQL Server Native Client 11.0};'
 
 @inject
 class AzureDBC:
-    def __init__(self, password = input('Password: '), server = DEFAULT_SIS_SERVER, database = DEFAULT_SIS_DATABASE, username = DEFAULT_SIS_USERNAME):
+    def __init__(self, logger: Logger, password = input('Password: '), server = DEFAULT_SIS_SERVER, database = DEFAULT_SIS_DATABASE, username = DEFAULT_SIS_USERNAME, driver = DEFAULT_SQL_DRIVER):
         self.broken_statements = []
         self.connection = pyodbc.connect(
-            driver = '{SQL Server Native Client 11.0};',
+            driver = driver,
             host = server,
             database = database,
             user = username,
@@ -47,6 +48,10 @@ class AzureDBC:
             message = ex.args[1]
             print(sqlstate, message)
             self.self.broken_statements.append(statement)
+
+    def execute_statements(self, statements):
+        for statement in statements:
+            self.execute_statement(statement)
 
     def commit(self):
         self.cursor.commit()

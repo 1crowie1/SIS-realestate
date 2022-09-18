@@ -10,7 +10,12 @@ SUBURB_TABLE_ROW_ELEMENT = 'tr'
 SUBURB_TABLE_ROW_DATA_ELEMENT = 'td'
 
 # TABLE COLUMNS
-['Location', 'Suburb', 'Postcode', 'State', 'Zone']
+# ['Location', 'Suburb', 'Postcode', 'State', 'Zone']
+LOCATION = 'Location'
+SUBURB = 'suburb'
+POSTCODE = 'postcode'
+STATE = 'state'
+COUNTRY = 'zone'
 
 @inject
 class SuburbExtractor(object):
@@ -19,7 +24,6 @@ class SuburbExtractor(object):
         self.logger = logger
         self.soup_extractor = SoupExtractor(logger)
         self.url = suburb_url
-        self.table_class = 'class="wp-block-table"'
 
     def getRequest(self):
         return self.requester.getUrlContentWithRandomProxy(self.url)
@@ -32,11 +36,18 @@ class SuburbExtractor(object):
     def getTableRows(self):
         table_markup = str(self.getTable())
         self.soup_extractor.createSoupInstance(table_markup)
-        table_rows = self.soup_extractor.parseMarkupByTagAndReturnAll(SUBURB_TABLE_ROW_ELEMENT)
-        columns = self.extractRowData(table_rows.pop(0))
-        for table_row in table_rows:
-            table_row_data = self.extractRowData(table_row)
-            print(table_row_data)
+        return self.soup_extractor.parseMarkupByTagAndReturnAll(SUBURB_TABLE_ROW_ELEMENT)
+
+    def getSuburbsWithPostcodes(self):
+        table_rows = self.getTableRows()
+        columns = self.extractColumnRow(table_rows.pop(0))
+        extracted_rows = [self.extractRowData(row_data) for row_data in table_rows]
+        return { table_row_data[columns[SUBURB]] :  table_row_data[columns[POSTCODE]] for table_row_data in extracted_rows }
+
+    def extractColumnRow(self, table_row):
+        self.soup_extractor.createSoupInstance(str(table_row))
+        row_data_elements = self.soup_extractor.parseMarkupByTagAndReturnAll(SUBURB_TABLE_ROW_DATA_ELEMENT)
+        return { row_data.text.lower() : table_row.index(row_data) for row_data in table_row }
 
     def extractRowData(self, table_row):
         self.soup_extractor.createSoupInstance(str(table_row))

@@ -1,3 +1,8 @@
+from azure_dbc_util import getSuburbPreparedStatements
+
+from kink import di
+from suburb_extractor import SuburbExtractor
+from azure_dbc import AzureDBC
 
 def main_menu():
     help()
@@ -5,21 +10,35 @@ def main_menu():
     while (choice != 'x'):
         choice = str(getChoice()).lower()
         if choice == '1':
-            print('')
+            suburb_extractor = di[SuburbExtractor]
+            azure_dbc = di[AzureDBC]
+            suburbs_with_postcodes = suburb_extractor.getSuburbsWithPostcodes()
+            prepared_statements = getSuburbPreparedStatements(suburbs_with_postcodes)
+            azure_dbc.executeStatements(prepared_statements)
+
         elif choice == '2':
+            street_extractor = di[StreetExtractor]
+            azure_dbc = di[AzureDBC]
             print('')
+
         elif choice == '3':
             print('')
+
         elif choice == '4':
             print('')
+
         elif choice == '5':
             print('')
+
         elif choice == '6':
             print('')
+
         elif choice == '7':
             print('')
+
         elif choice == '8':
             print('')
+            
         elif choice == '?':
             help()
         elif choice == 'x':
