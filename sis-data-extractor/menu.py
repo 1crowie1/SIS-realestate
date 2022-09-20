@@ -1,4 +1,4 @@
-from azure_dbc_util import getSuburbPreparedStatements
+from azure_dbc_util import getSuburbPreparedStatements, getStreetPreparedStatements
 
 from kink import di
 from suburb_extractor import SuburbExtractor
@@ -17,9 +17,13 @@ def main_menu():
             azure_dbc.executeStatements(prepared_statements)
 
         elif choice == '2':
+            suburb_extractor = di[SuburbExtractor]
             street_extractor = di[StreetExtractor]
             azure_dbc = di[AzureDBC]
-            print('')
+            # TODO: Come back to implement methods mentioned on 2 lines below
+            # suburb_with_streets = street_extractor.getSuburbWithStreets(suburb_extractor.getSuburbsWithPostcodes())
+            # suburb_streets_prepared_statements = getStreetPreparedStatements(suburb_with_streets)
+            # azure_dbc.executeStatements(suburb_streets_prepared_statements)
 
         elif choice == '3':
             print('')
