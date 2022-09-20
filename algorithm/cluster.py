@@ -19,4 +19,3 @@ def start():
     logging.info(f'{log_style.MAGENTA}Creating Data-Frame{log_style.RESET}')
     # Create a data-frame with that attributes wanted for the suburb level model
     attributes = pd.DataFrame(columns=['suburb', 'avg_price', 'dist_hospital', 'dist_cbd', 'num_recreation'])
-    return
