@@ -30,13 +30,14 @@ function App() {
                         
                         </div>
                     </div>
-    
                 </div>
               
             </div>
 
             <div className="get-rec">
-                <div className="get-rec2"></div>
+                <div className="get-rec2"> 
+                <h2 className="Mid-header">Get Recommendation</h2>
+                </div>
             </div>
         </div>
 
