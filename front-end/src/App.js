@@ -10,18 +10,24 @@ function App() {
             <h1>Makes Home Finding Painless</h1>
         <div className="divi">
             <div className="div-6">
+                
                 <div className="gap">
                 -
                 </div>
                 <div className="div-3">
-                Average property price
+                <text>Sydney Property Prices</text>
+                <text> $</text>
+                <int>123223</int>
+
                 </div>
                 
                 <div className="gap">
                 -
                 </div>
                 <div className="div-3">
-                Average Mortgage price
+                <text>Average Mortgage Rate</text>
+                <text> %</text>
+                <int>3.5</int>
                 </div>
                 
                 <div className="div-4">

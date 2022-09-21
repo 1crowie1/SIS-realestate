@@ -131,6 +131,16 @@
   width: 700px;
   border-color: #ffffff;
 }
+
+.div-7{
+  position: static;
+  padding-left:50px;
+  background-color: #ffffff;
+  height: 50px;
+  border: 2px solid;
+  width: 60px;
+  border-color: #ffffff;
+}
 /*the gap is to help there be spacing between elements */
 .gap{
   position: static;
