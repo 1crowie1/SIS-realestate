@@ -6,38 +6,34 @@ function App() {
 
     <div className="div-1">
         <h1 className="Mid-header">HomeFinder</h1>
-        <div className="div-2">
-            <h1>Makes Home Finding Painless</h1>
-        <div className="divi">
-            <div className="div-6">
-                
-                <div className="gap">
-                -
-                </div>
-                <div className="div-3">
-                <text>Sydney Property Prices</text>
-                <text> $</text>
-                <int>123223</int>
+        <div className="heatmap">
 
-                </div>
-                
-                <div className="gap">
-                -
-                </div>
+            <div className="divi">
                 <div className="div-3">
-                <text>Average Mortgage Rate</text>
-                <text> %</text>
-                <int>3.5</int>
+                    <div className="div-4">
+                        <div className="suburb-1"> 
+
+                        </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-2"> 
+                        
+                        </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-3"> 
+                        
+                        </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-4"> 
+                        
+                        </div>
+                    </div>
+    
                 </div>
-                
-                <div className="div-4">
-                Get a personalised recommendation!
-                </div>
-              </div>
-              <div className="div-5">
-              HeatMap 
-              </div>
-        </div>
+              
+            </div>
         </div>
 
 
