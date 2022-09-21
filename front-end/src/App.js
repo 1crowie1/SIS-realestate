@@ -34,6 +34,10 @@ function App() {
                 </div>
               
             </div>
+
+            <div className="get-rec">
+                <div className="get-rec2"></div>
+            </div>
         </div>
 
 
