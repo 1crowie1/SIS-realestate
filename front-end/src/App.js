@@ -1,10 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import DoughnutChart from './Components/Doughnut';
+
+import BarChart from './Components/BarChart'
+import { Doughnut } from 'react-chartjs-2';
 
 function App() {
+
+    
   return (
 
     <div className="div-1">
+        
+
         <h1 className="Mid-header">HomeFinder</h1>
         <div className="heatmap">
 
@@ -12,22 +20,40 @@ function App() {
                 <div className="div-3">
                     <div className="div-4">
                         <div className="suburb-1"> 
-
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> 
+                                <DoughnutChart/>
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div className="div-4">
                         <div className="suburb-2"> 
-                        
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
+                            </div>
                         </div>
                     </div>
                     <div className="div-4">
                         <div className="suburb-3"> 
-                        
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
+                            </div>
                         </div>
                     </div>
                     <div className="div-4">
                         <div className="suburb-4"> 
-                        
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +80,7 @@ function App() {
             <h1>Amana Results page</h1>
         </div>
               
-      
+     
        
       
     </div>

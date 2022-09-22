@@ -89,6 +89,7 @@
   position: static;
   display : flex;
   opacity: 1;
+  padding-left: 50px;
 
   height: 400px;
   margin: 20px;
@@ -109,7 +110,6 @@
   padding-top: 30px;
   display:  inline-block;
   position: static;
-  
   height: 150px;
   width: 20%;
   
@@ -117,7 +117,6 @@
 }
 /* this will contain the suburb #1 */
 .suburb-1{
-  
   margin:auto;
   height: 80%;
   width: 80%;
@@ -130,6 +129,7 @@
 .suburb-1:hover {
 	background:linear-gradient(to bottom, #06fa1a 5%, #06fa1a 50%);
 	background-color:#06fa1a;
+  opacity: 0.4;
 }
 .suburb-1:active {
 	position:relative;
@@ -137,7 +137,6 @@
 }
 /* this will contain the suburb #2 */
 .suburb-2{
-  
   margin:auto;
   height: 80%;
   width: 80%;
@@ -150,6 +149,7 @@
 .suburb-2:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #0688fa 50%);
 	background-color:#0688fa;
+  opacity: 0.4;
 }
 .suburb-2:active {
 	position:relative;
@@ -157,7 +157,6 @@
 }
 /* this will contain the suburb #3 */
 .suburb-3{
-  
   margin:auto;
   height: 80%;
   width: 80%;
@@ -170,6 +169,7 @@
 .suburb-3:hover {
 	background:linear-gradient(to bottom, #d106fa 5%, #d106fa 50%);
 	background-color:#d106fa;
+  opacity: 0.4;
 }
 .suburb-3:active {
 	position:relative;
@@ -177,7 +177,6 @@
 }
 /* this will contain the suburb #4 */
 .suburb-4{
-  
   margin:auto;
   height: 80%;
   width: 80%;
@@ -188,8 +187,9 @@
 
 }
 .suburb-4:hover {
-	background:linear-gradient(to bottom, #f6fa06 5%, #f6fa06 50%);
-	background-color:#f6fa06;
+	background:linear-gradient(to bottom, #f6fa06 5%, #f6fa06 100%);
+  
+	background-color:#ffffff;
 }
 .suburb-4:active {
 	position:relative;
@@ -203,6 +203,7 @@
   
  
 }
+
 .get-rec2{
   
   height: 250px;
@@ -211,9 +212,20 @@
   border-color: #000000;
   border-radius: 10% ;
 }
-
-
-
+/*sub-flex is to use flexbox in the suburb area.*/
+.sub-flex{
+  padding-left: 10px;
+  display: flex;
+  height: 70%;
+  width: 100%;
+}
+.graph{
+  padding-left: 30px;
+  display: inline-block;
+}
+.text-1{
+  text-indent: 10px;
+}
 
 .Mid-header{
   text-align: center;
