@@ -153,11 +153,11 @@ def checkDescription(description: str):
         return 'NULL'
 
 def checkStrNotNone(string: str):
-    return ('\'' + string + '\'') if string != None else 'NULL'
+    return ('\'' + string.replace("'", "u0027").replace("’", ) + '\'') if string != None else 'NULL'
 
 QUOTATION = "'"
 def checkLinkStrNotNone(url: str):
-    return (QUOTATION +  str(url) + QUOTATION) if url != None else 'NULL'
+    return (QUOTATION +  str(url).replace("'", "u0027") + QUOTATION) if url != None else 'NULL'
 
 def createBigPropertyInsertionPreparedStatements(listings):
     statements = []

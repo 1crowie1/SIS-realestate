@@ -8,6 +8,15 @@ from listing_extractor import ListingExtractor
 from azure_dbc import AzureDBC
 from suburb import Suburb
 from realestate_com_au import RealestateComAu
+from nordvpn_switcher import initialize_VPN,rotate_VPN,terminate_VPN
+
+def vpn_initialise():
+   settings = initialize_VPN()
+   rotate_VPN(settings)
+   return settings
+
+def vpn_switch(settings):
+   rotate_VPN(settings)
 
 api = RealestateComAu()
 
@@ -59,17 +68,25 @@ def main_menu():
             print('')
 
         elif choice == '13':
+            settings = vpn_initialise()
             azure_dbc = di[AzureDBC]
             suburbs = azure_dbc.getSuburbsFromDB()
             property_types = ['buy', 'rent', 'sold']
+            suburb_count = 0
+            suburb_switch_counter = random.randint(50,75)
             for property_type in property_types:
                 for suburb in suburbs:
+                    if (suburb_count % suburb_switch_counter):
+                        vpn_switch(settings)
+                        suburb_switch_counter = random.randint(50, 75)
                     # Get property listings
                     listings = api.search(locations=[suburb.get_location()], channel=property_type)
                     prepared_statements = azure_dbc_util.createBigPropertyInsertionPreparedStatements(listings)
                     azure_dbc.execute_statements(prepared_statements)
                     azure_dbc.commit()
                     time.sleep(30)
+            azure_dbc.print_successful_statements()
+            terminate_VPN(settings)
 
         elif choice == '?':
             help()

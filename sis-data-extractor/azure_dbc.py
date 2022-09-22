@@ -57,6 +57,11 @@ class AzureDBC:
         for statement in self.successful_statements:
             print(statement)
 
+    def print_successful_statements(self):
+        print('========== PRINTING BROKEN STATEMENTS ==========')
+        for statement in self.broken_statements:
+            print(statement)
+
     def execute_statements(self, statements):
         for statement in statements:
             self.execute_statement(statement)
