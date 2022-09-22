@@ -1,9 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import DoughnutChart from './Components/Doughnut';
-
-import BarChart from './Components/BarChart'
-import { Doughnut } from 'react-chartjs-2';
 
 function App() {
 
