@@ -73,7 +73,9 @@ function App() {
 
         <div className="div-2">
             <h1>Results</h1>
-            <h1>Amana Results page</h1>
+            <h1>Amana Results page
+                Hi :) 
+            </h1>
         </div>
               
      
