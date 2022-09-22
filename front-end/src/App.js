@@ -24,7 +24,7 @@ function App() {
                             <div className= "sub-flex"> 
                             <h1>1000</h1>
                             <div className="graph"> 
-                                <DoughnutChart/>
+                                
                             </div>
                             </div>
                         </div>
