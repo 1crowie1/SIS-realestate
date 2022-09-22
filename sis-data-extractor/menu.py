@@ -1,3 +1,5 @@
+import azure_dbc_util
+import time
 from azure_dbc_util import getSuburbPreparedStatements #, getStreetPreparedStatements
 
 from kink import di
@@ -5,6 +7,9 @@ from suburb_extractor import SuburbExtractor
 from listing_extractor import ListingExtractor
 from azure_dbc import AzureDBC
 from suburb import Suburb
+from realestate_com_au import RealestateComAu
+
+api = RealestateComAu()
 
 def main_menu():
     help()
@@ -52,7 +57,20 @@ def main_menu():
 
         elif choice == '8':
             print('')
-            
+
+        elif choice == '13':
+            azure_dbc = di[AzureDBC]
+            suburbs = azure_dbc.getSuburbsFromDB()
+            property_types = ['buy', 'rent', 'sold']
+            for property_type in property_types:
+                for suburb in suburbs:
+                    # Get property listings
+                    listings = api.search(locations=[suburb.get_location()], channel=property_type)
+                    prepared_statements = azure_dbc_util.createBigPropertyInsertionPreparedStatements(listings)
+                    azure_dbc.execute_statements(prepared_statements)
+                    azure_dbc.commit()
+                    time.sleep(30)
+
         elif choice == '?':
             help()
         elif choice == 'x':
@@ -74,6 +92,7 @@ def help():
     print('10 - RealEstate.com active sold listing extraction')
     print('11 - RealEstate.com all listing extraction')
     print('12 - Domain.com Listing Extraction')
+    print('13 - domain.com.au listing extraction using API')
     print('? - HELP')
     print('X - Exit')
 

@@ -1,6 +1,7 @@
 import pyodbc
 from kink import inject
 from logger import Logger
+from azure_dbc_util import GET_SUBURBS_PREPARED_STATEMENT, parse_suburbs_sql
 
 DEFAULT_SIS_SERVER = 'tcp:sis-realestate.database.windows.net,1433'
 DEFAULT_SIS_DATABASE = 'SIS-realestate'
@@ -34,7 +35,7 @@ class AzureDBC:
     def fetch_statement(self, statement):
         try:
             self.execute_statement(statement)
-            return self.cursor.fetch()
+            return self.cursor.fetchall()
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             message = ex.args[1]
@@ -66,3 +67,7 @@ class AzureDBC:
 
     def close(self):
         self.connection.close()
+
+    def getSuburbsFromDB(self):
+        suburbs_sql = self.fetch_statement(GET_SUBURBS_PREPARED_STATEMENT)
+        return parse_suburbs_sql(suburbs_sql)
