@@ -2,6 +2,7 @@ from kink import inject
 from requester import Requester
 from soup_extractor import SoupExtractor
 from logger import Logger
+from suburb import Suburb
 
 DEFAULT_SUBURB_URL = 'https://violetandgold.com.au/list-of-postcodes-and-suburbs-greater-sydney/'
 SUBURB_TABLE_ELEMENT = 'figure'
@@ -38,11 +39,11 @@ class SuburbExtractor(object):
         self.soup_extractor.createSoupInstance(table_markup)
         return self.soup_extractor.parseMarkupByTagAndReturnAll(SUBURB_TABLE_ROW_ELEMENT)
 
-    def getSuburbsWithPostcodes(self):
+    def getSuburbs(self):
         table_rows = self.getTableRows()
         columns = self.extractColumnRow(table_rows.pop(0))
         extracted_rows = [self.extractRowData(row_data) for row_data in table_rows]
-        return { table_row_data[columns[SUBURB]] :  table_row_data[columns[POSTCODE]] for table_row_data in extracted_rows }
+        return [ Suburb(table_row_data[columns[SUBURB]],  table_row_data[columns[POSTCODE]]) for table_row_data in extracted_rows ]
 
     def extractColumnRow(self, table_row):
         self.soup_extractor.createSoupInstance(str(table_row))

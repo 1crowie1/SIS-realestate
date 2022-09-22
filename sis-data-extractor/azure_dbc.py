@@ -10,6 +10,7 @@ DEFAULT_SQL_DRIVER = '{SQL Server Native Client 11.0};'
 @inject
 class AzureDBC:
     def __init__(self, logger: Logger, password = input('Password: '), server = DEFAULT_SIS_SERVER, database = DEFAULT_SIS_DATABASE, username = DEFAULT_SIS_USERNAME, driver = DEFAULT_SQL_DRIVER):
+        self.successful_statements = []
         self.broken_statements = []
         self.connection = pyodbc.connect(
             driver = driver,
@@ -43,17 +44,24 @@ class AzureDBC:
     def execute_statement(self, statement):
         try:
             self.cursor.execute(statement)
+            self.successful_statements.append(statement)
         except pyodbc.Error as ex:
             sqlstate = ex.args[0]
             message = ex.args[1]
             print(sqlstate, message)
-            self.self.broken_statements.append(statement)
+            self.broken_statements.append(statement)
+
+    def print_successful_statements(self):
+        print('========== PRINTING SUCCESSFUL STATEMENTS ==========')
+        for statement in self.successful_statements:
+            print(statement)
 
     def execute_statements(self, statements):
         for statement in statements:
             self.execute_statement(statement)
 
     def commit(self):
+        self.successful_statements.clear()
         self.cursor.commit()
 
     def close(self):

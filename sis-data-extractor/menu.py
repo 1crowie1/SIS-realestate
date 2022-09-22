@@ -1,8 +1,10 @@
-from azure_dbc_util import getSuburbPreparedStatements, getStreetPreparedStatements
+from azure_dbc_util import getSuburbPreparedStatements #, getStreetPreparedStatements
 
 from kink import di
 from suburb_extractor import SuburbExtractor
+from listing_extractor import ListingExtractor
 from azure_dbc import AzureDBC
+from suburb import Suburb
 
 def main_menu():
     help()
@@ -12,9 +14,11 @@ def main_menu():
         if choice == '1':
             suburb_extractor = di[SuburbExtractor]
             azure_dbc = di[AzureDBC]
-            suburbs_with_postcodes = suburb_extractor.getSuburbsWithPostcodes()
-            prepared_statements = getSuburbPreparedStatements(suburbs_with_postcodes)
-            azure_dbc.executeStatements(prepared_statements)
+            suburbs = suburb_extractor.getSuburbs()
+            prepared_statements = getSuburbPreparedStatements(suburbs)
+            azure_dbc.execute_statements(prepared_statements)
+            # azure_dbc.print_successful_statements()
+            azure_dbc.commit()
 
         elif choice == '2':
             suburb_extractor = di[SuburbExtractor]
@@ -26,6 +30,12 @@ def main_menu():
             # azure_dbc.executeStatements(suburb_streets_prepared_statements)
 
         elif choice == '3':
+            # suburb_extractor = di[SuburbExtractor]
+            # suburbs = suburb_extractor.getSuburbs()
+            listing_extractor = di[ListingExtractor]
+            #listing_extractor.getBuyActiveListings(suburbs)
+            listing_extractor.getBuyActiveListings([Suburb('Barangaroo', '2000')])
+
             print('')
 
         elif choice == '4':
@@ -53,12 +63,17 @@ def main_menu():
 def help():
     print('1 - Suburb Extraction')
     print('2 - Street Extraction')
-    print('3 - RealEstate.com Listing Extraction')
-    print('4 - Execute RealEstate.com Property Extraction Tasks')
-    print('5 - Schedule RealEstate.com Property Extraction Tasks')
-    print('6 - Domain.com Listing Extraction')
+    print('3 - RealEstate.com active buying listing extraction')
+    print('4 - Schedule RealEstate.com Property Extraction Tasks')
+    print('5 - Execute RealEstate.com Property Extraction Tasks')
+    
+    print('6 - Domain.com active buying listing extraction')
     print('7 - Execute Domain.com Property Extraction Tasks')
     print('8 - Schedule Domain.com Property Extraction Tasks')
+    print('9 - RealEstate.com active renting listing extraction')
+    print('10 - RealEstate.com active sold listing extraction')
+    print('11 - RealEstate.com all listing extraction')
+    print('12 - Domain.com Listing Extraction')
     print('? - HELP')
     print('X - Exit')
 
