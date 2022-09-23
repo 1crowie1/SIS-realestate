@@ -7,8 +7,8 @@ import DoughnutChart from './Components/Doughnut';
 import Map from './Components/Heatmap';
 // import Legend from './Components/Legend'
 
-import BarChart from './Components/BarChart'
-import { Doughnut } from 'react-chartjs-2';
+// import BarChart from './Components/BarChart'
+// import { Doughnut } from 'react-chartjs-2';
 
 function App() {
 
@@ -16,11 +16,11 @@ function App() {
   return (
 
     <div className="div-1">
-        
-
         <h1 className="Mid-header">HomeFinder</h1>
         <div className="heatmap">
 
+            <Map />
+            
             <div className="divi">
                 <div className="div-3">
                     <div className="div-4">
@@ -82,15 +82,13 @@ function App() {
             <div className="div-2">
                 <h1>Results</h1>
                 <h1>Amana Results page</h1>
-                <Map />
             </div>
                 
         </div>
-              
-     
-       
-      
+               
     </div>
+
+    
   );
 }
 
