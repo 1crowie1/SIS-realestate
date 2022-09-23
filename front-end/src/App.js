@@ -5,6 +5,7 @@ import './App.css';
 // import BarChart from './Components/BarChart'
 // import { Doughnut } from 'react-chartjs-2';
 import Map from './components/Heatmap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ListingCard from './components/ListingCard';
 // import Legend from './Components/Legend'
 
@@ -20,7 +21,7 @@ function App() {
         <h1 className="Mid-header">HomeFinder</h1>
         <div className="heatmap">
 
-            {/* <Map /> */}
+            <Map />
             
             <div className="divi">
                 <div className="div-3">
