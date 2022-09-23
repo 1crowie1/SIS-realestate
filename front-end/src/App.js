@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import DoughnutChart from './Components/Doughnut';
+// import DoughnutChart from './components/Doughnut';
 // import DoughnutChart from './Components/Doughnut';
 // import BarChart from './Components/BarChart'
 // import { Doughnut } from 'react-chartjs-2';
-import Map from './Components/Heatmap';
+import Map from './components/Heatmap';
+import ListingCard from './components/ListingCard';
 // import Legend from './Components/Legend'
 
 // import BarChart from './Components/BarChart'
@@ -19,7 +20,7 @@ function App() {
         <h1 className="Mid-header">HomeFinder</h1>
         <div className="heatmap">
 
-            <Map />
+            {/* <Map /> */}
             
             <div className="divi">
                 <div className="div-3">
@@ -81,13 +82,13 @@ function App() {
 
             <div className="div-2">
                 <h1>Results</h1>
-                <h1>Amana Results page</h1>
+                <ListingCard />
             </div>
                 
         </div>
-               
+        <ListingCard />
     </div>
-
+    
     
   );
 }
