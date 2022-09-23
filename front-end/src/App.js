@@ -26,7 +26,7 @@ const listings = [
   },
   {
     address: '10/38 Marshall Street',
-    subrub: 'Bankstown',
+    suburb: 'Bankstown',
     images: [],
     bathrooms: 1,
     bedrooms: 2,
@@ -37,7 +37,7 @@ const listings = [
   },
   {
     address: '5/44 Whittle Avenue',
-    subrub: 'Milperra',
+    suburb: 'Milperra',
     bathrooms: 2,
     bedrooms: 3,
     carSpaces: 2,
