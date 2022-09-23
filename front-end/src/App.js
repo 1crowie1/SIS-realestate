@@ -1,67 +1,63 @@
 import logo from './logo.svg';
 import './App.css';
+import DoughnutChart from './Components/Doughnut';
 // import DoughnutChart from './Components/Doughnut';
 // import BarChart from './Components/BarChart'
 // import { Doughnut } from 'react-chartjs-2';
 import Map from './Components/Heatmap';
 // import Legend from './Components/Legend'
 
-function App() {
-    const rowStyle = {
-        display: 'flex',
-        // alignItems: 'center',
-        // flexWrap: 'wrap',
-        // justifyContent: 'space-around',
-    };
-    const colStyle = {
-        flexBasis: '50%',
-        minWidth: '300px',
-        textAlign: 'center',
-        display: 'inline-block',
-    }
-    return (
-        <div className="div-1">
-            <h1 className="Mid-header">HomeFinder</h1>
-            <div className="heatmap">
+import BarChart from './Components/BarChart'
+import { Doughnut } from 'react-chartjs-2';
 
-                <div className="divi">
-                    <div className="div-3">
-                        <div className="div-4">
-                            <div className="suburb-1"> 
-                                <p className = "text-1">MosMan</p>
-                                <div className= "sub-flex"> 
-                                <h1>1000</h1>
-                                <div className="graph"> 
-                                    {/* <DoughnutChart/> */}
-                                </div>
-                                </div>
+function App() {
+
+    
+  return (
+
+    <div className="div-1">
+        
+
+        <h1 className="Mid-header">HomeFinder</h1>
+        <div className="heatmap">
+
+            <div className="divi">
+                <div className="div-3">
+                    <div className="div-4">
+                        <div className="suburb-1"> 
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> 
+                                <DoughnutChart/>
+                            </div>
                             </div>
                         </div>
-                        <div className="div-4">
-                            <div className="suburb-2"> 
-                                <p className = "text-1">MosMan</p>
-                                <div className= "sub-flex"> 
-                                <h1>1000</h1>
-                                <div className="graph"> GRAPH</div>
-                                </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-2"> 
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
                             </div>
                         </div>
-                        <div className="div-4">
-                            <div className="suburb-3"> 
-                                <p className = "text-1">MosMan</p>
-                                <div className= "sub-flex"> 
-                                <h1>1000</h1>
-                                <div className="graph"> GRAPH</div>
-                                </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-3"> 
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
                             </div>
                         </div>
-                        <div className="div-4">
-                            <div className="suburb-4"> 
-                                <p className = "text-1">MosMan</p>
-                                <div className= "sub-flex"> 
-                                <h1>1000</h1>
-                                <div className="graph"> GRAPH</div>
-                                </div>
+                    </div>
+                    <div className="div-4">
+                        <div className="suburb-4"> 
+                            <p className = "text-1">MosMan</p>
+                            <div className= "sub-flex"> 
+                            <h1>1000</h1>
+                            <div className="graph"> GRAPH</div>
                             </div>
                         </div>
                     </div>
@@ -90,7 +86,12 @@ function App() {
             </div>
                 
         </div>
-    );
+              
+     
+       
+      
+    </div>
+  );
 }
 
 export default App;
