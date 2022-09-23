@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
+import { MapContainer, GeoJSON, TileLayer, Popup } from 'react-leaflet';
 import mapData from '../data/suburb-nsw-10.json';
 import Legend from './Legend';
 import "leaflet/dist/leaflet.css";
@@ -13,7 +13,7 @@ class Heatmap extends Component {
     componentDidMount() {
       console.log(mapData);
     }
-  
+
     countryStyle = {
       fillColor: "red",
       fillOpacity: 1,
@@ -25,25 +25,33 @@ class Heatmap extends Component {
       console.log("Clicked");
     };
   
-    changeCountryColor = (event) => {
-      event.target.setStyle({
-        color: "green",
-        fillColor: this.state.color,
-        fillOpacity: 1,
-      });
-    };
+    // changeSuburbColor = (event) => {
+    //   event.target.setStyle({
+    //     color: "green",
+    //     fillColor: this.state.color,
+    //     fillOpacity: 1,
+    //   });
+    // };
+    // displaySuburbData = (event) => {
+    //   console.log(event.target.feature.properties.nsw_loca_2);
+    //   return event.target.feature.properties.nsw_loca_2;
+    // }
   
-    onEachCountry = (country, layer) => {
-      const countryName = country.properties.ADMIN;
-      console.log(countryName);
-      layer.bindPopup(countryName);
+    onEachCountry = (suburb, layer) => {
+      const suburbName = suburb.properties.ADMIN;
+      console.log(suburbName);
+      // layer.bindPopup('GLEBE');
+      layer.bindPopup(suburb.properties.nsw_loca_2)
   
       layer.options.fillOpacity = Math.random(); //0-1 (0.1, 0.2, 0.3)
       // const colorIndex = Math.floor(Math.random() * this.colors.length);
       // layer.options.fillColor = this.colors[colorIndex]; //0
   
+      // layer.on({
+      //   click: this.changeCountryColor,
+      // });
       layer.on({
-        click: this.changeCountryColor,
+        click: this.displaySuburbData,
       });
     };
   
@@ -54,8 +62,8 @@ class Heatmap extends Component {
     render() {
       return (
         <div>
-          <h1 style={{ textAlign: "center" }}>My Map</h1>
-          <MapContainer style={{ height: "80vh" }} zoom={2} center={[20, 100]}>
+          {/* <h1 style={{ textAlign: "center" }}>My Map</h1> */}
+          <MapContainer style={{ height: "80vh" }} zoom={13} center={[-33.86, 151.20]}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -75,7 +83,6 @@ class Heatmap extends Component {
       );
     }
 }
-
 // const Map = ()=>{
 //     const [onselect, setOnselect] = useState({});
 //     /* function determining what should happen onmouseover, this function updates our state*/
