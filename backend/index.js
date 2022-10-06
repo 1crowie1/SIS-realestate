@@ -4,7 +4,15 @@ const recommendationMockData  = require('./src/data/mock_data/SuburbRecommendati
 const properties = require('./src/data/mock_data/CalculatedProperties.js');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 6000;
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+const port = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
