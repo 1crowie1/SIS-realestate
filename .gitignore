@@ -27,7 +27,7 @@ share/python-wheels/
 MANIFEST
 venv/
 Recommendation/venv/
-algorithm/azure_credentials.csv
+Recommendation/azure_credentials.csv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
