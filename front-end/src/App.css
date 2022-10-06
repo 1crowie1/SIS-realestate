@@ -64,7 +64,7 @@
 .div-1 {
   
   background-color: rgb(45, 171, 249);
-  height: 2000px;
+  height: 2400px;
   margin: 20px;
   
 }
@@ -76,67 +76,155 @@
   border: 5px solid;
   border-color: #ffffff;
 }
-
-.divi{
-  position: static;
-  display : flex;
-  background-color: #ffffff;
-  height: 400px;
+/* this is to house the heatmap for the landing view */
+.heatmap {
+  background-color: #b6d9ee;
+  height: 800px;
   margin: 20px;
   border: 5px solid;
   border-color: #ffffff;
 }
-/* div-3 is for where the Avg Mortgage and , Avg house price to be held. */
-.div-3{
+
+.divi{
   position: static;
-  display: inline-block;
-  background-color: #ffffff;
-  height: 250px;
-  border: 2px solid;
-  width: 200px;
-  border-color: #000000;
-  padding-left:10px;
-}
-/* div-4 is to hold the get recommendation section */
-.div-4{
-  position: static;
-  padding-top: 15px;
-  padding-left: 40px;
-  background-color: #ffffff;
-  height: 150px;
-  border: 2px solid;
-  width: 500px;
-  border-color: #000000;
+  display : flex;
+  opacity: 1;
+  padding-left: 50px;
+
+  height: 400px;
+  margin: 20px;
+  
 }
 
-/* div-5 is for where the heatmap will be  */
-.div-5{  
+
+/* div-3 is to hold the top 4 recommended suburbs. */
+.div-3{
   position: static;
-  padding-left:50px;
-  background-color: #ffffff;
-  height: 450px;
+  padding-left:100px;
+  position: static;
+  width: 100%;
+  
+}
+/* div 4 is to hold the element of top 4 recommended suburbs */
+.div-4{
+  padding-top: 30px;
+  display:  inline-block;
+  position: static;
+  height: 150px;
+  width: 20%;
+  
+  
+}
+/* this will contain the suburb #1 */
+.suburb-1{
+  margin:auto;
+  height: 80%;
+  width: 80%;
   border: 2px solid;
-  width: 800px;
   border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #06fa1a;
+
+}
+.suburb-1:hover {
+	background:linear-gradient(to bottom, #06fa1a 5%, #06fa1a 50%);
+	background-color:#06fa1a;
+  opacity: 0.4;
+}
+.suburb-1:active {
+	position:relative;
+	top:1px;
+}
+/* this will contain the suburb #2 */
+.suburb-2{
+  margin:auto;
+  height: 80%;
+  width: 80%;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #0688fa;
+
+}
+.suburb-2:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #0688fa 50%);
+	background-color:#0688fa;
+  opacity: 0.4;
+}
+.suburb-2:active {
+	position:relative;
+	top:1px;
+}
+/* this will contain the suburb #3 */
+.suburb-3{
+  margin:auto;
+  height: 80%;
+  width: 80%;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #d106fa;
+
+}
+.suburb-3:hover {
+	background:linear-gradient(to bottom, #d106fa 5%, #d106fa 50%);
+	background-color:#d106fa;
+  opacity: 0.4;
+}
+.suburb-3:active {
+	position:relative;
+	top:1px;
+}
+/* this will contain the suburb #4 */
+.suburb-4{
+  margin:auto;
+  height: 80%;
+  width: 80%;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #f6fa06;
+
+}
+.suburb-4:hover {
+	background:linear-gradient(to bottom, #f6fa06 5%, #f6fa06 100%);
+  
+	background-color:#ffffff;
+}
+.suburb-4:active {
+	position:relative;
+	top:1px;
+}
+/* sends user tot he recommendation section */
+.get-rec{
+  padding-left: 150px;
+  height: 250px;
+  width: 400px;
+  
  
 }
 
-/* div-6 is to hold the Avg Mortgage and Avg House price elements , with the get recommendation button. */
-.div-6{
-  position: static;
-  padding-left:100px;
-  background-color: #ffffff;
-  height: 500px;
-  border: 2px solid;
-  width: 700px;
-  border-color: #ffffff;
-}
-/*the gap is to help there be spacing between elements */
-.gap{
-  position: static;
-  display: inline-block;
+.get-rec2{
+  
   height: 250px;
-  width:50px;
+  width: 400px;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+}
+/*sub-flex is to use flexbox in the suburb area.*/
+.sub-flex{
+  padding-left: 10px;
+  display: flex;
+  height: 70%;
+  width: 100%;
+}
+.graph{
+  padding-left: 30px;
+  display: inline-block;
+}
+.text-1{
+  text-indent: 10px;
 }
 
 .Mid-header{

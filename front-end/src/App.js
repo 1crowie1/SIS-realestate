@@ -1,92 +1,116 @@
+import logo from './logo.svg';
+import React,{useState} from "react";
+import styled from "styled-components";
 import './App.css';
-import React, { useState } from "react";
+import { SliderComponent } from './components';  //npm install styled-components
+import { getRecommendations } from './util/RealestateUtil';
 
 function App() {
+    const [value, setValue]=useState(50);
+    const [recommendations, setRecommendations]=useState('r');
 
-  const [recommendations, setRecommendations] = useState("{a: 1}");
+    const handleChange = (event) => {
+      setValue(event.target.value)
+    }
 
-  function logRecommendations() {
-    fetch("http://localhost:4000/calculateNearestProperties/")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        console.log(result);
-        setRecommendations(JSON.stringify(result));
-      },
-      // Note: it's important to handle errors here
-      // instead of a catch() block so that we don't swallow
-      // exceptions from actual bugs in components.
-      (error) => {
-        console.log(error);
-      }
+    return (
+
+        <div className="div-1">
+            
+
+            <h1 className="Mid-header">HomeFinder</h1>
+            <div className="heatmap">
+
+                <div className="divi">
+                    <div className="div-3">
+                        <div className="div-4">
+                            <div className="suburb-1"> 
+                                <p className = "text-1">MosMan</p>
+                                <div className= "sub-flex"> 
+                                <h1>1000</h1>
+                                <div className="graph"> 
+                                    
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="div-4">
+                            <div className="suburb-2"> 
+                                <p className = "text-1">MosMan</p>
+                                <div className= "sub-flex"> 
+                                <h1>1000</h1>
+                                <div className="graph"> GRAPH</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="div-4">
+                            <div className="suburb-3"> 
+                                <p className = "text-1">MosMan</p>
+                                <div className= "sub-flex"> 
+                                <h1>1000</h1>
+                                <div className="graph"> GRAPH</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="div-4">
+                            <div className="suburb-4"> 
+                                <p className = "text-1">MosMan</p>
+                                <div className= "sub-flex"> 
+                                <h1>1000</h1>
+                                <div className="graph"> GRAPH</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div className="get-rec">
+                    <div className="get-rec2"> 
+                    <h2 className="Mid-header">Get Recommendation</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="div-2">
+                <h1>Recommendations</h1>
+                <h1>Himanshu code here</h1>
+                <AppContainer>
+                    <h2>{value}</h2>
+                    <SliderComponent 
+                        value={value} 
+                        handleChange={handleChange} 
+                        min={0} 
+                        max={100} 
+                        step={10}
+                    />
+                </AppContainer>
+                <button className="blue-Button" onClick={getRecommendations}>Get Recommendation </button>
+            </div>
+
+
+            <div className="div-2">
+                <h1>Results</h1>
+                {recommendations}
+            </div>
+                
+        
+        
+        
+        </div>
     );
-  }
-
-  fetch("http://localhost:4000/feelingLucky/")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          console.log(error);
-        }
-      );
-
-  return (
-
-    <div className="div-1">
-        <h1 className="Mid-header">HomeFinder</h1>
-        <div className="div-2">
-            <h1>Makes Home Finding Painless</h1>
-        <div className="divi">
-            <div className="div-6">
-                <div className="gap">
-                -
-                </div>
-                <div className="div-3">
-                Average property price
-                </div>
-                
-                <div className="gap">
-                -
-                </div>
-                <div className="div-3">
-                Average Mortgage price
-                </div>
-                
-                <div className="div-4">
-                Get a personalised recommendation!
-                </div>
-              </div>
-              <div className="div-5">
-              HeatMap 
-              </div>
-        </div>
-        </div>
-
-
-        <div className="div-2">
-            <h1>Recommendations</h1>
-            <h1>Himanshu code here</h1>
-            <button className="blue-Button" onClick={logRecommendations}>Get Recommendation </button>
-        </div>
-
-
-        <div className="div-2">
-            <h1>Results</h1>
-            {recommendations}
-            <h1>Amana Results page</h1>
-        </div>
-              
-      
-       
-      
-    </div>
-  );
 }
 
 export default App;
+
+const AppContainer = styled.div`
+  width: 10vw;
+  height: 10vh;
+  color: #000000;
+  background: #f4f5f7;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
