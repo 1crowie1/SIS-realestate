@@ -10,6 +10,8 @@ const corsOptions ={
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
+const RealestateDbUtil = require("./src/util/realestateDbUtil.js");
+const realestateDbUtil = new RealestateDbUtil();
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 const port = process.env.PORT || 4000;
@@ -20,6 +22,8 @@ app.get('/', (req, res) => {
 
 app.get('/getAllSuburbs/', (req, res) => {
   // Mock data
+  // SELECT AVG(price)
+  realestateDbUtil.sampleQuery();
   res.send({ body: heatmap });
 });
 
