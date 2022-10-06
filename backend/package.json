@@ -10,6 +10,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "morgan": "~1.9.1",
     "tedious": "^15.1.0"
   },
   "devDependencies": {
