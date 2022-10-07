@@ -1,0 +1,58 @@
+/* vertical line */
+.heatmap-vertical-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+/* Legend */
+.legend {
+    position: absolute;
+    z-index: 999;
+    left: 150px;
+    bottom: 140px;
+    padding:20px 10px;
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size:12px;
+    letter-spacing:2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius:5px;
+    width: 25%;/* 16%; */
+  }
+  .legend > div {
+    color:black;
+    position: relative;
+    display: flex;
+    height: 20px;
+    padding: 0 10px;
+  }
+  .legend > div::before {
+    content: "";
+    background-color: var(--color);
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    
+  }
+  @media (max-width: 768px) {
+    .legend > div::before {
+    width: 10px;
+    height: 10px;
+  
+   
+  }
+  .legend {
+    left: 38px;
+    bottom: 100px;
+    font-size:10px;
+    letter-spacing:0px;
+    width: 30%;
+    height:15%;
+  }
+
+}
