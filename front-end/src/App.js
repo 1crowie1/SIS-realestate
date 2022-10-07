@@ -14,16 +14,16 @@ function App() {
       <Header />
 
       {/* HeatMap Section */}
-      <Container>
+      {/* <Container> */}
         <Heatmap />
-      </Container>
+      {/* </Container> */}
 
       {/* Get Recommendations */}
       <Container>
         <Recommendations />
       </Container>
       
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
