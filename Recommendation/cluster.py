@@ -124,6 +124,10 @@ class Kmeans(object):
             if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
                 log("DONE!", "GREEN")
                 plt.scatter(data[:,0], data[:,1], c = labels)
+                plt.scatter(new_centroids[:,0], new_centroids[:,1], alpha=0.25, s=10000, c = 'Grey')
+                plt.title("Listing Clusters")
+                plt.xlabel("House Price ($AUD)")
+                plt.ylabel("Bedrooms (Amt)")
                 plt.show()
                 break
 
