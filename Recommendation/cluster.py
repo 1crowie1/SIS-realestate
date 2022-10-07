@@ -123,14 +123,14 @@ class Kmeans(object):
 
             if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
                 log("DONE!", "GREEN")
+                plt.scatter(data[:,0], data[:,1], c = labels)
+                plt.show()
                 break
 
             centroids = new_centroids
         self.centroids = centroids
         self.labels = labels
 
-        plt.scatter(data[:,0], data[:,1], c = labels)
-        plt.show()
         # if verbose == 1:
         #     print(labels)
         #     print(centroids)
