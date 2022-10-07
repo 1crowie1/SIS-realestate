@@ -1,13 +1,13 @@
 import logo from './logo.svg';
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import './App.css';
 import { SliderComponent } from './components';  //npm install styled-components
 import { getRecommendations } from './util/RealestateUtil';
 
 function App() {
-    const [value, setValue]=useState(50);
-    const [recommendations, setRecommendations]=useState('r');
+    const [value, setValue] = useState(50);
+    const [recommendations, setRecommendations] = useState('r');
 
     const handleChange = (event) => {
       setValue(event.target.value)
@@ -86,7 +86,7 @@ function App() {
                         step={10}
                     />
                 </AppContainer>
-                <button className="blue-Button" onClick={getRecommendations}>Get Recommendation </button>
+                <button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation </button>
             </div>
 
 

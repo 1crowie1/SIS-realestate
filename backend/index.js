@@ -10,8 +10,8 @@ const corsOptions ={
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
-const RealestateDbUtil = require("./src/util/realestateDbUtil.js");
-const realestateDbUtil = new RealestateDbUtil();
+// const RealestateDbUtil = require("./src/util/realestateDbUtil.js");
+// const realestateDbUtil = new RealestateDbUtil();
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 const port = process.env.PORT || 4000;
@@ -20,12 +20,18 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/getAllSuburbs/', (req, res) => {
+app.get('/suburbsWithAverages/', (req, res) => {
   // Mock data
-  // SELECT AVG(price)
-  realestateDbUtil.sampleQuery();
+  // realestateDbUtil.sampleQuery()
   res.send({ body: heatmap });
 });
+
+// app.get('/getAllSuburbs/', (req, res) => {
+//   // Mock data
+//   // SELECT AVG(price)
+//   realestateDbUtil.sampleQuery();
+//   res.send({ body: heatmap });
+// });
 
 app.get('/getPopularSuburbs', (req, res) => {
   // Mock data
@@ -41,11 +47,6 @@ app.get('/calculateNearestProperties/', (req, res) => {
   // Mock data
   // data below will use some recommendations from the calculator to get the properties from the DBSCAN model
   res.send({ body: properties });
-});
-
-app.get('/suburbBreakdown/', (req, res) => {
-  // Mock data
-  res.send({ body: recommendationMockData.popularSuburbs });
 });
 
 app.get('/feelingLucky/', (req, res) => {
