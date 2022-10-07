@@ -90,9 +90,9 @@ class Kmeans(object):
             print('Centroids: ')
             print(centroids)
 
-            plt.scatter(data[:,0], data[:,1])
-            plt.scatter(centroids[:,0], centroids[:,1], c = 'r')
-            plt.show()
+            # plt.scatter(data[:,0], data[:,1])
+            # # plt.scatter(centroids[:,0], centroids[:,1], c = 'r')
+            # plt.show()
 
         count = 0
         while count < 100:
@@ -116,21 +116,28 @@ class Kmeans(object):
                 for dim in range(shape[1]): 
                     new_centroids[centroid, dim] = np.mean(temp[:,dim])
 
-            if verbose == 1:
-                plt.scatter(data[:,0], data[:,1], c = labels)
-                plt.scatter(new_centroids[:,0], new_centroids[:,1], c = 'r')
-                plt.show()
+            # if verbose == 1:
+            #     plt.scatter(data[:,0], data[:,1], c = labels)
+            #     # plt.scatter(new_centroids[:,0], new_centroids[:,1], c = 'r')
+            #     plt.show()
 
             if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
                 log("DONE!", "GREEN")
+                plt.scatter(data[:,0], data[:,1], c = labels)
+                plt.scatter(new_centroids[:,0], new_centroids[:,1], alpha=0.25, s=10000, c = 'Grey')
+                plt.title("Listing Clusters")
+                plt.xlabel("House Price ($AUD)")
+                plt.ylabel("Bedrooms (Amt)")
+                plt.show()
                 break
 
             centroids = new_centroids
         self.centroids = centroids
         self.labels = labels
-        if verbose == 1:
-            print(labels)
-            print(centroids)
+
+        # if verbose == 1:
+        #     print(labels)
+        #     print(centroids)
         return 1
 
     def getAverageDistance(self, data):
