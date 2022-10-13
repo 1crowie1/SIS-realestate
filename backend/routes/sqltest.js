@@ -74,7 +74,12 @@ function suburbsWithAverages(){
 
   request.on("row", columns => {
     columns.forEach(column => {
-      suburbArray.push({name: column.metadata.colName, value: column.value});
+      if (column.value === null) {
+        console.log('NULL');
+      } else {
+          // result[column.metadata.colName] = column.value;
+          suburbArray.push({name: column.metadata.colName, value: column.value});
+      }
     });
   });
 
