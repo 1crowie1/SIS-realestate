@@ -7,6 +7,7 @@ import Header from './components/header';
 import Heatmap from './components/heatmap/heatmap';
 import Recommendations from './components/recommendations/recommendations';
 import Footer from './components/footer';
+import { Control } from 'leaflet';
 
 function App() {
   return (
@@ -22,8 +23,10 @@ function App() {
       <Container>
         <Recommendations />
       </Container>
-      
-      {/* <Footer /> */}
+    <Container>
+      <Footer />
+    </Container>
+
     </div>
   );
 }
