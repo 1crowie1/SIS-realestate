@@ -7,13 +7,18 @@ import Header from './components/header';
 import Heatmap from './components/heatmap/heatmap';
 import Recommendations from './components/recommendations/recommendations';
 import Footer from './components/footer';
-import linechart from './components/linechart/linechart';
+import LineChart from './components/linechart/linechart';
 
 
 function App() {
   return (
     <div className='App'>
       <Header />
+
+      {/* Line Chart */}
+      <Container>
+        <LineChart />
+      </Container>
 
       {/* HeatMap Section */}
       {/* <Container> */}
@@ -24,7 +29,8 @@ function App() {
       <Container>
         <Recommendations />
       </Container>
-      <linechart/>
+
+      {/* Footer */}
       {/* <Footer /> */}
     </div>
   );
