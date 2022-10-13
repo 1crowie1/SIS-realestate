@@ -7,6 +7,8 @@ import Header from './components/header';
 import Heatmap from './components/heatmap/heatmap';
 import Recommendations from './components/recommendations/recommendations';
 import Footer from './components/footer';
+import linechart from './components/linechart/linechart';
+
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
       <Container>
         <Recommendations />
       </Container>
-      
+      <linechart/>
       {/* <Footer /> */}
     </div>
   );
