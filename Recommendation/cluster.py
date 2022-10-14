@@ -56,7 +56,8 @@ def update_listing_cluster(data: pd.DataFrame) -> bool:
     """
     try:
         d = azure_db()
-        query = ""
+        query = "INSERT INTO dbo.big_property (id, property_type, price, bedrooms, bathrooms, parking_spaces, cluster_num) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
         results = d.post_azure_query(query)
         log(results[0][0], log_style.GREEN)
         return True
