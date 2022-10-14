@@ -27,6 +27,7 @@ share/python-wheels/
 MANIFEST
 venv/
 Recommendation/venv/
+Recommendation/azure_credentials.csv
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -129,6 +130,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.csv
 
 # Spyder project settings
 .spyderproject
