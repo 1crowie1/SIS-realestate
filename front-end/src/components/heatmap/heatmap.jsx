@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
-import mapData from '../data/suburb-nsw.json';
+// import mapData from '../data/suburb-nsw.json';
+import mapData from '../data/test.json';
+// import RealestateUtil from "../../util/RealestateUtil";
+
 import Legend from './legend';
 import "leaflet/dist/leaflet.css";
 import './map.css';
-
-function getColor(d) {
-  return d > 1000 ? '#800026' :
-         d > 500  ? '#BD0026' :
-         d > 200  ? '#E31A1C' :
-         d > 100  ? '#FC4E2A' :
-         d > 50   ? '#FD8D3C' :
-         d > 20   ? '#FEB24C' :
-         d > 10   ? '#FED976' :
-                    '#FFEDA0';
-}
 
 function getSuburbColour(suburb_name) {
   if (suburb_name === 'SYDNEY') {
     return '#800026'; // 1001
   } else if (suburb_name === 'GLEBE') {
     return '#BD0026'; // 51
+  } else if (suburb_name === 'ULTIMO') {
+    return '#BD0026'; // 101
   } else if (suburb_name === 'WATERLOO') {
     return '#BD0026'; // 101
   } else if (suburb_name === 'ERSKINEVILLE') {
@@ -40,8 +34,16 @@ function getSuburbColour(suburb_name) {
   }
 }
 
-function randomIntFromInterval(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
+function getPriceColour(price){
+  return price > 1300000 ? '#BD0026' :
+         price > 1200000 ? '#E31A1C' :
+         price > 1100000 ? '#FC4E2A' :
+         price > 1000000 ? '#FD8D3C' :
+         price > 900000 ? '#FEB24C' :
+         price > 800000 ? '#CFB24C' :
+         price > 700000 ? '#92CD32' :
+         price > 700000 ? '#99FD32':
+          '#ffffb2';
 }
 
 class Heatmap extends Component {
@@ -71,7 +73,7 @@ class Heatmap extends Component {
 
     countryStyle = (feature) => {
       return {
-        fillColor: getSuburbColour(feature.properties.nsw_loca_2), // this.state.color = "green"
+        fillColor: getPriceColour(feature.properties.price), // (feature.properties.nsw_loca_2), // this.state.color = "green"
         fillOpacity: 0.6,
         color: "black",
         weight: 1,
@@ -81,7 +83,9 @@ class Heatmap extends Component {
   
     onEachCountry = (suburb, layer) => {
       const suburbName = suburb.properties.nsw_loca_2;
-      layer.bindPopup(suburbName + '\nNo. of Listings: 0\nPrice: $1,000,000');
+      const suburbPrice = suburb.properties.price;
+      const suburbListing = suburb.properties.listing;
+      layer.bindPopup(suburbName + '\nNo. of Listings: '+suburbListing+'\n Average Price: $' + suburbPrice);
   
       // layer.options.fillOpacity = randomIntFromInterval(0.4, 0.6) //Math.random(); //0-1 (0.1, 0.2, 0.3)
       // const colorIndex = Math.floor(Math.random() * this.colors.length);
@@ -107,6 +111,7 @@ class Heatmap extends Component {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            {/* <h1>{RealestateUtil.getGeoJSON([])}</h1> */}
             <GeoJSON
               style={this.countryStyle}
               data={mapData.features}

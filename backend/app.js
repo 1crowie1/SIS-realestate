@@ -31,7 +31,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/db', express.static('./routes/sqltest.js'));
 app.use('/suburbsWithAverages', suburbsWithAveragesRouter);
-// app.use('/calculateNearestProperties/', sqlRouter);
+app.use('/calculateNearestProperties/', suburbsWithAveragesRouter);
 
 
 // catch 404 and forward to error handler
