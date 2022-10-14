@@ -50,6 +50,20 @@ def check_connection() -> bool:
         log(e, log_style.RED)
         return False
 
+def update_listing_cluster(data: pd.DataFrame) -> bool:
+    """
+    Update Listing Cluster Number in Azure Database
+    """
+    try:
+        d = azure_db()
+        query = ""
+        results = d.post_azure_query(query)
+        log(results[0][0], log_style.GREEN)
+        return True
+    except Exception as e:
+        log(e, log_style.RED)
+        return False
+
 def get_listings() -> pd.DataFrame:
     """
     Get Listings from Azure Database
