@@ -5,9 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+// Import routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var sqlRouter = require('./routes/sqltest')
+// var sqlRouter = require('./routes/sqltest');
+var suburbsWithAveragesRouter = require('./routes/suburbsWithAverages');
 
 var app = express();
 
@@ -28,8 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/db', express.static('./routes/sqltest.js'));
-app.use('/suburbsWithAverages', sqlRouter);
-app.use('/calculateNearestProperties/', sqlRouter);
+app.use('/suburbsWithAverages', suburbsWithAveragesRouter);
+// app.use('/calculateNearestProperties/', sqlRouter);
 
 
 // catch 404 and forward to error handler
