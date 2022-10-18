@@ -5,20 +5,11 @@ import './footer.css';
 const Footer = () => {
 return (
 	<div class="footer">
-	<Container>
-		<Row>
-		<Col>
-      <p>Home</p>
-			<p>About Us</p>
-      <p>Contact Us</p>
-		</Col>
-		<Col>
-			<p>
-      <img src={require('./images/footer.png')} alt="Home Finder"></img>
-      </p>
-		</Col>
-		</Row>
-	</Container>
+      <div class="overlay">
+          <img src={require('./images/footer.png')} alt="Home Finder"></img>
+          <footer>&copy; Copyright 2022 Home Finder</footer>
+      </div>
+  
 	</div>
 );
 };

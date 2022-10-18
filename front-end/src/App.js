@@ -12,7 +12,9 @@ import { Control } from 'leaflet';
 function App() {
   return (
     <div className='App'>
+      <div className='header' id='myHeader'>
       <Header />
+      </div>
 
       {/* HeatMap Section */}
       {/* <Container> */}
@@ -23,10 +25,9 @@ function App() {
       <Container>
         <Recommendations />
       </Container>
-    <Container>
-      <Footer />
-    </Container>
 
+      <Footer />
+      
     </div>
   );
 }

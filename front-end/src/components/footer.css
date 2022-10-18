@@ -1,20 +1,22 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(31, 31, 31);
-    color: white;
-    text-align: center;
-    padding-top: 5px;
+	text-align: center;
+	width: auto;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
 }
-
-p {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.footer .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	color: rgb(0, 0, 0);
+	text-shadow: 1px 1px 1px rgb(0, 81, 255);
+  background-image: linear-gradient( 130deg, #b3d2f669 10%, #005eff62 100%);	
 }
 
 img {
-    width: 20%;
+    width: 10%;
     height: auto;
 }
