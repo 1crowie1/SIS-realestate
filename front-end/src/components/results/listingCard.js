@@ -21,7 +21,7 @@ function ListingCard(listing) {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={listing.listing.images[0]}
+            src={listing.listing.images[1]}
             alt="Second slide"
           />
           <Carousel.Caption>
@@ -31,7 +31,7 @@ function ListingCard(listing) {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src={listing.listing.images[0]}
+            src={listing.listing.images[2]}
             alt="Third slide"
           />
           <Carousel.Caption>
@@ -41,12 +41,12 @@ function ListingCard(listing) {
 
       <Card.Body>
         <Card.Title>{listing.listing.address}</Card.Title>
-        <Card.Body>
-          <Card.Text>{listing.listing.bathrooms}</Card.Text>
-          <Card.Text>{listing.listing.bedrooms}</Card.Text>
-          <Card.Text>{listing.listing.carSpaces}</Card.Text>
-        </Card.Body>
         <Card.Text>${listing.listing.price}</Card.Text>
+        <Card.Body>
+          <Card.Text>Bathrooms: {listing.listing.bathrooms}</Card.Text>
+          <Card.Text>Bedrooms: {listing.listing.bedrooms}</Card.Text>
+          <Card.Text>Car Spaces: {listing.listing.carSpaces}</Card.Text>
+        </Card.Body>
         <Button variant="primary" href={listing.listing.url}>Look at RealEstate</Button>
       </Card.Body>
     </Card>
