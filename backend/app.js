@@ -6,8 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var suburbRouter = require('./routes/suburb')
-var sqlRouter = require('./routes/sqltest.js')
-
+var recommendationRouter = require('./routes/recommendation')
 
 const port = process.env.PORT || 3000;
 
@@ -25,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/suburb', suburbRouter);
+app.use('/recommendation', recommendationRouter);
 app.use('/db', express.static('./routes/sqltest.js'))
 
 // catch 404 and forward to error handler

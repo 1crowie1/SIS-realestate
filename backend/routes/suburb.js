@@ -87,7 +87,7 @@ router.get('/getPopularSuburbs', function(req,res,next){
     
 })
 
-// ENDPOINT NOT WORKING
+// ENDPOINT NOT WORKING - some issue with the query?? @Anesu
 router.get('/suburbBreakdown/', function(req, res, next) {
 
     var suburbName = req.suburbName;
