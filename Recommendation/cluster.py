@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import pyodbc
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 import logging
 
 class log_style():
@@ -77,97 +78,112 @@ def get_listings() -> pd.DataFrame:
         listings = listings.append({"id": row[0], "property_type": row[1], "price": row[2], "bedrooms": row[3], "bathrooms": row[4], "parking_spaces": row[5]}, ignore_index=True)
     return listings
 
-class Kmeans(object):
+# class Kmeans(object):
 
-    def __init__(self, k=1):
-        self.k = k
+#     def __init__(self, k=1):
+#         self.k = k
 
-    def train(self, data, verbose=1):
-        shape = data.shape
+#     def train(self, data, verbose=1):
+#         shape = data.shape
 
-        ranges = np.zeros((shape[1], 2))
-        centroids = np.zeros((shape[1], 2))
+#         ranges = np.zeros((shape[1], 2))
+#         centroids = np.zeros((shape[1], 2))
 
-        for dim in range(shape[1]):
-            ranges[dim, 0] = np.min(data[:,dim])
-            ranges[dim, 1] = np.max(data[:,dim])
+#         for dim in range(shape[1]):
+#             ranges[dim, 0] = np.min(data[:,dim])
+#             ranges[dim, 1] = np.max(data[:,dim])
 
-        if verbose == 1:
-            print('Ranges: ')
-            print(ranges)
+#         if verbose == 1:
+#             print('Ranges: ')
+#             print(ranges)
 
-        centroids = np.zeros((self.k, shape[1]))
-        for i in range(self.k):
-            for dim in range(shape[1]):
-                centroids[i, dim] = np.random.uniform(ranges[dim, 0], ranges[dim, 1], 1)
+#         centroids = np.zeros((self.k, shape[1]))
+#         for i in range(self.k):
+#             for dim in range(shape[1]):
+#                 centroids[i, dim] = np.random.uniform(ranges[dim, 0], ranges[dim, 1], 1)
 
-        if verbose == 1:
-            print('Centroids: ')
-            print(centroids)
+#         if verbose == 1:
+#             print('Centroids: ')
+#             print(centroids)
 
-            # plt.scatter(data[:,0], data[:,1])
-            # # plt.scatter(centroids[:,0], centroids[:,1], c = 'r')
-            # plt.show()
+#             # plt.scatter(data[:,0], data[:,1])
+#             # # plt.scatter(centroids[:,0], centroids[:,1], c = 'r')
+#             # plt.show()
 
-        count = 0
-        while count < 100:
-            count += 1
-            if verbose == 1:
-                print('-----------------------------------------------')
-                print('Iteration: ', count)
+#         count = 0
+#         while count < 100:
+#             count += 1
+#             if verbose == 1:
+#                 print('-----------------------------------------------')
+#                 print('Iteration: ', count)
 
-            distances = np.zeros((shape[0],self.k))
-            for ix, i in enumerate(data):
-                for ic, c in enumerate(centroids):
-                    distances[ix, ic] = np.sqrt(np.sum((i-c)**2))
+#             distances = np.zeros((shape[0],self.k))
+#             for ix, i in enumerate(data):
+#                 for ic, c in enumerate(centroids):
+#                     distances[ix, ic] = np.sqrt(np.sum((i-c)**2))
 
-            labels = np.argmin(distances, axis = 1)
+#             labels = np.argmin(distances, axis = 1)
 
-            new_centroids = np.zeros((self.k, shape[1]))
-            for centroid in range(self.k):
-                temp = data[labels == centroid]
-                if len(temp) == 0:
-                    return 0
-                for dim in range(shape[1]): 
-                    new_centroids[centroid, dim] = np.mean(temp[:,dim])
+#             new_centroids = np.zeros((self.k, shape[1]))
+#             for centroid in range(self.k):
+#                 temp = data[labels == centroid]
+#                 if len(temp) == 0:
+#                     return 0
+#                 for dim in range(shape[1]): 
+#                     new_centroids[centroid, dim] = np.mean(temp[:,dim])
 
-            # if verbose == 1:
-            #     plt.scatter(data[:,0], data[:,1], c = labels)
-            #     # plt.scatter(new_centroids[:,0], new_centroids[:,1], c = 'r')
-            #     plt.show()
+#             # if verbose == 1:
+#             #     plt.scatter(data[:,0], data[:,1], c = labels)
+#             #     # plt.scatter(new_centroids[:,0], new_centroids[:,1], c = 'r')
+#             #     plt.show()
 
-            if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
-                log("DONE!", "GREEN")
-                plt.scatter(data[:,0], data[:,1], c = labels)
-                plt.scatter(new_centroids[:,0], new_centroids[:,1], alpha=0.25, s=10000, c = 'Grey')
-                plt.title("Listing Clusters")
-                plt.xlabel("House Price ($AUD)")
-                plt.ylabel("Bedrooms (Amt)")
-                plt.show()
-                break
+#             if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
+#                 log("DONE!", "GREEN")
+#                 plt.scatter(data[:,0], data[:,1], c = labels)
+#                 plt.scatter(new_centroids[:,0], new_centroids[:,1], alpha=0.25, s=10000, c = 'Grey')
+#                 plt.title("Listing Clusters")
+#                 plt.xlabel("House Price ($AUD)")
+#                 plt.ylabel("Bedrooms (Amt)")
+#                 plt.show()
+#                 break
 
-            centroids = new_centroids
-        self.centroids = centroids
-        self.labels = labels
+#             centroids = new_centroids
+#         self.centroids = centroids
+#         self.labels = labels
 
-        # if verbose == 1:
-        #     print(labels)
-        #     print(centroids)
-        return 1
+#         # if verbose == 1:
+#         #     print(labels)
+#         #     print(centroids)
+#         return 1
 
-    def getAverageDistance(self, data):
+#     def getAverageDistance(self, data):
 
-        dists = np.zeros((len(self.centroids),))
-        for ix, centroid in enumerate(self.centroids):
-            temp = data[self.labels == ix]
-            dist = 0
-            for i in temp:
-                dist += np.linalg.norm(i - centroid)
-            dists[ix] = dist/len(temp)
-        return dists
+#         dists = np.zeros((len(self.centroids),))
+#         for ix, centroid in enumerate(self.centroids):
+#             temp = data[self.labels == ix]
+#             dist = 0
+#             for i in temp:
+#                 dist += np.linalg.norm(i - centroid)
+#             dists[ix] = dist/len(temp)
+#         return dists
 
-    def getLabels(self):
-        return self.labels
+#     def getLabels(self):
+#         return self.labels
+
+def kmeans(data: pd.DataFrame, k: int) -> pd.DataFrame:
+    """
+    K-Means Clustering
+    """
+
+    kmeans = KMeans(n_clusters=k, random_state=0).fit(data)
+    centroids = kmeans.cluster_centers_
+    data["cluster_num"] = kmeans.labels_
+
+    plt.scatter(data['price'], data['bedrooms'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
+    plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
+    plt.show()
+
+    return data
 
 def start():
     if not check_connection():
@@ -175,9 +191,16 @@ def start():
     log("Requesting Listings", "WHITE")
     listings = get_listings()
     print(listings)
+    amt = 15
     listings_data = listings.copy(deep=True)
     listings_data = listings_data.drop(columns=['id', 'property_type', 'bathrooms', 'parking_spaces'])
-    data = listings_data.to_numpy()
-    kmeans = Kmeans(5)
-    kmeans.train(data)
+    clusters = kmeans(listings_data, amt)
+    listings["cluster_num"] = clusters["cluster_num"]
+    print(listings.to_string())
+    
+    # for i in range(0, amt):
+    #     print("Listings in cluster", i)
+    #     print(listings.where(listings['cluster_num'] == i).count())
+
+    
     return
