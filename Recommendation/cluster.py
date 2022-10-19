@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import pyodbc
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 import logging
 
 class log_style():
@@ -35,6 +36,12 @@ class azure_db():
                 self.cursor.execute(query)
                 results = self.cursor.fetchall()
         return results
+    
+    def post_azure_update(self, query: str) -> None:
+        with pyodbc.connect('DRIVER='+self.driver+';SERVER=tcp:'+self.credentials['server'][0]+';PORT=1433;DATABASE='+self.credentials['database'][0]+';UID='+self.credentials['username'][0]+';PWD='+self.credentials['password'][0]) as self.conn:
+            with self.conn.cursor() as self.cursor:
+                self.cursor.execute(query)
+        return
 
 def check_connection() -> bool:
     """
@@ -56,10 +63,13 @@ def update_listing_cluster(data: pd.DataFrame) -> bool:
     """
     try:
         d = azure_db()
-        query = "INSERT INTO dbo.big_property (id, property_type, price, bedrooms, bathrooms, parking_spaces, cluster_num) VALUES (?, ?, ?, ?, ?, ?, ?)"
-        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
-        results = d.post_azure_query(query)
-        log(results[0][0], log_style.GREEN)
+        query = ""
+        leng = len(data)
+        for index, row in data.iterrows():
+            print(index, "/", leng)
+            q = f"UPDATE dbo.big_property SET cluster_num = {row['cluster_num']} WHERE id = {row['id']};"
+            query+=q
+        d.post_azure_update(query)
         return True
     except Exception as e:
         log(e, log_style.RED)
@@ -77,107 +87,41 @@ def get_listings() -> pd.DataFrame:
         listings = listings.append({"id": row[0], "property_type": row[1], "price": row[2], "bedrooms": row[3], "bathrooms": row[4], "parking_spaces": row[5]}, ignore_index=True)
     return listings
 
-class Kmeans(object):
+def kmeans(data: pd.DataFrame, k: int) -> pd.DataFrame:
+    """
+    K-Means Clustering
+    """
 
-    def __init__(self, k=1):
-        self.k = k
+    kmeans = KMeans(n_clusters=k, random_state=0).fit(data)
+    centroids = kmeans.cluster_centers_
+    data["cluster_num"] = kmeans.labels_
 
-    def train(self, data, verbose=1):
-        shape = data.shape
+    # plt.scatter(data['price'], data['bedrooms'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
+    # plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
+    # plt.show()
 
-        ranges = np.zeros((shape[1], 2))
-        centroids = np.zeros((shape[1], 2))
-
-        for dim in range(shape[1]):
-            ranges[dim, 0] = np.min(data[:,dim])
-            ranges[dim, 1] = np.max(data[:,dim])
-
-        if verbose == 1:
-            print('Ranges: ')
-            print(ranges)
-
-        centroids = np.zeros((self.k, shape[1]))
-        for i in range(self.k):
-            for dim in range(shape[1]):
-                centroids[i, dim] = np.random.uniform(ranges[dim, 0], ranges[dim, 1], 1)
-
-        if verbose == 1:
-            print('Centroids: ')
-            print(centroids)
-
-            # plt.scatter(data[:,0], data[:,1])
-            # # plt.scatter(centroids[:,0], centroids[:,1], c = 'r')
-            # plt.show()
-
-        count = 0
-        while count < 100:
-            count += 1
-            if verbose == 1:
-                print('-----------------------------------------------')
-                print('Iteration: ', count)
-
-            distances = np.zeros((shape[0],self.k))
-            for ix, i in enumerate(data):
-                for ic, c in enumerate(centroids):
-                    distances[ix, ic] = np.sqrt(np.sum((i-c)**2))
-
-            labels = np.argmin(distances, axis = 1)
-
-            new_centroids = np.zeros((self.k, shape[1]))
-            for centroid in range(self.k):
-                temp = data[labels == centroid]
-                if len(temp) == 0:
-                    return 0
-                for dim in range(shape[1]): 
-                    new_centroids[centroid, dim] = np.mean(temp[:,dim])
-
-            # if verbose == 1:
-            #     plt.scatter(data[:,0], data[:,1], c = labels)
-            #     # plt.scatter(new_centroids[:,0], new_centroids[:,1], c = 'r')
-            #     plt.show()
-
-            if np.linalg.norm(new_centroids - centroids) < np.finfo(float).eps:
-                log("DONE!", "GREEN")
-                plt.scatter(data[:,0], data[:,1], c = labels)
-                plt.scatter(new_centroids[:,0], new_centroids[:,1], alpha=0.25, s=10000, c = 'Grey')
-                plt.title("Listing Clusters")
-                plt.xlabel("House Price ($AUD)")
-                plt.ylabel("Bedrooms (Amt)")
-                plt.show()
-                break
-
-            centroids = new_centroids
-        self.centroids = centroids
-        self.labels = labels
-
-        # if verbose == 1:
-        #     print(labels)
-        #     print(centroids)
-        return 1
-
-    def getAverageDistance(self, data):
-
-        dists = np.zeros((len(self.centroids),))
-        for ix, centroid in enumerate(self.centroids):
-            temp = data[self.labels == ix]
-            dist = 0
-            for i in temp:
-                dist += np.linalg.norm(i - centroid)
-            dists[ix] = dist/len(temp)
-        return dists
-
-    def getLabels(self):
-        return self.labels
+    return data
 
 def start():
     if not check_connection():
         return
     log("Requesting Listings", "WHITE")
     listings = get_listings()
-    print(listings)
+    #print(listings)
+    amt = 15
     listings_data = listings.copy(deep=True)
     listings_data = listings_data.drop(columns=['id', 'property_type', 'bathrooms', 'parking_spaces'])
-    data = listings_data.to_numpy()
-    kmeans = Kmeans(5)
-    kmeans.train(data)
+    clusters = kmeans(listings_data, amt)
+    listings["cluster_num"] = clusters["cluster_num"]
+    #print(listings.to_string())
+
+    # for i in range(0, amt):
+    #     print("Listings in cluster", i)
+    #     print(listings.where(listings['cluster_num'] == i).count())
+    
+    listings_final = listings.copy(deep=True)
+    listings_final = listings_final.drop(columns=['property_type', 'price', 'bedrooms', 'bathrooms', 'parking_spaces'])
+    #print(listings_final.iloc[:, [1,0]])
+    update_listing_cluster(listings_final.iloc[:, [1,0]])
+    
     return
