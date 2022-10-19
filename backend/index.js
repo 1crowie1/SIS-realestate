@@ -4,7 +4,6 @@ const recommendationMockData  = require('./src/data/mock_data/SuburbRecommendati
 const properties = require('./src/data/mock_data/CalculatedProperties.js');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 6000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -71,6 +70,3 @@ app.get('/feelingLucky/', (req, res) => {
   res.send({ body: properties });
 });
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});

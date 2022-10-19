@@ -9,7 +9,7 @@ connection.on("connect", err => {
   if (err) {
     console.error(err.message);
   } else {
-    queryDatabase();
+    // queryDatabase();
   }
 });
 
@@ -32,7 +32,7 @@ function queryDatabase() {
 
   request.on("row", columns => {
       columns.forEach(column => {
-        console.log("%s\t%s", column.metadata.colName, column.value);
+        // console.log("%s\t%s", column.metadata.colName, column.value);
       });
     });
 

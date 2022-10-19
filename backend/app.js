@@ -8,6 +8,9 @@ var indexRouter = require('./routes/index');
 var suburbRouter = require('./routes/suburb')
 var sqlRouter = require('./routes/sqltest.js')
 
+
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 // view engine setup
@@ -21,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/suburb', suburbRouter);
+app.use('/suburb', express.static('./routes/suburb.js'));
 app.use('/db', express.static('./routes/sqltest.js'))
 
 // catch 404 and forward to error handler
@@ -39,5 +42,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
+});
+
 
 module.exports = app;
