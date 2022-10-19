@@ -1,4 +1,6 @@
+var express = require('express');
 const { Connection, Request } = require("tedious");
+var router = express.Router();
 
 const config = require('../config/db');
 
@@ -10,6 +12,7 @@ connection.on("connect", err => {
   if (err) {
     console.error(err.message);
   } else {
+    console.log("Connection Established")
     getAllSuburbs();
   }
 });
@@ -49,5 +52,9 @@ function getAllSuburbs(){
 router.get('/', function(req, res, next) {
     res.send(suburbs); // Return all suburbs
 });
+
+router.get('/getPopularSuburbs', function(req,res,next){
+    res.send(suburbs); // Return all suburbs
+})
 
 module.exports = router;

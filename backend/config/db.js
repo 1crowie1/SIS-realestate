@@ -15,3 +15,5 @@ const config = {
     encrypt: true
   }
 };
+
+module.exports = config;

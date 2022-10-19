@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const heatmap = require('./src/data/mock_data/SuburbHeatMap.js');
 const recommendationMockData  = require('./src/data/mock_data/SuburbRecommendations.js');
 const properties = require('./src/data/mock_data/CalculatedProperties.js');

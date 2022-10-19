@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var suburbRouter = require('./routes/suburbs')
+var suburbRouter = require('./routes/suburb')
 var sqlRouter = require('./routes/sqltest.js')
 
 var app = express();
