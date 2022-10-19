@@ -90,14 +90,15 @@ router.get('/getPopularSuburbs', function(req,res,next){
 // ENDPOINT NOT WORKING - some issue with the query?? @Anesu
 router.get('/suburbBreakdown/', function(req, res, next) {
 
-    var suburbName = req.suburbName;
+    var suburbName = req.query.suburbName; // Fetches the column name accurately
 
     console.log('Query DB: Get Suburn Breakdown')
 
+    //some issue with the where clause in the query, its returning "Invalid column name 'Banksia'" 
     const request = new Request(
       `SELECT SUBSTRING([suburb], 0, 25) AS name, COUNT(id) AS suburb_listing_count 
       FROM [dbo].[big_property] 
-      WHERE name = ${suburbName} 
+      WHERE SUBSTRING([suburb], 0, 25) = '${suburbName}'   
       GROUP BY SUBSTRING([suburb], 0, 25);`,
       (err, rowCount) => {
           if (err) {
@@ -108,6 +109,8 @@ router.get('/suburbBreakdown/', function(req, res, next) {
             console.log("Suburb Details found");
           }
     });
+
+    console.log(request)
 
     var suburb = {};
     request.on("row", columns => {

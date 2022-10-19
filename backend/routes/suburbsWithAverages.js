@@ -1,26 +1,13 @@
 var express = require('express');
-var router = express.Router();
 const { Connection, Request } = require("tedious");
+var router = express.Router();
+
+const config = require('../config/db');
 // Import Files
 var GeoJSON = require('.././data/suburb-nsw.json');
 
 var suburbArray = [];
 
-// Create connection to database
-const config = {
-  authentication: {
-    options: {
-      userName: "sis-realestate-admin", // update me
-      password: "Anesu-Chakaingesu1" // update me
-    },
-    type: "default"
-  },
-  server: "sis-realestate.database.windows.net", // update me
-  options: {
-    database: "SIS-realestate", //update me
-    encrypt: true
-  }
-};
 const connection = new Connection(config);
 
 // Attempt to connect and execute queries if connection goes through
@@ -28,14 +15,14 @@ connection.on("connect", err => {
     if (err) {
       console.error(err.message);
     } else {
-        executeStatement();
+        console.log("Connection Established")
     }
   });
 connection.connect();
 
 // GET all suburbs with average Price
-
-function executeStatement() {// suburbsWithAverages(){
+// Send GeoJSON Formatted.
+router.get('/', function(req, res, next) {
     console.log('Query DB: Suburb Average Prices')
 
     const request = new Request(
@@ -82,12 +69,8 @@ function executeStatement() {// suburbsWithAverages(){
             }
         });
         GeoJSON.updated = new Date();
+        res.send(GeoJSON); // Export GeoJSON
     });
-}
-
-// Send GeoJSON Formatted.
-router.get('/', function(req, res, next) {
-    res.send(GeoJSON); // Export GeoJSON
 });
 
 module.exports = router;
