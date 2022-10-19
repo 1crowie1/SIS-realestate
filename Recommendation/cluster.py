@@ -36,6 +36,12 @@ class azure_db():
                 self.cursor.execute(query)
                 results = self.cursor.fetchall()
         return results
+    
+    def post_azure_update(self, query: str) -> None:
+        with pyodbc.connect('DRIVER='+self.driver+';SERVER=tcp:'+self.credentials['server'][0]+';PORT=1433;DATABASE='+self.credentials['database'][0]+';UID='+self.credentials['username'][0]+';PWD='+self.credentials['password'][0]) as self.conn:
+            with self.conn.cursor() as self.cursor:
+                self.cursor.execute(query)
+        return
 
 def check_connection() -> bool:
     """
@@ -57,10 +63,12 @@ def update_listing_cluster(data: pd.DataFrame) -> bool:
     """
     try:
         d = azure_db()
-        query = "INSERT INTO dbo.big_property (id, property_type, price, bedrooms, bathrooms, parking_spaces, cluster_num) VALUES (?, ?, ?, ?, ?, ?, ?)"
-        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
-        results = d.post_azure_query(query)
-        log(results[0][0], log_style.GREEN)
+        #query = "UPDATE dbo.big_property SET cluster_num = ? WHERE id = ?;"
+        leng = len(data)
+        for index, row in data.iterrows():
+            print(index, "/", leng)
+            query = f"UPDATE dbo.big_property SET cluster_num = {row['cluster_num']} WHERE id = {row['id']};"
+            d.post_azure_update(query)
         return True
     except Exception as e:
         log(e, log_style.RED)
@@ -190,17 +198,21 @@ def start():
         return
     log("Requesting Listings", "WHITE")
     listings = get_listings()
-    print(listings)
+    #print(listings)
     amt = 15
     listings_data = listings.copy(deep=True)
     listings_data = listings_data.drop(columns=['id', 'property_type', 'bathrooms', 'parking_spaces'])
     clusters = kmeans(listings_data, amt)
     listings["cluster_num"] = clusters["cluster_num"]
-    print(listings.to_string())
-    
+    #print(listings.to_string())
+
     # for i in range(0, amt):
     #     print("Listings in cluster", i)
     #     print(listings.where(listings['cluster_num'] == i).count())
-
+    
+    listings_final = listings.copy(deep=True)
+    listings_final = listings_final.drop(columns=['property_type', 'price', 'bedrooms', 'bathrooms', 'parking_spaces'])
+    #print(listings_final.iloc[:, [1,0]])
+    update_listing_cluster(listings_final.iloc[:, [1,0]])
     
     return
