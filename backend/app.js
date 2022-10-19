@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/suburb', express.static('./routes/suburb.js'));
+app.use('/suburb', suburbRouter);
 app.use('/db', express.static('./routes/sqltest.js'))
 
 // catch 404 and forward to error handler

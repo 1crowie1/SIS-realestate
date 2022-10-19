@@ -5,8 +5,6 @@ var router = express.Router();
 const config = require('../config/db');
 
 const connection = new Connection(config);
-var suburbsList = [];
-// var popularSuburbs = [];
 
 // Attempt to connect and execute queries if connection goes through
 connection.on("connect", err => {
@@ -14,16 +12,15 @@ connection.on("connect", err => {
     console.error(err.message);
   } else {
     console.log("Connection Established")
-    // getAllSuburbs();
-    // getPopularSuburbs();
   }
 });
 
 connection.connect();
 
-function getAllSuburbs(){
+// Get all suburbs
+router.get('/', function(req, res, next) {
+    console.log('Query DB: Get Popular Suburbs')
 
-    console.log('Query DB: Get All Suburbs')
     const request = new Request(
         `SELECT [name] FROM [dbo].[suburb] GROUP BY [name] ;`,
         (err, rowCount) => {
@@ -34,7 +31,7 @@ function getAllSuburbs(){
                   }
             });
         
-            // var suburbs = [];
+            var suburbsList = [];
             request.on("row", columns => {
                   var suburb = {};
                   columns.forEach((column) => {
@@ -45,19 +42,21 @@ function getAllSuburbs(){
                     }
                     console.log(suburb)
                 });
-                suburbs.push(suburb);
+                suburbsList.push(suburb);
             });
             
             connection.execSql(request);
 
-}
+    request.on('requestCompleted', function () {
+        res.send(suburbsList); // Return all suburbs
+    });
+});
 
-function getPopularSuburbs(){
-
+router.get('/getPopularSuburbs', function(req,res,next){
     console.log('Query DB: Get Popular Suburbs')
 
     const request = new Request(
-      `SELECT [name], count(*) AS count FROM [dbo].[suburb] GROUP BY [name] order by count desc;`,
+      `SELECT SUBSTRING([suburb], 0, 25) AS name, COUNT(id) AS suburb_listing_count FROM [dbo].[big_property] GROUP BY SUBSTRING([suburb], 0, 25) ORDER BY suburb_listing_count desc;`,
       (err, rowCount) => {
           if (err) {
             console.error(err.message);
@@ -76,22 +75,58 @@ function getPopularSuburbs(){
                 suburb[column.metadata.colName] = column.value;
             }
         });
-        popularSuburbs.push(entry);
+        console.log(suburb);
+        popularSuburbs.push(suburb);
     });
     
     connection.execSql(request);
 
-    return popularSuburbs;
-}
-
-// Get all suburbs
-router.get('/', function(req, res, next) {
-    getAllSuburbs();
-    res.send(suburbs); // Return all suburbs
-});
-
-router.get('/getPopularSuburbs', function(req,res,next){
-    res.send(getPopularSuburbs()); // Return popular suburbs
+    request.on('requestCompleted', function () {
+        res.send(popularSuburbs); // Return popular suburbs
+    });
+    
 })
+
+// ENDPOINT NOT WORKING
+router.get('/suburbBreakdown/', function(req, res, next) {
+
+    var suburbName = req.suburbName;
+
+    console.log('Query DB: Get Suburn Breakdown')
+
+    const request = new Request(
+      `SELECT SUBSTRING([suburb], 0, 25) AS name, COUNT(id) AS suburb_listing_count 
+      FROM [dbo].[big_property] 
+      WHERE name = ${suburbName} 
+      GROUP BY SUBSTRING([suburb], 0, 25);`,
+      (err, rowCount) => {
+          if (err) {
+            console.error(err.message);
+          } else if(rowCount !== 1){
+            console.log(`More than one result returned for suburb`);
+          }else{
+            console.log("Suburb Details found");
+          }
+    });
+
+    var suburb = {};
+    request.on("row", columns => {
+          columns.forEach((column) => {
+            if (column.value === null) {
+                console.log('NULL');
+            } else {
+                suburb[column.metadata.colName] = column.value;
+            }
+        });
+        console.log(suburb);
+    });
+    
+    connection.execSql(request);
+
+    request.on('requestCompleted', function () {
+        res.send(suburb); // Return suburb breakdown
+    });
+
+});
 
 module.exports = router;
