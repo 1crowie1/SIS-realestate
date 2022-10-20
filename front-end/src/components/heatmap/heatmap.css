@@ -20,13 +20,13 @@
     letter-spacing:2px;
     background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
-    width: 35%/*  25%;16%; */
+    width: 35%;
   }
   .legend > div {
     color:black;
     position: relative;
     display: flex;
-    height: 20px;
+    height: 100px;
     padding: 0 10px;
   }
   .legend > div::before {
@@ -46,13 +46,13 @@
   
    
   }
-  .legend {
+  /* .legend {
     left: 38px;
     bottom: 100px;
     font-size:10px;
     letter-spacing:0px;
     width: 30%;
     height:15%;
-  }
+  } */
 
 }

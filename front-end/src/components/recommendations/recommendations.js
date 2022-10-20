@@ -43,9 +43,15 @@ function Recommendations(props) {
     return (
         <div className='recommendations'>   
             <Container>
-            <h2>Get Personalised Recommendations</h2>
+            {/* Recommendation Titles */}
+            <Row>   
+                <div className='recommendations-title'>
+                    <img src={require('../.././images/2.png')} alt="Home Finder" width="70" height="70"></img>
+                    <h2>Get Personalised Recommendations</h2>
+                </div>
+            </Row>
 
-            <Row>
+            <Row class='preferences'>
                 {/* <p1>Personalised Preferences</p1> */}
                 <Col xs={6} md={6} className="personalised-prefences">
                     <Container>

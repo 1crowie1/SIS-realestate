@@ -4,59 +4,74 @@ import './footer.css';
 function Footer() {
   return (
     // Footer Component
-    <footer className="footer">
-      <Container>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>About</h6>
-            <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
-          </div>
+    <section className="footer">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-3 col-md-6">
+                    <i className="fas fa-home"></i>
+                    <span className="footer-other-text d-block mt-3 mb-3">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                    </span>
+                    <div className="footer-social">
+                        <div className="footer-social-item"><i className="fab fa-facebook"></i></div>
+                        <div className="footer-social-item"><i className="fab fa-twitter"></i></div>
+                        <div className="footer-social-item"> <i className="fab fa-instagram"></i></div>
+                    </div>
+                </div>
+                <div className="col-lg-3 col-md-6">
+                    <p className="footer-title">Menu</p>
+                    <ul className="footer-ul">
+                        <li>Home</li>
+                        <li>Blog</li>
+                        <li>About</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+                <div className="col-lg-3 col-md-6">
+                    <div>
+                        <p className="footer-title">Categories</p>
+                        <ul className="footer-ul">
+                            <li>Category 1</li>
+                            <li>Category 2</li>
+                            <li>Category 3</li>
+                            <li>Category 4</li>
+                        </ul>
+                    </div>
+                </div>
 
-          <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-            </ul>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Quick Links</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/about/">About Us</a></li>
-              <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-            </ul>
-          </div>
+                <div className="col-lg-3 col-md-6">
+                    <p className="footer-title">Contact</p>
+                    <ul className="footer-ul">
+                        <li className="d-flex">
+                            <div className="footer-info-item"><i className="fas fa-clock"></i></div> <span>08:00-18:00</span>
+                        </li>
+                        <li className="d-flex">
+                            <div className="footer-info-item" ><i className="fas fa-envelope"></i></div> <span>info@house.com</span>
+                        </li>
+                        <li className="d-flex">
+                            <div className="footer-info-item"><i className="fas fa-map-marker-alt"></i></div> <span>Lorem Ipsum </span>
+                        </li>
+                        <li className="d-flex">
+                            <div className="footer-info-item"><i className="fas fa-phone-alt"></i></div> <span>0500 000 00 00</span>
+                        </li>
+                    </ul>
+                </div>
+                {/*<div className="col-lg-3 col-md-6">
+                    <p className="footer-title">Subscribe</p>
+                    <span className="footer-other-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna
+                    </span>
+                    <div className="subscribe-area mb-2 mt-2">
+                        <input type="text" placeholder="Email" className="inp-footer w-100" />
+                    </div>
+                    <button className="btn-subscribe">Subscribe</button>
+                </div>*/}
+            </div>
+            <div className="row">
+              <footer>&copy; Copyright 2022 Home Finder</footer>
+            </div>
         </div>
-        {/* <hr> */}
-      </Container>
-
-      <Container>
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
-            <a href="#">Scanfcode</a>.
-            </p>
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-            </ul>
-          </div>
-        </div>
-      </Container>
-    </footer>
+    </section>
   );
 }
 
