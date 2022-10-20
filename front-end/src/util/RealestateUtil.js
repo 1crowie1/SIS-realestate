@@ -37,8 +37,8 @@ class RealestateUtil {
     );
   }
 
-  getGeoJSON(setGeoJSON) {
-    fetch("http://localhost:4000/calculateNearestProperties/")
+  getRecommendations(setRecommendations) {
+    fetch("http://localhost:4000/getAllListings/")
     .then(res => res.json())
     .then(
       (result) => {

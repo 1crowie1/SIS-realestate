@@ -12,9 +12,14 @@ import { Box, Slider } from '@mui/material';
 import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
+// function CalcCluster(results, preferences) {
+    
+// }
+
 function Recommendations(props) {
     // const results = [];
     const [results, setResults] = useState(null);
+    // CalcCluster(results, preferences);
     const [recommendations, setRecommendations] = useState('r');
 
     // Suburbs List
