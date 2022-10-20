@@ -38,7 +38,7 @@ class RealestateUtil {
   }
 
   getRecommendations(setRecommendations) {
-    fetch("http://localhost:4000/calculateNearestProperties/")
+    fetch("http://localhost:4000/getAllListings/")
     .then(res => res.json())
     .then(
       (result) => {
