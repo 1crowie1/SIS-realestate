@@ -12,34 +12,9 @@ import { Box, Slider } from '@mui/material';
 import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
-function CalcCluster(results, preferences) {
-    // Preferences Come from ON CLick
-    // Results come from Backend API. (Get All Listings)
-
-    console.log(results);
-    console.log(preferences);
-
-    // var clusters = new Array();
-
-    // for (var i = 0; i < results.length; ++i) {
-    //     var cluster = new Array();
-    // }
-    return 'Cluster Results'  
-}
-
-var preferences = {};
-function getPreferences(setResults) {
-    var price = document.getElementById("price")
-    var bedroom = document.getElementById("bedroom")
-    
-    realestateUtil.getAllListings(setResults);
-
-    console.log('Real Estate Preferences: ' + price.value + " " + bedroom.value);
-    preferences = { price: 500000, bedrooms: 3 };
-}
-
 function Recommendations(props) {  
     const [results, setResults] = useState(null);
+    const [luckyResults, setLuckyResults] = useState(null);
     // const [recommendations, setRecommendations] = useState('r');
 
     const [price, setPrice] = useState(null); //[0, 1000000]
@@ -50,10 +25,31 @@ function Recommendations(props) {
     };
     const handleBedroomsChange = (event, newValue) => {
         setBedrooms(newValue);
-        console.log(bedrooms)
     };
 
-    CalcCluster(results, preferences);
+    function CalcCluster() {
+        realestateUtil.getAllListings(setResults);
+        // Preferences Come from ON CLick
+        // Results come from Backend API. (Get All Listings)
+        
+        console.log(results);
+        console.log('Real Estate Preferences: ' + price + " " + bedrooms);
+    
+        // Algorithm
+        // var clusters = new Array();
+        // for (var i = 0; i < results.length; ++i) {
+        //     var cluster = new Array();
+        // }
+        return 'Cluster Results'  
+    }
+
+    function feelingLucky() {
+        realestateUtil.feelingLucky(setLuckyResults);
+
+        console.log(luckyResults);
+
+        return 'Feeling Lucky Results'
+    }
 
     // Suburbs List
     const suburb_options = [
@@ -183,12 +179,8 @@ function Recommendations(props) {
                                                 step={100}
                                                 marks
                                                 min={0}
-<<<<<<< HEAD
-                                                max={10}
-                                                onChange={handlePriceChange}
-=======
                                                 max={10000}
->>>>>>> main
+                                                onChange={handlePriceChange}
                                             />
                                         </Box>
                                     </Form.Group>
@@ -363,7 +355,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
-                        <Button className="blue-Button" onClick={ () => getPreferences(setResults) }>Get Recommendation</Button>
+                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
                     </Row>
                 </Col>
 
@@ -374,7 +366,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
-                        <Button className="blue-Button" onClick={ () => getPreferences(setResults) }>I'm Feeling Lucky</Button>
+                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
                     </Row>
                 </Col>
             </Row>
