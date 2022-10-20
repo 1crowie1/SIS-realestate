@@ -31,7 +31,7 @@ class LineChart  extends Component {
         super(props);
         this.state = {
             chartData: {
-                labels: ['1', '2', '3', '4', '5', '6'],
+                labels: ['1', '2', '3', '4', '5', '6','7', '8'],
                 datasets: [
                     {
                         label: 'Average Price',
@@ -39,9 +39,11 @@ class LineChart  extends Component {
                             100,
                             200,
                             300,
-                            400,
+                            450,
                             500,
                             600,
+                            650,
+                            800
                             
                         ],
                         backgroundColor: [
@@ -68,7 +70,7 @@ class LineChart  extends Component {
                         title: {
                             display: this.props.displayTitle,
                             text: 'Average Price Per Month',
-                            fontSize: 25
+                            fontSize: 10
                         },
                         legend: {
                             display: this.props.displayLegend,
