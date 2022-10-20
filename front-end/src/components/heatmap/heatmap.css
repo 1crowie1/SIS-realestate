@@ -68,7 +68,7 @@
   
   width : 1000px;
   height: 400px;
-  margin: 20px;
+  margin: 10px;
  
 }
  
@@ -97,52 +97,52 @@
 /* this will contain the suburb #1 */
 .suburb-1{
   margin:auto;
-  height: 200px;
+  height: 160px;
   width: 400px;
   border: 2px solid;
   border-color: #000000;
   border-radius: 10% ;
   background-color: #ffffff;
-  box-shadow: 3px 3px #06fa1a;
+  box-shadow: 3px 3px #000000;
   
 }
 
 /* this will contain the suburb #2 */
 .suburb-2{
   margin:auto;
-  height: 200px;
+  height: 160px;
   width: 400px;
   border: 2px solid;
   border-color: #000000;
   background-color: #ffffff;
   border-radius: 10% ;
-  box-shadow: 3px 3px #0688fa;
+  box-shadow: 3px 3px #000000;
  
 }
 
 /* this will contain the suburb #3 */
 .suburb-3{
   margin:auto;
-  height: 200px;
+  height: 160px;
   width: 400px;
   border: 2px solid;
   background-color: #ffffff;
   border-color: #000000;
   border-radius: 10% ;
-  box-shadow: 3px 3px #d106fa;
+  box-shadow: 3px 3px #000000;
  
 }
 
 /* this will contain the suburb #4 */
 .suburb-4{
   margin:auto;
-  height: 200px;
+  height: 160px;
   width: 400px;
   border: 2px solid;
   border-color: #000000;
   background-color: #ffffff;
   border-radius: 10% ;
-  box-shadow: 3px 3px #f6fa06;
+  box-shadow: 3px 3px #000000;
  
 }
 
