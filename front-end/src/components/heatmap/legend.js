@@ -29,7 +29,7 @@ const Legend = () => {
             </div>
             <div className="div-4">
                 <div className="suburb-2">
-                    <p className = "text-1">MosMan</p>
+                    <p className = "text-1">Parramatta</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
                     <div className="graph"> <LineChart /> </div>
@@ -38,7 +38,7 @@ const Legend = () => {
             </div>
             <div className="div-4">
                 <div className="suburb-3">
-                    <p className = "text-1">MosMan</p>
+                    <p className = "text-1">Glenfield</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
                     <div className="graph"> <LineChart /></div>
@@ -47,7 +47,7 @@ const Legend = () => {
             </div>
             <div className="div-4">
                 <div className="suburb-4">
-                    <p className = "text-1">MosMan</p>
+                    <p className = "text-1">Bankstown</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
                     <div className="graph"> <LineChart /></div>
