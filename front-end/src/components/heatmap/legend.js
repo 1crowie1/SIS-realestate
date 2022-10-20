@@ -18,7 +18,7 @@ const Legend = () => {
                     <div className="suburb-1">
                             <p className = "text-1">__MosMan</p>
                             <div className= "sub-flex">
-                                <h1>1000</h1>
+                                <h1>2.2M</h1>
                                 <div className="graph">
                                 <LineChart />
                                 </div>
@@ -31,7 +31,7 @@ const Legend = () => {
                 <div className="suburb-2">
                     <p className = "text-1">__Parramatta</p>
                     <div className= "sub-flex">
-                    <h1>1000</h1>
+                    <h1>1.2M</h1>
                     <div className="graph"> <LineChart /> </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ const Legend = () => {
                 <div className="suburb-3">
                     <p className = "text-1">__Glenfield</p>
                     <div className= "sub-flex">
-                    <h1>1000</h1>
+                    <h1>1M</h1>
                     <div className="graph"> <LineChart /></div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const Legend = () => {
                 <div className="suburb-4">
                     <p className = "text-1">__Bankstown</p>
                     <div className= "sub-flex">
-                    <h1>1000</h1>
+                    <h1>900k</h1>
                     <div className="graph"> <LineChart /></div>
                     </div>
                 </div>
