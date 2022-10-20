@@ -53,3 +53,9 @@ hr {
   width: 90%;
   margin: 0 auto;
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  /* background-color: #8064A2 !important; */
+  background-color: #0079a9 !important;
+  color: white;
+}
