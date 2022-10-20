@@ -26,7 +26,11 @@ router.get('/getRecommendedSuburbs/', (req, res) => {
 router.get('/getAllListings/', (req, res) => {
     getAllListings(res);
   });
-  
+
+router.get('/getCluster/', (req, res) => {
+    var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this
+    getCluster(clusterNumber, res);
+  });
   
 router.get('/feelingLucky/', (req, res) => {
   
@@ -173,7 +177,8 @@ function getCluster(clusterNumber, res){
   connection.execSql(request);
 
   request.on('requestCompleted', function () {
-      res.send(recommendedSuburbs); // Return recommended suburbs
+      res.send(clusters); // Return cluster listings
   });
+}
 
 module.exports = router;
