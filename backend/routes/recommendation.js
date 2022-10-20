@@ -19,7 +19,8 @@ connection.connect();
 
 router.get('/getRecommendedSuburbs/', (req, res) => {
     // TO DO: Calculate cluster number based on request params
-    var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this. second heatmap
+    // var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this. second heatmap
+    var clusterNumber = req.query.clusterNumber;
     getRecommendedSuburbs(clusterNumber, res);
   });
 
@@ -28,7 +29,8 @@ router.get('/getAllListings/', (req, res) => {
   });
 
 router.get('/getCluster/', (req, res) => {
-    var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this
+    // var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this
+    var clusterNumber = req.query.clusterNumber;
     getCluster(clusterNumber, res);
   });
   

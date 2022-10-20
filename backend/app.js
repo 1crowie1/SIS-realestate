@@ -11,7 +11,7 @@ var suburbRouter = require('./routes/suburb')
 var recommendationRouter = require('./routes/recommendation')
 var suburbsWithAveragesRouter = require('./routes/suburbsWithAverages');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000; // Keep PORT 4000!!!
 
 var app = express();
 
