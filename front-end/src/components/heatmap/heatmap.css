@@ -12,21 +12,22 @@
 .legend {
     position: absolute;
     z-index: 999;
-    left: 150px;
-    bottom: 140px;
+    left: 50px;
+    bottom: 100px;
     padding:20px 10px;
     box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
     font-size:12px;
     letter-spacing:2px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
     border-radius:5px;
-    width: 25%;/* 16%; */
+    height: 70%;
+    width: 30%;/* 16%; */
   }
-  .legend > div {
+ /* .legend > div {
     color:black;
     position: relative;
     display: flex;
-    height: 20px;
+    height: 200px;
     padding: 0 10px;
   }
   .legend > div::before {
@@ -39,6 +40,7 @@
     margin-right: 5px;
     
   }
+  */
   @media (max-width: 768px) {
     .legend > div::before {
     width: 10px;
@@ -48,11 +50,147 @@
   }
   .legend {
     left: 38px;
-    bottom: 100px;
+    bottom: 10px;
     font-size:10px;
     letter-spacing:0px;
     width: 30%;
     height:15%;
   }
 
+}
+
+
+.divi{
+  position: static;
+  display : flex;
+  opacity: 1;
+  
+ 
+  height: 400px;
+  margin: 20px;
+ 
+}
+ 
+ 
+/* div-3 is to hold the top 4 recommended suburbs. */
+.div-3{
+  position: static;
+  padding-left:100px;
+  position: static;
+  width: 100%;
+ 
+}
+/* div 4 is to hold the element of top 4 recommended suburbs */
+.div-4{
+  padding-top: 30px;
+  display:  inline-block;
+  position: static;
+  height: 150px;
+  width: 50%;
+ 
+ 
+}
+/* this will contain the suburb #1 */
+.suburb-1{
+  margin:auto;
+  height: 100px;
+  width: 200px;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  background-color: #ffffff;
+  box-shadow: 3px 3px #06fa1a;
+ 
+}
+.suburb-1:hover {
+  background:linear-gradient(to bottom, #06fa1a 5%, #06fa1a 50%);
+  background-color:#06fa1a;
+  opacity: 0.4;
+}
+.suburb-1:active {
+  position:relative;
+  top:1px;
+}
+/* this will contain the suburb #2 */
+.suburb-2{
+  margin:auto;
+  height: 100px;
+  width: 200px;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #0688fa;
+ 
+}
+.suburb-2:hover {
+  background:linear-gradient(to bottom, #0688fa 5%, #0688fa 50%);
+  background-color:#0688fa;
+  opacity: 0.4;
+}
+.suburb-2:active {
+  position:relative;
+  top:1px;
+}
+/* this will contain the suburb #3 */
+.suburb-3{
+  margin:auto;
+  height: 100px;
+  width: 200px;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #d106fa;
+ 
+}
+.suburb-3:hover {
+  background:linear-gradient(to bottom, #d106fa 5%, #d106fa 50%);
+  background-color:#d106fa;
+  opacity: 0.4;
+}
+.suburb-3:active {
+  position:relative;
+  top:1px;
+}
+/* this will contain the suburb #4 */
+.suburb-4{
+  margin:auto;
+  height: 100px;
+  width: 200px;
+  border: 2px solid;
+  border-color: #000000;
+  border-radius: 10% ;
+  box-shadow: 3px 3px #f6fa06;
+ 
+}
+.suburb-4:hover {
+  background:linear-gradient(to bottom, #f6fa06 5%, #f6fa06 100%);
+ 
+  background-color:#ffffff;
+}
+.suburb-4:active {
+  position:relative;
+  top:1px;
+}
+.sub-flex{
+  padding-left: 10px;
+  display: flex;
+  height: 70%;
+  width: 100%;
+}
+.graph{
+  padding-left: 30px;
+  display: inline-block;
+}
+
+.bottomleft{
+  padding-top: 30px;
+  margin-bottom: 1px;
+  margin-left : 1px;
+  width: 400px;
+  height: 100px;
+  background-color: white;
+  border-color: #000000;
+  border-radius: 10% ;
+  
+  bottom: 0;
 }

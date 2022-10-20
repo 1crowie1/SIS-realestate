@@ -2,7 +2,8 @@ import './top4suburbs.css';
 import Container from 'react-bootstrap/Container';
 import React, { Component } from 'react';
 import LineChart from '../linechart/linechart';
-function top4suburbs() {
+
+const  top4suburbs = () => {
     return (
         <Container>
         <div className="divi">

@@ -10,6 +10,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+ import './linechart.css';
 
 // Chart JS Register
 ChartJS.register(
@@ -23,7 +24,7 @@ ChartJS.register(
 );
 
 // CSS
-// import './linechart.css';
+
 
 class LineChart  extends Component { 
     constructor(props) {

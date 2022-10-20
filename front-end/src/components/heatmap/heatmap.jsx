@@ -77,7 +77,7 @@ class Heatmap extends Component {
             value={this.state.color}
             onChange={this.colorChange}
           />
-
+          
           <Legend />
         </div>
       );
