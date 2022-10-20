@@ -22,6 +22,10 @@ router.get('/getRecommendedSuburbs/', (req, res) => {
     var clusterNumber = 1;  // Temp placeholder for cluster number, pls replace this. second heatmap
     getRecommendedSuburbs(clusterNumber, res);
   });
+
+router.get('/getAllListings/', (req, res) => {
+    getAllListings(res);
+  });
   
   
 router.get('/feelingLucky/', (req, res) => {
@@ -126,8 +130,8 @@ function getAllListings(res){
                 listing[column.metadata.colName] = column.value;
             }
         });
-        console.log(suburb);
-        recommendedSuburbs.push(suburb);
+        console.log(listing);
+        allListings.push(listing);
     });
 
   connection.execSql(request);
@@ -136,5 +140,40 @@ function getAllListings(res){
       res.send(allListings); // Return listings
   });
 }
+
+function getCluster(clusterNumber, res){
+  console.log('Query DB: Get Cluster Listings')
+
+  const request = new Request(
+    `SELECT *
+    FROM [dbo].[big_property] 
+    WHERE [cluster_num] = ${clusterNumber};`,
+    (err, rowCount) => {
+      if (err) {
+          console.error(err.message);
+        } else {
+          console.log(`${rowCount} row(s) returned`);
+        }
+  });
+
+  var clusters = [];
+  request.on("row", columns => {
+        var cluster = {};
+        columns.forEach((column) => {
+          if (column.value === null) {
+              console.log('NULL');
+          } else {
+              cluster[column.metadata.colName] = column.value;
+          }
+      });
+      console.log(cluster);
+      clusters.push(cluster);
+  });
   
+  connection.execSql(request);
+
+  request.on('requestCompleted', function () {
+      res.send(recommendedSuburbs); // Return recommended suburbs
+  });
+
 module.exports = router;
