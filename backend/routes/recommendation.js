@@ -100,5 +100,41 @@ function getRecommendedSuburbs(clusterNumber, res){
         res.send(recommendedSuburbs); // Return recommended suburbs
     });
 }
+
+function getAllListings(res){
+  console.log('Query DB: Get All Listings in all Clusters')
+
+  const request = new Request(
+    `SELECT id, price, bedrooms, cluster_num
+    FROM [dbo].[big_property] 
+    WHERE [cluster_num] IS NOT NULL;`,
+    (err, rowCount) => {
+      if (err) {
+          console.error(err.message);
+        } else {
+          console.log(`${rowCount} row(s) returned`);
+        }
+  });
+  
+  var allListings = [];
+    request.on("row", columns => {
+          var listing = {};
+          columns.forEach((column) => {
+            if (column.value === null) {
+                console.log('NULL');
+            } else {
+                listing[column.metadata.colName] = column.value;
+            }
+        });
+        console.log(suburb);
+        recommendedSuburbs.push(suburb);
+    });
+
+  connection.execSql(request);
+
+  request.on('requestCompleted', function () {
+      res.send(allListings); // Return listings
+  });
+}
   
 module.exports = router;
