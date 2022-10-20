@@ -1,7 +1,8 @@
 import React from 'react';
 import './heatmap.css';
 
-// Import Bootstrap
+import LineChart from '../linechart/linechart';
+
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 const Legend = () => {
@@ -19,7 +20,7 @@ const Legend = () => {
                             <div className= "sub-flex">
                                 <h1>1000</h1>
                                 <div className="graph">
-                                GRAPH
+                                <LineChart />
                                 </div>
                             </div>
                     </div>
@@ -31,7 +32,7 @@ const Legend = () => {
                     <p className = "text-1">MosMan</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
-                    <div className="graph"> GRAPH</div>
+                    <div className="graph"> <LineChart /> </div>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,7 @@ const Legend = () => {
                     <p className = "text-1">MosMan</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
-                    <div className="graph"> GRAPH</div>
+                    <div className="graph"> <LineChart /></div>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@ const Legend = () => {
                     <p className = "text-1">MosMan</p>
                     <div className= "sub-flex">
                     <h1>1000</h1>
-                    <div className="graph"> GRAPH</div>
+                    <div className="graph"> <LineChart /></div>
                     </div>
                 </div>
             </div>

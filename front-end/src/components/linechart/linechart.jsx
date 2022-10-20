@@ -31,7 +31,7 @@ class LineChart  extends Component {
         super(props);
         this.state = {
             chartData: {
-                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                labels: ['1', '2', '3', '4', '5', '6'],
                 datasets: [
                     {
                         label: 'Average Price',
@@ -42,12 +42,7 @@ class LineChart  extends Component {
                             400,
                             500,
                             600,
-                            700,
-                            800,
-                            900,
-                            1000,
-                            1100,
-                            1200
+                            
                         ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)'

@@ -82,7 +82,7 @@
 }
 /* div 4 is to hold the element of top 4 recommended suburbs */
 .div-4{
-  padding-top: 30px;
+  padding-top: 3px;
   display:  inline-block;
   position: static;
   height: 150px;
@@ -93,8 +93,8 @@
 /* this will contain the suburb #1 */
 .suburb-1{
   margin:auto;
-  height: 100px;
-  width: 200px;
+  height: 150px;
+  width: 300px;
   border: 2px solid;
   border-color: #000000;
   border-radius: 10% ;
@@ -115,7 +115,7 @@
 .suburb-2{
   margin:auto;
   height: 100px;
-  width: 200px;
+  width: 250px;
   border: 2px solid;
   border-color: #000000;
   background-color: #ffffff;
@@ -136,7 +136,7 @@
 .suburb-3{
   margin:auto;
   height: 100px;
-  width: 200px;
+  width: 250px;
   border: 2px solid;
   background-color: #ffffff;
   border-color: #000000;
@@ -157,7 +157,7 @@
 .suburb-4{
   margin:auto;
   height: 100px;
-  width: 200px;
+  width: 250px;
   border: 2px solid;
   border-color: #000000;
   background-color: #ffffff;
