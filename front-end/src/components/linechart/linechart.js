@@ -31,7 +31,7 @@ class LineChart  extends Component {
         super(props);
         this.state = {
             chartData: {
-                labels: ['1', '2', '3', '4', '5', '6','7', '8'],
+                labels: ['', '', '', '', '', '','', ''],
                 datasets: [
                     {
                         label: 'Average Price',
@@ -57,7 +57,7 @@ class LineChart  extends Component {
 
     static defaultProps = {
         displayTitle: true,
-        displayLegend: true,
+        displayLegend: false,
         legendPosition: 'right'
     }
 
@@ -71,11 +71,19 @@ class LineChart  extends Component {
                             display: this.props.displayTitle,
                             text: 'Average Price Per Month',
                             fontSize: 10
+                            
                         },
                         legend: {
                             display: this.props.displayLegend,
                             position: this.props.legendPosition
-                        }
+                        },
+                        scales:{
+                            xAxes: [{
+                                display: false //this will remove all the x-axis grid lines
+                            }]
+                        },
+                        
+                        
                     }}
                 />
             </div>

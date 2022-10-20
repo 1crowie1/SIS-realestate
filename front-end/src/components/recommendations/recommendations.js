@@ -133,7 +133,7 @@ function Recommendations(props) {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Price</Form.Label>
+                                        <Form.Label>Price (,000s) AUD</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Bedrooms"
@@ -142,7 +142,7 @@ function Recommendations(props) {
                                                 step={100}
                                                 marks
                                                 min={0}
-                                                max={2000}
+                                                max={10000}
                                             />
                                         </Box>
                                     </Form.Group>
