@@ -1,12 +1,23 @@
 import React, { Component, useState } from 'react';
 import { MapContainer, GeoJSON, TileLayer } from 'react-leaflet';
-// import mapData from '../data/suburb-nsw.json';
-import mapData from '../data/test.json';
-// import RealestateUtil from "../../util/RealestateUtil";
-
 import Legend from './legend';
 import "leaflet/dist/leaflet.css";
 import './map.css';
+// import mapData from '../data/suburb-nsw.json';
+import mapData from '../data/test.json';
+
+// Import Util
+// import RealestateUtil from "../../util/RealestateUtil";
+// const realestateUtil = new RealestateUtil();
+
+// function GetHeatMap(props){
+//   const [mapData, setMapData] = useState(null);
+//   realestateUtil.getGeoJSON(setMapData);
+
+//   console.log(mapData);
+
+//   return map
+// }
 
 function getSuburbColour(suburb_name) {
   if (suburb_name === 'SYDNEY') {
@@ -123,7 +134,6 @@ class Heatmap extends Component {
             value={this.state.color}
             onChange={this.colorChange}
           /> */}
-
           <Legend />
         </div>
       );
