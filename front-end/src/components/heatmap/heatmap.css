@@ -65,9 +65,9 @@
   position: static;
   display : flex;
   opacity: 1;
-  
+  /*background-color: #ffffff; */
   width : 1000px;
-  height: 400px;
+  height: 100px;
   margin: 10px;
  
 }
@@ -168,4 +168,9 @@
   border-radius: 10% ;
   
   bottom: 0;
+}
+
+.long{
+  width:2px;
+  height: 350px;
 }

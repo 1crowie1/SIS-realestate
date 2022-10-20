@@ -55,7 +55,7 @@ const Legend = () => {
                 </div>
             </div>
         </div>
-        
+        <div className = 'long '></div>
         </Container>
             {/* TOP4SUBURBS */}
             <div className ='bottomleft'>
