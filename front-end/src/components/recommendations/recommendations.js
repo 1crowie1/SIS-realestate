@@ -2,17 +2,24 @@
 import './recommendations.css';
 import React, { useState, useEffect } from 'react';
 import Results from '../results/results';
-import getRecommendations from '../../util/RealestateUtil';
-
 // Bootstrap & Semantic Ui
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Dropdown } from 'semantic-ui-react';
 // Material UI
 import { Box, Slider } from '@mui/material';
 
-function Recommendations(props) {
-    const results = [];
+// Import Util
+import RealestateUtil from "../../util/RealestateUtil";
+const realestateUtil = new RealestateUtil();
 
+// function CalcCluster(results, preferences) {
+    
+// }
+
+function Recommendations(props) {
+    // const results = [];
+    const [results, setResults] = useState(null);
+    // CalcCluster(results, preferences);
     const [recommendations, setRecommendations] = useState('r');
 
     // Suburbs List
@@ -316,7 +323,8 @@ function Recommendations(props) {
             <Row>
                 <Col xs={6} md={4}>
                     <Row>
-                        <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button>
+                        {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
+                        <Button className="blue-Button" onClick={ () => realestateUtil.getRecommendations(setResults)}>Get Recommendation</Button>
                     </Row>
                 </Col>
 
@@ -326,7 +334,8 @@ function Recommendations(props) {
 
                 <Col xs={6} md={4}>
                     <Row>
-                        <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button>
+                        {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
+                        <Button className="blue-Button" onClick={ () => realestateUtil.getRecommendations(setResults)}>I'm Feeling Lucky</Button>
                     </Row>
                 </Col>
             </Row>
