@@ -77,16 +77,16 @@ function Recommendations(props) {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Land Size</Form.Label>
+                                        <Form.Label>Land Size (m^2) </Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Temperature"
                                                 defaultValue={30}
                                                 valueLabelDisplay="auto"
-                                                step={10}
+                                                step={50}
                                                 marks
                                                 min={10}
-                                                max={110}
+                                                max={600}
                                             />
                                         </Box>
                                     </Form.Group>
@@ -140,16 +140,16 @@ function Recommendations(props) {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Price</Form.Label>
+                                        <Form.Label>Price (,000s) AUD</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Bedrooms"
                                                 defaultValue={0}
                                                 valueLabelDisplay="auto"
-                                                step={1}
+                                                step={100}
                                                 marks
                                                 min={0}
-                                                max={10}
+                                                max={10000}
                                             />
                                         </Box>
                                     </Form.Group>
