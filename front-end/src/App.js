@@ -1,5 +1,4 @@
 // Import Bootstrap
-import Container from 'react-bootstrap/Container';
 import './App.css';
 
 // Import Components
@@ -13,16 +12,17 @@ function App() {
     <div className='App'>
       <Header />
 
-      {/* HeatMap Section */}
-      <Container>
-        <Heatmap />
-      </Container>
+      {/* Top HeatMap Section */}
+      <Heatmap />
+
+      <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
 
       {/* Get Recommendations */}
-      <Container>
-        <Recommendations />
-      </Container>
+      <Recommendations />
+      {/* Results WithIn Recommendations */}
       
+      <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr> 
+
       <Footer />
     </div>
   );

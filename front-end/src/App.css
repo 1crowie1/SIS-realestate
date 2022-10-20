@@ -1,8 +1,16 @@
 .App h1{
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0079a9;
+  /* margin-bottom: 1rem; */
 }
 .App h2{
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0079a9;
+  /* margin-bottom: 1rem; */
 }
 
 .App-logo {
@@ -28,7 +36,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #0079a9;
 }
 
 @keyframes App-logo-spin {
@@ -38,4 +46,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+hr {
+  border: 20px solid #0079a9;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  /* background-color: #8064A2 !important; */
+  background-color: #0079a9 !important;
+  color: white;
 }
