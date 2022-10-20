@@ -12,7 +12,7 @@
 .legend {
     position: absolute;
     z-index: 999;
-    left: 50px;
+    left: 20px;
     bottom: 100px;
     padding:20px 10px;
     box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
@@ -75,7 +75,7 @@
 /* div-3 is to hold the top 4 recommended suburbs. */
 .div-3{
   position: static;
-  padding-left:100px;
+  
   position: static;
   width: 100%;
  
@@ -86,7 +86,7 @@
   display:  inline-block;
   position: static;
   height: 150px;
-  width: 50%;
+  width: 100%;
  
  
 }
@@ -118,6 +118,7 @@
   width: 200px;
   border: 2px solid;
   border-color: #000000;
+  background-color: #ffffff;
   border-radius: 10% ;
   box-shadow: 3px 3px #0688fa;
  
@@ -137,6 +138,7 @@
   height: 100px;
   width: 200px;
   border: 2px solid;
+  background-color: #ffffff;
   border-color: #000000;
   border-radius: 10% ;
   box-shadow: 3px 3px #d106fa;
@@ -158,6 +160,7 @@
   width: 200px;
   border: 2px solid;
   border-color: #000000;
+  background-color: #ffffff;
   border-radius: 10% ;
   box-shadow: 3px 3px #f6fa06;
  

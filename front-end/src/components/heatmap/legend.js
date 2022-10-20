@@ -26,6 +26,33 @@ const Legend = () => {
                 </div>
                 
             </div>
+            <div className="div-4">
+                <div className="suburb-2">
+                    <p className = "text-1">MosMan</p>
+                    <div className= "sub-flex">
+                    <h1>1000</h1>
+                    <div className="graph"> GRAPH</div>
+                    </div>
+                </div>
+            </div>
+            <div className="div-4">
+                <div className="suburb-3">
+                    <p className = "text-1">MosMan</p>
+                    <div className= "sub-flex">
+                    <h1>1000</h1>
+                    <div className="graph"> GRAPH</div>
+                    </div>
+                </div>
+            </div>
+            <div className="div-4">
+                <div className="suburb-4">
+                    <p className = "text-1">MosMan</p>
+                    <div className= "sub-flex">
+                    <h1>1000</h1>
+                    <div className="graph"> GRAPH</div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         </Container>
