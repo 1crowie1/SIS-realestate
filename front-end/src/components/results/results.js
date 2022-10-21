@@ -8,7 +8,7 @@ import { keyframes } from '@emotion/react';
 
 // 
 import SuburbBreakdown from './suburbBreakdown';
-// import PriceBreakdown from './priceBreakdown';
+import PriceBreakdown from './priceBreakdown';
 
 // const listings = [
 //     {
@@ -269,7 +269,7 @@ function Results (result) {
                     </Col>
                     <Col>
                         {/* // Price Breakdown */}
-                        {/* <PriceBreakdown suburb_list={suburb_list}/> */}
+                        <PriceBreakdown listing_suburbs={listing_suburbs}/>
                     </Col>
                 </Row>
             </Container>
