@@ -4,6 +4,9 @@ import Heatmap from '../heatmap/heatmap';
 import GridListingCard from './gridListingCard';
 // Import Bootstrap
 import { Button, Container, Row, Col } from "react-bootstrap";
+import { keyframes } from '@emotion/react';
+
+import SuburbBreakdown from './suburbBreakdown';
 
 // const listings = [
 //     {
@@ -231,6 +234,8 @@ const listings = [
       }
 ]
 
+const list_of_suburbs = [{name: 'Zetland'}];
+
 function Results (result) {
     return (
         <div>
@@ -250,6 +255,7 @@ function Results (result) {
                 <Row>
                     <Col>
                     {/* // Suburb Breakdown */}
+                      <SuburbBreakdown list_of_suburbs={list_of_suburbs} />
                     </Col>
                     <Col>
                     {/* // Price Breakdown */}
