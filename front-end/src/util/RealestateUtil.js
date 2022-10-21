@@ -1,34 +1,59 @@
-const { default: Heatmap } = require("../components/heatmap/heatmap");
+// const { default: Heatmap } = require("../components/heatmap/heatmap");
 
-function createDynamicHeatmap(suburbsWihAverages) {
-  return (
-    <Heatmap suburbsWihAverages/>
-  )
-}
+// function createDynamicHeatmap(suburbsWihAverages) {
+//   return (
+//     <Heatmap suburbsWihAverages/>
+//   )
+// }
 
 class RealestateUtil {
   constructor() { }
 
-  getSuburbsWithAverages(setHeatmap) {
-      fetch("http://localhost:4000/suburbsWithAverages/")
+  // getSuburbsWithAverages(setHeatmap) {
+  //     fetch("http://localhost:4000/suburbsWithAverages/")
+  //     .then(res => res.json())
+  //     .then(
+  //       (suburbsWihAverages) => {
+  //         console.log(suburbsWihAverages);
+  //         setHeatmap(createDynamicHeatmap(suburbsWihAverages));
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       }
+  //     );
+  // }
+
+  /**  Get Suburbs : app.use('/suburb', suburbRouter);
+   * 
+   *  List of End Points in Backend:
+   *  1. Get all suburbs
+   *  - http://localhost:4000/suburb/
+   * 
+   * 2. Get Popular Suburbs
+   * - http://localhost:4000/suburb/getPopularSuburbs
+   * 
+   *  3. Get Suburb Breakdown
+   *  - http://localhost:4000/suburb/suburbBreakdown/
+  */
+  getAllSuburbs(setSuburbs) {
+    fetch("http://localhost:4000/suburb/")
       .then(res => res.json())
       .then(
-        (suburbsWihAverages) => {
-          console.log(suburbsWihAverages);
-          setHeatmap(createDynamicHeatmap(suburbsWihAverages));
+        (result) => {
+          // console.log(result);
+          setSuburbs(result);
         },
         (error) => {
           console.log(error);
         }
       );
   }
-
   getPopularSuburbs(setPopularSuburbs) {
-    fetch("http://localhost:4000/getPopularSuburbs/")
+    fetch("http://localhost:4000/suburb/getPopularSuburbs")
     .then(res => res.json())
     .then(
       (result) => {
-        console.log(result);
+        // console.log(result);
         setPopularSuburbs(JSON.stringify(result));
       },
       (error) => {
@@ -36,14 +61,119 @@ class RealestateUtil {
       }
     );
   }
+  getSuburbBreakdown(suburbName, setSuburbs) {
+    // suburbName = suburbID.toUpperCase();
+    fetch("http://localhost:4000/suburb/suburbBreakdown/" + suburbName)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setSuburbs(JSON.stringify(result));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
+  /** Get Recommendations - Data from Database. Not Including Algo : app.use('/recommendation', recommendationRouter); 
+   * 
+   *  List of End Points in Backend:
+   *  1. Get Recommendation Suburbs
+   * - http://localhost:4000/recommendation/
+   * 
+   *  2. Get Recommended Suburb
+   *  - http://localhost:4000/recommendation/getRecommendedSuburbs
+   * 
+   *  3. Get All Listings
+   *  - http://localhost:4000/recommendation/getAllListings
+   * 
+   *  4. Get Cluster
+   *  - http://localhost:4000/recommendation/getCluster
+   * 
+   *  5. Feeling Lucky
+   *  - http://localhost:4000/recommendation/feelingLucky/
+  */
   getRecommendations(setRecommendations) {
-    fetch("http://localhost:4000/getAllListings/")
+    fetch("http://localhost:4000/recommendation/getAllListings")
     .then(res => res.json())
     .then(
       (result) => {
         console.log(result);
         setRecommendations(JSON.stringify(result));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getRecommendedSuburbs(clusterNumber, setRecommendedSuburbs) {
+    // clusterNumber = 0;
+    fetch("http://localhost:4000/recommendation/getRecommendedSuburbs")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setRecommendedSuburbs(JSON.stringify(result));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getAllListings(setAllListings) {
+    fetch("http://localhost:4000/recommendation/getAllListings/")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setAllListings(JSON.stringify(result));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getCluster(clusterNumber, setCluster) {
+    // clusterNumber = 0;
+    fetch("http://localhost:4000/recommendation/getCluster/?clusterNumber="+clusterNumber+"")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setCluster(JSON.stringify(result));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  getFeelingLucky(random, setRandomSuburbs) {
+    // fetch("http://localhost:4000/recommendation/feelingLucky/?"+random+"")
+    fetch("http://localhost:4000/recommendation/feelingLucky")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setRandomSuburbs(
+          // this.getRandomSuburbs(result),
+          JSON.stringify(result)
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  /** HEATMAP - Average Price and Average Listings : app.use('/suburbsWithAverages', suburbsWithAveragesRouter); */
+  getGeoJSON(setGeoJSON) {
+    fetch("http://localhost:4000/getAllListings/")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        // console.log(result);
+        setGeoJSON(JSON.stringify(result));
       },
       (error) => {
         console.log(error);

@@ -40,12 +40,12 @@ function ListingCard(listing) {
       </Carousel>
 
       <Card.Body>
-        <Card.Title>{listing.listing.address}</Card.Title>
+        <Card.Title>{listing.listing.short_address}</Card.Title>
         <Card.Text>${listing.listing.price}</Card.Text>
         <Card.Body>
           <Card.Text>Bathrooms: {listing.listing.bathrooms}</Card.Text>
           <Card.Text>Bedrooms: {listing.listing.bedrooms}</Card.Text>
-          <Card.Text>Car Spaces: {listing.listing.carSpaces}</Card.Text>
+          <Card.Text>Car Spaces: {listing.listing.parking_spaces}</Card.Text>
         </Card.Body>
         <Button variant="primary" href={listing.listing.url}>Look at RealEstate</Button>
       </Card.Body>

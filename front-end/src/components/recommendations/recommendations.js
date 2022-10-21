@@ -12,15 +12,47 @@ import { Box, Slider } from '@mui/material';
 import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
-// function CalcCluster(results, preferences) {
-    
-// }
-
-function Recommendations(props) {
-    // const results = [];
+function Recommendations(props) {  
     const [results, setResults] = useState(null);
-    // CalcCluster(results, preferences);
-    const [recommendations, setRecommendations] = useState('r');
+    const [luckyResults, setLuckyResults] = useState(null);
+    const [clusterResults, setClusterResults] = useState(null);
+    // const [recommendations, setRecommendations] = useState('r');
+
+    const [price, setPrice] = useState(null); //[0, 1000000]
+    const [bedrooms, setBedrooms] = useState(null); //[0, 10]
+
+    const handlePriceChange = (event, newValue) => {
+        setPrice(newValue);
+    };
+    const handleBedroomsChange = (event, newValue) => {
+        setBedrooms(newValue);
+    };
+
+    function CalcCluster() {
+        // Get All Listings - Variable: results
+        realestateUtil.getAllListings(setResults);
+
+        // Get Preferences - Variables: price, bedrooms
+        console.log(results);
+        console.log('Real Estate Preferences: ' + price + " | " + bedrooms);
+    
+        // Algorithm
+        // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
+        var clusterNum = 0;
+
+        // Get Cluster - Variable: clusterResults
+        realestateUtil.getCluster(clusterNum, setClusterResults)
+
+        return clusterResults;  
+    }
+
+    function feelingLucky() {
+        realestateUtil.getAllListings(setLuckyResults);
+
+        console.log(luckyResults);
+
+        return 'Feeling Lucky Results';
+    }
 
     // Suburbs List
     const suburb_options = [
@@ -128,6 +160,7 @@ function Recommendations(props) {
                                                 marks
                                                 min={0}
                                                 max={10}
+                                                onChange={handleBedroomsChange}
                                             />
                                         </Box>
                                     </Form.Group>
@@ -150,6 +183,7 @@ function Recommendations(props) {
                                                 marks
                                                 min={0}
                                                 max={10000}
+                                                onChange={handlePriceChange}
                                             />
                                         </Box>
                                     </Form.Group>
@@ -324,7 +358,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
-                        <Button className="blue-Button" onClick={ () => realestateUtil.getRecommendations(setResults)}>Get Recommendation</Button>
+                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
                     </Row>
                 </Col>
 
@@ -335,7 +369,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
-                        <Button className="blue-Button" onClick={ () => realestateUtil.getRecommendations(setResults)}>I'm Feeling Lucky</Button>
+                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
                     </Row>
                 </Col>
             </Row>
