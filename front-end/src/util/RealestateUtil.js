@@ -136,7 +136,7 @@ class RealestateUtil {
   }
   getCluster(clusterNumber, setCluster) {
     // clusterNumber = 0;
-    fetch("http://localhost:4000/recommendation/getCluster")
+    fetch("http://localhost:4000/recommendation/getCluster/?clusterNumber="+clusterNumber+"")
     .then(res => res.json())
     .then(
       (result) => {
@@ -148,14 +148,16 @@ class RealestateUtil {
       }
     );
   }
-  getFeelingLucky(suburbsList, setRandomSuburbs) {
+  getFeelingLucky(random, setRandomSuburbs) {
+    // fetch("http://localhost:4000/recommendation/feelingLucky/?"+random+"")
     fetch("http://localhost:4000/recommendation/feelingLucky")
     .then(res => res.json())
     .then(
       (result) => {
         // console.log(result);
         setRandomSuburbs(
-          this.getRandomSuburbs(result),
+          // this.getRandomSuburbs(result),
+          JSON.stringify(result)
         );
       },
       (error) => {

@@ -15,6 +15,7 @@ const realestateUtil = new RealestateUtil();
 function Recommendations(props) {  
     const [results, setResults] = useState(null);
     const [luckyResults, setLuckyResults] = useState(null);
+    const [clusterResults, setClusterResults] = useState(null);
     // const [recommendations, setRecommendations] = useState('r');
 
     const [price, setPrice] = useState(null); //[0, 1000000]
@@ -31,7 +32,7 @@ function Recommendations(props) {
         realestateUtil.getAllListings(setResults);
         // Preferences Come from ON CLick
         // Results come from Backend API. (Get All Listings)
-        
+         
         console.log(results);
         console.log('Real Estate Preferences: ' + price + " " + bedrooms);
     
@@ -44,11 +45,19 @@ function Recommendations(props) {
     }
 
     function feelingLucky() {
-        realestateUtil.feelingLucky(setLuckyResults);
+        realestateUtil.getAllListings(setLuckyResults);
 
         console.log(luckyResults);
 
         return 'Feeling Lucky Results'
+    }
+
+    function getClusterNumber(clusterNumber) {
+        realestateUtil.getCluster(clusterNumber, setClusterResults);
+
+        console.log(clusterResults);
+
+        // return 'Cluster Results'
     }
 
     // Suburbs List
@@ -355,7 +364,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
-                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
+                        <Button className="blue-Button" onClick={ () => getClusterNumber(0, setClusterResults) }>Get Recommendation</Button>
                     </Row>
                 </Col>
 
@@ -366,7 +375,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
-                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
+                        <Button className="blue-Button" onClick={ () => CalcCluster() }>I'm Feeling Lucky</Button>
                     </Row>
                 </Col>
             </Row>
