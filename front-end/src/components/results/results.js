@@ -6,7 +6,9 @@ import GridListingCard from './gridListingCard';
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { keyframes } from '@emotion/react';
 
+// 
 import SuburbBreakdown from './suburbBreakdown';
+// import PriceBreakdown from './priceBreakdown';
 
 // const listings = [
 //     {
@@ -52,7 +54,6 @@ import SuburbBreakdown from './suburbBreakdown';
 //         images: ['https://i2.au.reastatic.net/1168x824-resize,extend,r=33,g=40,b=46/f9a85661f9c90e4e067cbfe959eb91b65116479b4fc759f95bf430f068c4b5d7/image.jpg', 'https://i2.au.reastatic.net/1144x888-format=webp/d9e6540b284ab9bbf0d11baa4f252068178f48bef291a9271bad09bdcb66d6af/image.jpg', 'https://i2.au.reastatic.net/2336x1648-resize,r=33,g=40,b=46/68d635af1c36490661c7382fd43b108951efba5d06b7305eeb8064b036d6bc41/image.jpg']
 //     },
 // ]
-
 const listings = [
     {
         id: 139982483,
@@ -234,7 +235,16 @@ const listings = [
       }
 ]
 
-const list_of_suburbs = [{name: 'Zetland'}];
+const listing_suburbs = [
+    {suburb_name: 'Paddington', listings_count: 123},
+    {suburb_name: 'Zetland', listings_count: 65},
+    {suburb_name: 'Bondi', listings_count: 234},
+    {suburb_name: 'Bondi Beach', listings_count: 78},
+    {suburb_name: 'Bondi Junction', listings_count: 3},
+    {suburb_name: 'Ultimo', listings_count: 112},
+    {suburb_name: 'Darlinghurst', listings_count: 746},
+    {suburb_name: 'Surry Hills', listings_count: 456},
+];
 
 function Results (result) {
     return (
@@ -254,11 +264,12 @@ function Results (result) {
                 </Row>
                 <Row>
                     <Col>
-                    {/* // Suburb Breakdown */}
-                      <SuburbBreakdown list_of_suburbs={list_of_suburbs} />
+                        {/* // Suburb Breakdown */}
+                        <SuburbBreakdown listing_suburbs={listing_suburbs} />
                     </Col>
                     <Col>
-                    {/* // Price Breakdown */}
+                        {/* // Price Breakdown */}
+                        {/* <PriceBreakdown suburb_list={suburb_list}/> */}
                     </Col>
                 </Row>
             </Container>
