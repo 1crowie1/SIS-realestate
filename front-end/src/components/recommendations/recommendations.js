@@ -29,19 +29,21 @@ function Recommendations(props) {
     };
 
     function CalcCluster() {
+        // Get All Listings - Variable: results
         realestateUtil.getAllListings(setResults);
-        // Preferences Come from ON CLick
-        // Results come from Backend API. (Get All Listings)
-         
+
+        // Get Preferences - Variables: price, bedrooms
         console.log(results);
-        console.log('Real Estate Preferences: ' + price + " " + bedrooms);
+        console.log('Real Estate Preferences: ' + price + " | " + bedrooms);
     
         // Algorithm
-        // var clusters = new Array();
-        // for (var i = 0; i < results.length; ++i) {
-        //     var cluster = new Array();
-        // }
-        return 'Cluster Results'  
+        // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
+        var clusterNum = 0;
+
+        // Get Cluster - Variable: clusterResults
+        realestateUtil.getCluster(clusterNum, setClusterResults)
+
+        return clusterResults;  
     }
 
     function feelingLucky() {
@@ -49,15 +51,7 @@ function Recommendations(props) {
 
         console.log(luckyResults);
 
-        return 'Feeling Lucky Results'
-    }
-
-    function getClusterNumber(clusterNumber) {
-        realestateUtil.getCluster(clusterNumber, setClusterResults);
-
-        console.log(clusterResults);
-
-        // return 'Cluster Results'
+        return 'Feeling Lucky Results';
     }
 
     // Suburbs List
@@ -364,7 +358,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
-                        <Button className="blue-Button" onClick={ () => getClusterNumber(0, setClusterResults) }>Get Recommendation</Button>
+                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
                     </Row>
                 </Col>
 
@@ -375,7 +369,7 @@ function Recommendations(props) {
                 <Col xs={6} md={4}>
                     <Row>
                         {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
-                        <Button className="blue-Button" onClick={ () => CalcCluster() }>I'm Feeling Lucky</Button>
+                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
                     </Row>
                 </Col>
             </Row>
