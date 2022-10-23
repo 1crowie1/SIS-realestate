@@ -179,10 +179,10 @@ function Recommendations(props) {
                                                 aria-label="Bedrooms"
                                                 defaultValue={0}
                                                 valueLabelDisplay="auto"
-                                                step={100}
+                                                step={50000}
                                                 marks
                                                 min={0}
-                                                max={10000}
+                                                max={10000000}
                                                 onChange={handlePriceChange}
                                             />
                                         </Box>
