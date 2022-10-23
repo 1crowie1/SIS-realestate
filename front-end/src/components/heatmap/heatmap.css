@@ -87,41 +87,13 @@
   width: 400px;
 }
 /* this will contain the suburb #1 */
-.suburb-1{
+.suburb{
   margin:auto;
   height: 160px;
   width: 400px;
   background-color: #ffffff;
  
   
-}
-
-/* this will contain the suburb #2 */
-.suburb-2{
-  margin:auto;
-  height: 160px;
-  width: 390px;
-  background-color: #ffffff;
- 
-}
-
-/* this will contain the suburb #3 */
-.suburb-3{
-  margin:auto;
-  height: 160px;
-  width: 390px;
-  background-color: #ffffff;
-  
-}
-
-/* this will contain the suburb #4 */
-.suburb-4{
-  margin:auto;
-  height: 160px;
-  width: 390px;
-  background-color: #ffffff;
-
- 
 }
 
 .sub-flex{
@@ -156,4 +128,9 @@
   width:30px;
   height:10px;
   opacity: 0;
+}
+
+.suburb-name{
+  font-size: 15px;
+  color: blue;
 }

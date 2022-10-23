@@ -1,8 +1,9 @@
 import React from 'react';
 import './heatmap.css';
-
-import LineChart from '../linechart/linechart';
-
+import Graph from '../linechart/apexchart';
+import Graph2 from '../linechart/apexchart2';
+import Graph3 from '../linechart/apexchart3';
+import Graph4 from '../linechart/apexchart4';
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 const Legend = () => {
@@ -15,44 +16,58 @@ const Legend = () => {
         <div className="divi">
             <div className="div-3">
                 <div className="div-4">
-                    <div className="suburb-1">
-                            <p className = "text-1">MosMan</p>
+                    <div className="suburb">
+
                             <div className= "sub-flex">
-                                <h1>2.2M</h1>
-                                <div className="graph">
-                                <LineChart />
+                                <div>
+                                <text className="suburb-name">Oatley</text>
+                                <h1>1.76M</h1>
+                                <text> down 8 %</text>
                                 </div>
+                                
+                                <div className="graph"> <Graph/> </div>
                             </div>
                     </div>
                 </div>
             </div>
             <div className='gap'> hello</div>
             <div className="div-4">
-                <div className="suburb-2">
-                    <p className = "text-1">Parramatta</p>
+                <div className="suburb">
+                    
                     <div className= "sub-flex">
-                    <h1>1.2M</h1>
-                    <div className="graph"> <LineChart /> </div>
+                    <div>
+                    <text className="suburb-name">Bexley</text>
+                    <h1>780k</h1>
+                    <text> up 11 %</text>
+                    </div>
+                    
+                    <div className="graph"> <Graph2 /> </div>
                     </div>
                 </div>
             </div>
             <div className='gap'>hello</div>
             <div className="div-4">
-                <div className="suburb-3">
-                    <p className = "text-1">Glenfield</p>
+                <div className="suburb">
                     <div className= "sub-flex">
-                    <h1>1M</h1>
-                    <div className="graph"> <LineChart /></div>
+                        <div>
+                        <text className="suburb-name">Wolli Creek</text>
+                        <h1>730k</h1>
+                        <text> down 10 %</text>
+                        </div>
+                    <div className="graph"> <Graph3 /></div>
                     </div>
                 </div>
             </div>
             <div className='gap'>hello</div>
             <div className="div-4">
-                <div className="suburb-4">
-                    <p className = "text-1">Bankstown</p>
+                <div className="suburb">
                     <div className= "sub-flex">
-                    <h1>900k</h1>
-                    <div className="graph"> <LineChart /></div>
+                        <div>
+                        <text className="suburb-name">Redfern</text>
+                        <h1>1.4M</h1>
+                        <text> up 10 %</text>    
+                       </div>
+                    <div className="graph"> <Graph4 /></div>
                     </div>
                 </div>
             </div>
