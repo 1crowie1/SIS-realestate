@@ -50,7 +50,7 @@ const Legend = () => {
                 <div className="suburb">
                     <div className= "sub-flex">
                         <div>
-                        <text className="suburb-name">Wolli Creek</text>
+                        <text className="suburb-name">WolliCreek</text>
                         <h1>730k</h1>
                         <text> down 10 %</text>
                         </div>

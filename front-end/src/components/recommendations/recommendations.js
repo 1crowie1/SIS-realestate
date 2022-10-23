@@ -253,7 +253,7 @@ function Recommendations(props) {
                                 <Form>
                                     <div key={`default-radio`} className="mb-3">
                                         <Form.Check 
-                                            type={'radio'}
+                                            type={'checkbox'}
                                             id={`default-radio`}
                                             label={`Public Transport`}
                                         />

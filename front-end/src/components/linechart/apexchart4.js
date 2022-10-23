@@ -21,6 +21,12 @@ function Graph4() {
       dataLabels: {
         enabled: false,
       },
+      legend:{
+        show: false,
+      },
+      grid: {
+        show: false,
+      },
       stroke: {
         curve: "smooth",
       },
