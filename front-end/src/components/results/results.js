@@ -5,7 +5,7 @@ import GridListingCard from './gridListingCard';
 // Import Bootstrap
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { keyframes } from '@emotion/react';
-
+import './results.css'
 // 
 import SuburbBreakdown from './suburbBreakdown';
 import PriceBreakdown from './priceBreakdown';
@@ -253,25 +253,34 @@ function Results (result) {
             <h2>Here are the results for your search</h2>
 
             <Container>
+            
                 <Row>
-                    <Col>
-                        <GridListingCard listings={listings} />
-                        {/* <GridListingCard listings={result} /> */}
+                
+                    <Col className='scrollable'>
+                      
+                          <GridListingCard listings={listings} />
+                          {/* <GridListingCard listings={result} /> */}
+                      
                     </Col>
+                
                     <Col>
                         <Heatmap />
                     </Col>
                 </Row>
-                <Row>
+
+                <Row className='padding-top' >
                     <Col>
                         {/* // Suburb Breakdown */}
                         <SuburbBreakdown listing_suburbs={listing_suburbs} />
                     </Col>
-                    <Col>
+                    <Col className='small-scrollable'>
+                        
                         {/* // Price Breakdown */}
                         <PriceBreakdown listing_suburbs={listing_suburbs}/>
+                        
                     </Col>
                 </Row>
+                
             </Container>
         </div>
     );

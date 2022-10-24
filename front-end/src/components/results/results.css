@@ -1,0 +1,24 @@
+.scrollable{
+    overflow-y: scroll;
+    height: 750px ;
+    width:600px ;
+    background-color: rgb(255, 255, 255);
+    border-style: inset;
+    border-color: black;
+    border-width: 2px;
+    
+}
+
+.small-scrollable{
+    overflow-y: scroll;
+    height: 350px ;
+    width:600px ;
+    border-style: inset;
+    border-color: black;
+    border-width: 2px;
+    
+}
+
+.padding-top{
+    padding-top: 50px;
+}

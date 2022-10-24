@@ -36,6 +36,7 @@ function Graph() {
       },
       xaxis: {
         type: "datetime",
+        
         categories: [
           "1/22/20",
           "2/1/20",
