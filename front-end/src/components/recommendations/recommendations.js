@@ -192,6 +192,7 @@ function Recommendations(props) {
 
                             {/* Bathrooms */}
                             <Col xs={6} md={6}>
+                        
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
                                         <Form.Label>Bathrooms</Form.Label>
@@ -220,7 +221,7 @@ function Recommendations(props) {
                                     </Form.Group>
                                 </Form>
                             </Col>
-
+                    
                             {/* Increase Scope */}
                             <Col xs={6} md={6}>
                                 <Form>
@@ -243,7 +244,7 @@ function Recommendations(props) {
                         </Row>
                     </Container>
                 </Col>
-               
+                
                 {/* <p1>Additional Preferences</p1> */}
                 <Col xs={6} md={6} className="additional-preferences">
                 <div className='padding-bot'>
