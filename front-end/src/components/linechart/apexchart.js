@@ -48,6 +48,7 @@ function Graph() {
           "5/1/20",
           "5/7/20",
         ],
+        
       },
       tooltip: {
         x: {

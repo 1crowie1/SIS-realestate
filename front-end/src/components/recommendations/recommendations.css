@@ -38,8 +38,18 @@
 .vertical{
     border-left:2px solid black;
     height: 80px;
-    
     left: 50%;
-
     padding-bottom: 50px;
 }
+
+.blue{
+    background-color: blue;
+    width: 100%;
+    padding-left: 40px;
+    margin: auto;
+}
+.blue-Button{
+width: 100%;
+}
+
+

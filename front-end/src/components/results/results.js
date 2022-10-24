@@ -250,6 +250,7 @@ function Results (result) {
     return (
         <div>
             <h1>Results</h1>
+            <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
             <h2>Here are the results for your search</h2>
 
             <Container>

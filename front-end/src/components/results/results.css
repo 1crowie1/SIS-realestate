@@ -4,7 +4,7 @@
     width:600px ;
     background-color: rgb(255, 255, 255);
     border-style: inset;
-    border-color: black;
+    border-color: rgb(233, 232, 232);
     border-width: 2px;
     
 }
@@ -14,7 +14,7 @@
     height: 350px ;
     width:600px ;
     border-style: inset;
-    border-color: black;
+    border-color: rgb(233, 232, 232);
     border-width: 2px;
     
 }

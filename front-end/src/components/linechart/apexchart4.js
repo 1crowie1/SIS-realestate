@@ -20,6 +20,7 @@ function Graph4() {
     const options = {
       dataLabels: {
         enabled: false,
+        
       },
       legend:{
         show: false,
