@@ -243,11 +243,15 @@ function Recommendations(props) {
                         </Row>
                     </Container>
                 </Col>
-
+               
                 {/* <p1>Additional Preferences</p1> */}
                 <Col xs={6} md={6} className="additional-preferences">
-                    <Container>
-                        <Row>
+                <div className='padding-bot'>
+                <text>Considerations: </text>
+                </div>    
+                <Container >
+                    
+                        <Row >
                             <Col xs={6} md={6}>
                                 {/* Bootstrap Radio: Public Transport */}
                                 <Form>
