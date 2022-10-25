@@ -87,6 +87,7 @@ function Recommendations(props) {
                 <div className='recommendations-title'>
                     <img src={require('../.././images/2.png')} alt="Home Finder" width="70" height="70"></img>
                     <h2>Get Personalised Recommendations</h2>
+                    <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
                 </div>
             </Row>
 
@@ -173,16 +174,16 @@ function Recommendations(props) {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Price (,000s) AUD</Form.Label>
+                                        <Form.Label>Price</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Bedrooms"
                                                 defaultValue={0}
                                                 valueLabelDisplay="auto"
-                                                step={100}
+                                                step={50000}
                                                 marks
                                                 min={0}
-                                                max={10000}
+                                                max={10000000}
                                                 onChange={handlePriceChange}
                                             />
                                         </Box>
@@ -192,6 +193,7 @@ function Recommendations(props) {
 
                             {/* Bathrooms */}
                             <Col xs={6} md={6}>
+                        
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
                                         <Form.Label>Bathrooms</Form.Label>
@@ -220,7 +222,7 @@ function Recommendations(props) {
                                     </Form.Group>
                                 </Form>
                             </Col>
-
+                    
                             {/* Increase Scope */}
                             <Col xs={6} md={6}>
                                 <Form>
@@ -243,16 +245,21 @@ function Recommendations(props) {
                         </Row>
                     </Container>
                 </Col>
-
+                
                 {/* <p1>Additional Preferences</p1> */}
                 <Col xs={6} md={6} className="additional-preferences">
-                    <Container>
-                        <Row>
+                <div className='padding-bot'>
+                <text>Considerations: </text>
+                </div>    
+                <Container >
+                    
+                        <Row >
                             <Col xs={6} md={6}>
                                 {/* Bootstrap Radio: Public Transport */}
                                 <Form>
                                     <div key={`default-radio`} className="mb-3">
-                                        <Form.Check 
+                                        <Form.Check
+                                            
                                             type={'radio'}
                                             id={`default-radio`}
                                             label={`Public Transport`}
@@ -265,6 +272,7 @@ function Recommendations(props) {
                                 <Form>
                                     <div key={`default-radio`} className="mb-3">
                                         <Form.Check
+                                            
                                             type={'radio'}
                                             id={`default-radio`}
                                             label={`Amazing View`}
@@ -279,6 +287,7 @@ function Recommendations(props) {
                                 <Form>
                                     <div key={`default-radio`} className="mb-3">
                                         <Form.Check
+                                            
                                             type={'radio'}
                                             id={`default-radio`}
                                             label={`Close to School`}
@@ -342,39 +351,27 @@ function Recommendations(props) {
                                 
                             </Col>
                         </Row>
-                        <Row>
-                            <Col xs={6} md={6}>
-                                
-                            </Col>
-                            <Col xs={6} md={6}>
-                                
-                            </Col>
-                        </Row>
+                        <div>
+                        <div>
+                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
+                        </div>
+                        <div>
+                        <h1>OR</h1>
+                        </div>
+                        <div>
+                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
+                        </div>
+                        
+                        
+                        </div>
+                        
                     </Container>
                 </Col>
             </Row>
 
-            <Row>
-                <Col xs={6} md={4}>
-                    <Row>
-                        {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>Get Recommendation</Button> */}
-                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
-                    </Row>
-                </Col>
-
-                <Col xs={6} md={4}>
-                    <p1>OR</p1>
-                </Col>
-
-                <Col xs={6} md={4}>
-                    <Row>
-                        {/* <Button className="blue-Button" onClick={ () => getRecommendations(setRecommendations)}>I'm Feeling Lucky</Button> */}
-                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
-                    </Row>
-                </Col>
-            </Row>
+            
         </Container>
-
+        <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
         {/* Get Results */}
         <Container>
             <Results result={results}/>

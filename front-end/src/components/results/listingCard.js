@@ -5,6 +5,8 @@ function ListingCard(listing) {
   // const navigate = useNavigate()
 
   return (
+
+    <div>
     <Card style={{ width: '18rem', display: 'inline-block' }}>
       {/* <Card.Img variant="left" style={{ width: '100%', height: '40%' }} src={listing.listing.images[0]} /> */}
       <Carousel>
@@ -50,6 +52,7 @@ function ListingCard(listing) {
         <Button variant="primary" href={listing.listing.url}>Look at RealEstate</Button>
       </Card.Body>
     </Card>
+    </div>
   );
 }
 

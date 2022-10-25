@@ -26,7 +26,7 @@ ChartJS.register(
 // CSS
 
 
-class LineChart  extends Component { 
+class LineChart4  extends Component { 
     constructor(props) {
         super(props);
         this.state = {
@@ -36,14 +36,14 @@ class LineChart  extends Component {
                     {
                         label: 'Average Price',
                         data: [
-                            1400,
+                            1200,
                             1500,
-                            1400,
+                            1600,
                             1450,
                             1500,
                             1600,
-                            1650,
-                            1760
+                            1500,
+                            1440
                             
                         ],
                         backgroundColor: [
@@ -91,4 +91,4 @@ class LineChart  extends Component {
     }
 }
 
-export default LineChart;
+export default LineChart4;
