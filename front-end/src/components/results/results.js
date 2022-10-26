@@ -254,16 +254,12 @@ function Results (result) {
             <h2>Here are the results for your search</h2>
 
             <Container>
-            
                 <Row>
-                
                     <Col className='scrollable'>
-                      
-                          <GridListingCard listings={listings} />
-                          {/* <GridListingCard listings={result} /> */}
-                      
+                    
+                        {/* <GridListingCard listings={listings} /> */}
+                        <GridListingCard listings={result} />
                     </Col>
-                
                     <Col>
                         <Heatmap />
                     </Col>
@@ -281,9 +277,10 @@ function Results (result) {
                         
                     </Col>
                 </Row>
-                
             </Container>
         </div>
     );
-}
+} 
+
+        
 export default Results;

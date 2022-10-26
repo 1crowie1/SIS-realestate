@@ -1,5 +1,7 @@
 // const { default: Heatmap } = require("../components/heatmap/heatmap");
 
+import Results from "../components/results/results";
+
 // function createDynamicHeatmap(suburbsWihAverages) {
 //   return (
 //     <Heatmap suburbsWihAverages/>
@@ -126,8 +128,10 @@ class RealestateUtil {
     .then(res => res.json())
     .then(
       (result) => {
-        // console.log(result);
-        setAllListings(JSON.stringify(result));
+        console.log(result);
+        // const r = Results(JSON.stringify(result));
+        // console.log(r);
+        setAllListings(Results(result));
       },
       (error) => {
         console.log(error);
