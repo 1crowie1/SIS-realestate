@@ -1,4 +1,4 @@
-
+/* eslint-disable */ 
 import './recommendations.css';
 import React, { useState, useEffect } from 'react';
 import Results from '../results/results';
@@ -13,9 +13,11 @@ import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
 function Recommendations() {  
-    const [results, setResults] = useState(null);
-    const [luckyResults, setLuckyResults] = useState(null);
+    const [results, setResults] = useState([]);
+    const [luckyResults, setLuckyResults] = useState([]);
     const [clusterResults, setClusterResults] = useState(null);
+
+    const [loading, setLoading] = useState(false);
 
     // const [recommendations, setRecommendations] = useState('r');
 
@@ -29,28 +31,23 @@ function Recommendations() {
         setBedrooms(newValue);
     };
 
-    function CalcCluster() {
+    async function CalcCluster() {
+        setLoading(true);
+
         // Get All Listings - Variable: results
-        realestateUtil.getAllListings(setResults);
-
+        const allListings = await realestateUtil.getAllListings();
+        setResults(allListings);
         // Get Preferences - Variables: price, bedrooms
-        console.log(results);
-        console.log('Real Estate Preferences: ' + price + " | " + bedrooms);
-    
-        // Algorithm
-        // Rank results by price
+        console.log('Real Estate Preferences: ' + allListings + ' | '  + price + " | " + bedrooms);
         
-
-
-        // Rank results by bedrooms
-
-        // Add results rankings
-
-        // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
-        var clusterNum = 0;
+        // Algorithm - results
+        var clusterNum = 0; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
 
         // Get Cluster - Variable: clusterResults
-        realestateUtil.getCluster(clusterNum, setClusterResults)
+        const clusterListings = await realestateUtil.getCluster(clusterNum)
+        setClusterResults(clusterListings);
+
+        setLoading(false);
 
         return clusterResults;  
     }
@@ -379,11 +376,17 @@ function Recommendations() {
         <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
         
         {/* Get Results */}
-        <Container>
-            <div>
-                {results}
-            </div>
-        </Container>
+        {loading ? (
+            <div>Loading...</div>
+        ): (
+            <Container>
+                <div>
+                    <Results results={clusterResults} />
+                    {/* { Results(clusterResults)} */}
+                </div>
+            </Container>
+        )}
+        
         </div>
     );
 }
