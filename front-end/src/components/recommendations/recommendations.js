@@ -12,10 +12,11 @@ import { Box, Slider } from '@mui/material';
 import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
-function Recommendations(props) {  
+function Recommendations() {  
     const [results, setResults] = useState(null);
     const [luckyResults, setLuckyResults] = useState(null);
     const [clusterResults, setClusterResults] = useState(null);
+
     // const [recommendations, setRecommendations] = useState('r');
 
     const [price, setPrice] = useState(null); //[0, 1000000]
@@ -352,29 +353,28 @@ function Recommendations(props) {
                             </Col>
                         </Row>
                         <div>
-                        <div>
-                        <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
+                            <div>
+                                <Button className="blue-Button" onClick={ () => CalcCluster() }>Get Recommendation</Button>
+                            </div>
+                            <div>
+                                <h1>OR</h1>
+                            </div>
+                            <div>
+                                <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
+                            </div>
                         </div>
-                        <div>
-                        <h1>OR</h1>
-                        </div>
-                        <div>
-                        <Button className="blue-Button" onClick={ () => feelingLucky() }>I'm Feeling Lucky</Button>
-                        </div>
-                        
-                        
-                        </div>
-                        
                     </Container>
                 </Col>
             </Row>
-
-            
         </Container>
+        
         <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
+        
         {/* Get Results */}
         <Container>
-            <Results result={results}/>
+            <div>
+                {results}
+            </div>
         </Container>
         </div>
     );
