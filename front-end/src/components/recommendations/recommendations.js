@@ -38,6 +38,14 @@ function Recommendations() {
         console.log('Real Estate Preferences: ' + price + " | " + bedrooms);
     
         // Algorithm
+        // Rank results by price
+        
+
+
+        // Rank results by bedrooms
+
+        // Add results rankings
+
         // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
         var clusterNum = 0;
 

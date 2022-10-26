@@ -96,9 +96,9 @@ def kmeans(data: pd.DataFrame, k: int) -> pd.DataFrame:
     centroids = kmeans.cluster_centers_
     data["cluster_num"] = kmeans.labels_
 
-    # plt.scatter(data['price'], data['bedrooms'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
-    # plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
-    # plt.show()
+    plt.scatter(data['price'], data['bedrooms'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
+    plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
+    plt.show()
 
     return data
 
