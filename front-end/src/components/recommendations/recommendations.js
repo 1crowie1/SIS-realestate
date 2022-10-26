@@ -17,9 +17,8 @@ function Recommendations() {
     const [luckyResults, setLuckyResults] = useState([]);
     const [clusterResults, setClusterResults] = useState(null);
 
-    const [loading, setLoading] = useState(false);
-
-    // const [recommendations, setRecommendations] = useState('r');
+    const [loading, setLoading] = useState(false); // Loading state for the button
+    const [buttonClicked, setButtonClicked] = useState(false);// Button Clicked
 
     const [price, setPrice] = useState(null); //[0, 1000000]
     const [bedrooms, setBedrooms] = useState(null); //[0, 10]
@@ -46,7 +45,8 @@ function Recommendations() {
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
         setClusterResults(clusterListings);
-
+        
+        setButtonClicked(true);
         setLoading(false);
 
         return clusterResults;  
@@ -376,13 +376,13 @@ function Recommendations() {
         <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
         
         {/* Get Results */}
+        
         {loading ? (
             <div>Loading...</div>
-        ): (
+        ): buttonClicked && (
             <Container>
                 <div>
                     <Results results={clusterResults} />
-                    {/* { Results(clusterResults)} */}
                 </div>
             </Container>
         )}
