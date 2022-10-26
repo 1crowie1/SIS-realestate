@@ -30,8 +30,42 @@ function Graph3() {
       stroke: {
         curve: "smooth",
       },
+      yaxis:{
+        show: false,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
+      },
+
       xaxis: {
-        type: "datetime",
+        show: false,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
         categories: [
           "1/22/20",
           "2/1/20",
