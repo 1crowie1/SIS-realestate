@@ -9,7 +9,7 @@ function ListingCard(listing) {
     <div>
     <Card style={{ width: '18rem', display: 'inline-block' }}>
       {/* <Card.Img variant="left" style={{ width: '100%', height: '40%' }} src={listing.listing.images[0]} /> */}
-      <Carousel>
+      {/* <Carousel>
         <Carousel.Item>
           <img
             className="d-block w-100"
@@ -39,7 +39,7 @@ function ListingCard(listing) {
           <Carousel.Caption>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
+      </Carousel> */}
 
       <Card.Body>
         <Card.Title>{listing.listing.short_address}</Card.Title>
