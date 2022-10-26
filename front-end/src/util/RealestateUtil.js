@@ -123,34 +123,57 @@ class RealestateUtil {
       }
     );
   }
-  getAllListings(setAllListings) {
-    fetch("http://localhost:4000/recommendation/getAllListings/")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        console.log(result);
-        // const r = Results(JSON.stringify(result));
-        // console.log(r);
-        setAllListings(Results(result));
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  async getAllListings() {
+    try {
+      let response =  await fetch("http://localhost:4000/recommendation/getAllListings/")
+    
+      var result = await response.json();
+      console.log(result);
+  
+      return result;
+    } catch (e) {
+      alert(e)
+    }
+    return [];
+    
+    // .then(res => res.json())
+    // .then(
+    //   (result) => {
+    //     console.log(result);
+    //     // const r = Results(JSON.stringify(result));
+    //     // console.log(r);
+    //     setAllListings(Results(result));
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
-  getCluster(clusterNumber, setCluster) {
+  async getCluster(clusterNumber) {
     // clusterNumber = 0;
-    fetch("http://localhost:4000/recommendation/getCluster/?clusterNumber="+clusterNumber+"")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        // console.log(result);
-        setCluster(JSON.stringify(result));
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    try {
+      let response = await fetch(`http://localhost:4000/recommendation/getCluster/?clusterNumber=${clusterNumber}`)
+    
+      var result = await response.json();
+      console.log(result);
+  
+      return result;
+    } catch (e) {
+      alert(e)
+    }
+    return [];
+
+    // fetch("http://localhost:4000/recommendation/getCluster/?clusterNumber="+clusterNumber+"")
+    // .then(res => res.json())
+    // .then(
+    //   (result) => {
+    //     // console.log(result);
+    //     setCluster(JSON.stringify(result));
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
   getFeelingLucky(random, setRandomSuburbs) {
     // fetch("http://localhost:4000/recommendation/feelingLucky/?"+random+"")
