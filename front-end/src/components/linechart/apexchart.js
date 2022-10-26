@@ -34,7 +34,42 @@ function Graph() {
       stroke: {
         curve: "smooth",
       },
+      yaxis:{
+        show: false,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
+      },
+
       xaxis: {
+        show: false,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
         type: "datetime",
         
         categories: [
@@ -48,6 +83,7 @@ function Graph() {
           "5/1/20",
           "5/7/20",
         ],
+        
         
       },
       tooltip: {
