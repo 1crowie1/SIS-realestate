@@ -38,9 +38,23 @@ function Recommendations() {
         setResults(allListings);
         // Get Preferences - Variables: price, bedrooms
         console.log('Real Estate Preferences: ' + allListings + ' | '  + price + " | " + bedrooms);
+        let closest_cluster = 0
+        let closest_num = 10000000
+        let curr_num = 10000000
+
+        for (var i = 0; i < allListings.length; i++) {
+            // console.log(`Listing ${i}: ${allListings[i].price} | ${allListings[i].bedrooms}`);
+            // closest to 0 on both price and bedrooms
+            curr_num = Math.abs(allListings[i].price/1000000 - price/1000000) + Math.abs(allListings[i].bedrooms - bedrooms)
+            if (curr_num < closest_num) {
+                closest_num = curr_num
+                closest_cluster = allListings[i].cluster_num
+            }
+        }
+        console.log(`Cluster: ${closest_cluster} | ${closest_num}`);
         
         // Algorithm - results
-        var clusterNum = 0; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
+        var clusterNum = closest_cluster; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
 
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
