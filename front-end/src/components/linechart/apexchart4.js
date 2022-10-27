@@ -50,6 +50,25 @@ function Graph4() {
       },
       },
 
+      yaxis:{
+        show: false,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      crosshairs: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+      },
+      },
+
       xaxis: {
         show: false,
       labels: {
