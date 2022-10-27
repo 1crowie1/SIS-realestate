@@ -61,7 +61,8 @@ function Recommendations() {
         console.log(`Cluster: ${closest_cluster} | ${closest_num}`);
         
         // Algorithm - results
-        var clusterNum = closest_cluster; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
+        var clusterNum = closest_cluster; 
+        let imgs = [];
 
         // Get Results GeoJSOn
         const resultsGeoJson = await realestateUtil.getResultsGeoJSON(clusterNum)
@@ -69,6 +70,12 @@ function Recommendations() {
 
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
+        for (var i = 0; i < clusterListings.length; i++) {
+            console.log(clusterListings[i].id)
+            imgs = await realestateUtil.getImgs(clusterListings[i].id);
+            clusterListings[i].imgs = imgs;
+        }
+        
         setClusterResults(clusterListings);
 
         // Get Recommended Suburbs - Variable: recommendedSuburbs

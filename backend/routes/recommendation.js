@@ -33,7 +33,12 @@ router.get('/getCluster/', (req, res) => {
     var clusterNumber = req.query.clusterNumber;
     getCluster(clusterNumber, res);
   });
-  
+
+router.get('/getImgs/', (req, res) => {
+    var listingID = req.query.listingID;
+    getImgs(listingID, res);
+  });
+
 router.get('/feelingLucky/', (req, res) => {
   
     var maxClusterNumber = 1
@@ -179,6 +184,42 @@ function getCluster(clusterNumber, res){
 
   request.on('requestCompleted', function () {
       res.send(clusters); // Return cluster listings
+  });
+}
+
+function getImgs(listingID, res){
+  console.log('Query DB: Get Cluster Listings')
+
+  const request = new Request(
+    `SELECT DISTINCT CAST(link AS VARCHAR(MAX))
+    FROM dbo.big_property_images
+    WHERE id = ${listingID};`,
+    (err, rowCount) => {
+      if (err) {
+          console.error(err.message);
+        } else {
+          console.log(`${rowCount} row(s) returned`);
+        }
+  });
+
+  var imgs = [];
+  request.on("row", columns => {
+        var img = {};
+        columns.forEach((column) => {
+          if (column.value === null) {
+              console.log('NULL');
+          } else {
+              img[column.metadata.colName] = column.value;
+          }
+      });
+      console.log(img);
+      imgs.push(img);
+  });
+  
+  connection.execSql(request);
+
+  request.on('requestCompleted', function () {
+      res.send(imgs); // Return cluster listings
   });
 }
 

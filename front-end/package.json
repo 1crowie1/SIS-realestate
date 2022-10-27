@@ -13,6 +13,7 @@
     "bootstrap": "^5.2.2",
     "canvasjs-react-charts": "^1.0.5",
     "framer-motion": "^7.5.2",
+    "i": "^0.3.7",
     "leaflet": "^1.9.2",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",

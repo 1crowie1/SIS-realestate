@@ -186,6 +186,34 @@ class RealestateUtil {
     //   }
     // );
   }
+
+  async getImgs(listingID) {
+    // clusterNumber = 0;
+    try {
+      let response = await fetch(`http://localhost:4000/recommendation/getCluster/?listingID=${listingID}`)
+    
+      var result = await response.json();
+      console.log(result);
+  
+      return result;
+    } catch (e) {
+      alert(e)
+    }
+    return [];
+
+    // fetch("http://localhost:4000/recommendation/getCluster/?clusterNumber="+clusterNumber+"")
+    // .then(res => res.json())
+    // .then(
+    //   (result) => {
+    //     // console.log(result);
+    //     setCluster(JSON.stringify(result));
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+  }
+
   getFeelingLucky(random, setRandomSuburbs) {
     // fetch("http://localhost:4000/recommendation/feelingLucky/?"+random+"")
     fetch("http://localhost:4000/recommendation/feelingLucky")
