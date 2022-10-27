@@ -43,16 +43,16 @@ function Footer() {
                     <p className="footer-title">Contact</p>
                     <ul className="footer-ul">
                         <li className="d-flex">
-                            <div className="footer-info-item"><i className="fas fa-clock"></i></div> <span>08:00-18:00</span>
+                            <div className="footer-info-item"><i className="fas fa-clock"></i></div> <span>9am - 5pm</span>
                         </li>
                         <li className="d-flex">
-                            <div className="footer-info-item" ><i className="fas fa-envelope"></i></div> <span>info@house.com</span>
+                            <div className="footer-info-item" ><i className="fas fa-envelope"></i></div> <span>Monday to Friday</span>
                         </li>
                         <li className="d-flex">
-                            <div className="footer-info-item"><i className="fas fa-map-marker-alt"></i></div> <span>Lorem Ipsum </span>
+                            <div className="footer-info-item"><i className="fas fa-map-marker-alt"></i></div> <span>info@HomeFinder.com</span>
                         </li>
                         <li className="d-flex">
-                            <div className="footer-info-item"><i className="fas fa-phone-alt"></i></div> <span>0500 000 00 00</span>
+                            <div className="footer-info-item"><i className="fas fa-phone-alt"></i></div> <span>046 6334 6337</span>
                         </li>
                     </ul>
                 </div>

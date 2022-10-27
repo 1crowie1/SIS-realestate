@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.36.0",
     "bootstrap": "^5.2.2",
+    "canvasjs-react-charts": "^1.0.5",
     "framer-motion": "^7.5.2",
     "leaflet": "^1.9.2",
     "react": "^18.2.0",
