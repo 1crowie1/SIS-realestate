@@ -44,7 +44,6 @@ function Recommendations() {
         const allListings = await realestateUtil.getAllListings();
         setResults(allListings);
         // Get Preferences - Variables: price, bedrooms
-        console.log('Real Estate Preferences: ' + allListings + ' | '  + price + " | " + bedrooms);
         let closest_cluster = 0
         let closest_num = 10000000
         let curr_num = 10000000
@@ -61,7 +60,8 @@ function Recommendations() {
         console.log(`Cluster: ${closest_cluster} | ${closest_num}`);
         
         // Algorithm - results
-        var clusterNum = closest_cluster; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
+        var clusterNum = closest_cluster; 
+        let imgs = [];
 
         // Get Results GeoJSOn
         const resultsGeoJson = await realestateUtil.getResultsGeoJSON(clusterNum)
@@ -69,6 +69,11 @@ function Recommendations() {
 
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
+        for (var i = 0; i < clusterListings.length; i++) {
+            imgs = await realestateUtil.getImgs(clusterListings[i].id);
+            clusterListings[i].imgs = imgs;
+        }
+        
         setClusterResults(clusterListings);
 
         // Get Recommended Suburbs - Variable: recommendedSuburbs
@@ -81,8 +86,6 @@ function Recommendations() {
 
     function feelingLucky() {
         realestateUtil.getAllListings(setLuckyResults);
-
-        console.log(luckyResults);
 
         return 'Feeling Lucky Results';
     }
@@ -112,12 +115,9 @@ function Recommendations() {
         { key: 'design', text: 'Zetland', value: 'zetland' },
     ];
 
-    console.log(clusterResults);
-    console.log(mapData);
-
     return (
-        <div className='recommendations'>   
-            <Container>
+        <div>   
+            <Container> {/* {"margin-bottom": "10vh", "margin-top": "10vh"} */}
             {/* Recommendation Titles */}
             <Row>   
                 <div className='recommendations-title'>
@@ -408,7 +408,7 @@ function Recommendations() {
         {/* Get Results */}
         
         {loading ? (
-            <div>Loading...</div>
+            <div className='loading_section'>{/* Loading... */}</div>
         ): buttonClicked && (
             <Container>
                 <div>

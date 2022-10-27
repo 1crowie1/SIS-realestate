@@ -6,8 +6,6 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import ReactApexChart from "react-apexcharts";
 
 function SuburbBreakdown({recommendedSuburbs}){
-    console.log("%Suburb Breakdown", "color: aqua", recommendedSuburbs);
-
     const series = [
         {
           name: "Average Price",

@@ -40,11 +40,7 @@ function App() {
 
       {/* Top HeatMap Section */}
       {loading ? (
-        <div className='loading'>
-          <div className='spinner-border' role='status'>
-            <span className='sr-only'>Loading...</span>
-          </div>
-        </div>
+        <div className='loading_section'>{/* Loading... */}</div>
       ) : heatmapResults && 
         ( 
           <Heatmap mapData={heatmapResults} />

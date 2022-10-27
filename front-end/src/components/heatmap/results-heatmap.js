@@ -8,7 +8,7 @@ import './map.css';
 
 
 function ResultsMap({mapData}) {
-    console.log("%cHeatmap Results", "color: red", mapData);
+    // console.log("%cResults Heatmap", "color: red", mapData);
     // const [onselect, setOnselect] = useState({});
     /* function determining what should happen onmouseover, this function updates our state*/
     // const highlightFeature = (e=> {
@@ -153,8 +153,8 @@ function ResultsMap({mapData}) {
         });
     });
     const mapStyle = {
-        height: '100vh',
-        width: '100vw',
+        height: '750px',
+        // width: '100%',
         margin: '0 auto',
     }
     
