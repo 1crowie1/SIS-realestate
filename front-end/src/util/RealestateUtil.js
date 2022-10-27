@@ -188,7 +188,6 @@ class RealestateUtil {
   }
 
   async getImgs(listingID) {
-    // clusterNumber = 0;
     try {
       let response = await fetch(`http://localhost:4000/recommendation/getCluster/?listingID=${listingID}`)
     
