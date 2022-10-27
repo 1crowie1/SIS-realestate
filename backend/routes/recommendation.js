@@ -77,11 +77,10 @@ function getRecommendedSuburbs(clusterNumber, res){
     console.log('Query DB: Get Recommended Suburbs')
 
     const request = new Request(
-      `SELECT SUBSTRING([suburb], 0, 25) AS name, COUNT(id) AS suburb_listing_count 
+      `SELECT DISTINCT CAST(suburb AS VARCHAR(MAX)) as name, COUNT(id) as suburb_listing_count
       FROM [dbo].[big_property] 
       WHERE [cluster_num] = ${clusterNumber}
-      GROUP BY SUBSTRING([suburb], 0, 25) 
-      ORDER BY suburb_listing_count desc;`,
+      GROUP BY CAST(suburb AS VARCHAR(MAX));`,
       (err, rowCount) => {
         if (err) {
             console.error(err.message);
