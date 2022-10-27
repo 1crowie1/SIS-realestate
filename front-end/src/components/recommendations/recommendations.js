@@ -13,13 +13,20 @@ import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
 function Recommendations() {  
+    // Buttons
     const [results, setResults] = useState([]);
     const [luckyResults, setLuckyResults] = useState([]);
-    const [clusterResults, setClusterResults] = useState(null);
 
+    // Set Variables
+    const [mapData, setMapData] = useState(null);
+    const [clusterResults, setClusterResults] = useState(null);
+    const [recommendedSuburbs, setRecommendedSuburbs] = useState(null);
+
+    // Set Load
     const [loading, setLoading] = useState(false); // Loading state for the button
     const [buttonClicked, setButtonClicked] = useState(false);// Button Clicked
 
+    // Set Filters
     const [price, setPrice] = useState(null); //[0, 1000000]
     const [bedrooms, setBedrooms] = useState(null); //[0, 10]
 
@@ -56,14 +63,20 @@ function Recommendations() {
         // Algorithm - results
         var clusterNum = closest_cluster; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
 
+        // Get Results GeoJSOn
+        const resultsGeoJson = await realestateUtil.getResultsGeoJSON(clusterNum)
+        setMapData(resultsGeoJson);
+
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
         setClusterResults(clusterListings);
-        
-        setButtonClicked(true);
-        setLoading(false);
 
-        return clusterResults;  
+        // Get Recommended Suburbs - Variable: recommendedSuburbs
+        const recommendedSuburbsListings = await realestateUtil.getRecommendedSuburbs(clusterNum)
+        setRecommendedSuburbs(recommendedSuburbsListings);
+
+        setButtonClicked(true);
+        setLoading(false); 
     }
 
     function feelingLucky() {
@@ -98,6 +111,9 @@ function Recommendations() {
         { key: 'design', text: 'Wynyard', value: 'wynyard' },
         { key: 'design', text: 'Zetland', value: 'zetland' },
     ];
+
+    console.log(clusterResults);
+    console.log(mapData);
 
     return (
         <div className='recommendations'>   
@@ -134,7 +150,7 @@ function Recommendations() {
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="land-size"
-                                                defaultValue={30}
+                                                defaultValue={0}
                                                 valueLabelDisplay="auto"
                                                 step={50}
                                                 marks
@@ -396,7 +412,7 @@ function Recommendations() {
         ): buttonClicked && (
             <Container>
                 <div>
-                    <Results results={clusterResults} />
+                    <Results results={clusterResults} mapData={mapData} recommendedSuburbs={recommendedSuburbs} />
                 </div>
             </Container>
         )}

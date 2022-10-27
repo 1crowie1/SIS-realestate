@@ -1,8 +1,6 @@
 
 import React,{useState} from 'react';
 import { MapContainer, TileLayer, GeoJSON} from 'react-leaflet';
-// import {features} from '../data/data.json';
-// import mapData from '../data/test.json';
 import Legend from './legend';
 import "leaflet/dist/leaflet.css";
 import './map.css';
@@ -10,6 +8,7 @@ import './map.css';
 
 
 function Map({mapData}) {
+    console.log("%cHeatmap Results", "color: red", mapData);
     // const [onselect, setOnselect] = useState({});
     /* function determining what should happen onmouseover, this function updates our state*/
     // const highlightFeature = (e=> {
@@ -111,7 +110,7 @@ function Map({mapData}) {
     });
     const mapStyle = {
         height: '100vh',
-        // width: '85%',
+        width: '100vw',
         margin: '0 auto',
     }
     
@@ -123,7 +122,7 @@ function Map({mapData}) {
         return (<></>);
     }
     return(
-         <div className='container'>
+         <div>
             {/* {!onselect.county && (
             <div className="census-info-hover">
                 <strong>Kenya population density</strong>

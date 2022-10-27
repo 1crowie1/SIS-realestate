@@ -5,7 +5,9 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 // Import Apex Graph
 import ReactApexChart from "react-apexcharts";
 
-function SuburbBreakdown(listing_suburbs){
+function SuburbBreakdown({recommendedSuburbs}){
+    console.log("%Suburb Breakdown", "color: aqua", recommendedSuburbs);
+
     const series = [
         {
           name: "Average Price",
@@ -64,15 +66,15 @@ function SuburbBreakdown(listing_suburbs){
     return (
         <Row>
         {
-            Array.from(listing_suburbs.listing_suburbs).map(
+            Array.from(recommendedSuburbs).map(
                 (list) => (
                     <Col>
                         <Card style={{ width: '18rem', display: 'inline-block' }}>
                             <Card.Body>
-                                <Card.Title>{list.suburb_name}</Card.Title>
+                                <Card.Title>{list.name}</Card.Title>
                                 <Card.Body>
-                                    <Card.Text>Number of Lists: {list.listings_count}</Card.Text>
-                                    <Card.Text>Details: {list.details}</Card.Text>
+                                    <Card.Text>Number of Lists: {list.suburb_listing_count}</Card.Text>
+                                    {/* <Card.Text>Details: {list.details}</Card.Text> */}
 
                                     {/* <Typography component="legend">Controlled</Typography>
                                     <Rating

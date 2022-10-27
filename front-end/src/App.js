@@ -15,14 +15,25 @@ import RealestateUtil from "./util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
 function App() {
-  const [heatmapResults, setHeatmapResults] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [heatmapResults, setHeatmapResults] = useState(['TEST']);
+  const [loading, setLoading] = useState(false);
 
-  // loading && realestateUtil.getGeoJSON().then((data) => {
-  //   setHeatmapResults(data);
-  //   setLoading(false);
-  // });
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
 
+        var data = await realestateUtil.getGeoJSON();
+        setHeatmapResults(data);
+
+        setLoading(false);
+      } catch (e) {
+        alert(e);
+      } 
+    })
+    ();
+  }, []);
+  
   return (
     <div className='App'>
       <Header />
@@ -36,7 +47,7 @@ function App() {
         </div>
       ) : heatmapResults && 
         ( 
-          <Heatmap results={heatmapResults} />
+          <Heatmap mapData={heatmapResults} />
         )
       }
 

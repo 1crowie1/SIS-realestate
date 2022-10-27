@@ -109,19 +109,30 @@ class RealestateUtil {
       }
     );
   }
-  getRecommendedSuburbs(clusterNumber, setRecommendedSuburbs) {
+  async getRecommendedSuburbs(clusterNumber, setRecommendedSuburbs) {
     // clusterNumber = 0;
-    fetch("http://localhost:4000/recommendation/getRecommendedSuburbs")
-    .then(res => res.json())
-    .then(
-      (result) => {
-        // console.log(result);
-        setRecommendedSuburbs(JSON.stringify(result));
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    // fetch("http://localhost:4000/recommendation/getRecommendedSuburbs")
+    // .then(res => res.json())
+    // .then(
+    //   (result) => {
+    //     // console.log(result);
+    //     setRecommendedSuburbs(JSON.stringify(result));
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+    try {
+      let response = await fetch(`http://localhost:4000/recommendation/getRecommendedSuburbs/?clusterNumber=${clusterNumber}`)
+    
+      var result = await response.json();
+      console.log(result);
+  
+      return result;
+    } catch (e) {
+      alert(e)
+    }
+    return [];
   }
   async getAllListings() {
     try {
@@ -196,7 +207,32 @@ class RealestateUtil {
   /** HEATMAP - Average Price and Average Listings : app.use('/suburbsWithAverages', suburbsWithAveragesRouter); */
   async getGeoJSON() {
     try {
-      let response = await fetch("http://localhost:4000/suburbsWithAverages/")
+      let response = await fetch("http://localhost:4000/heatmap/")
+    
+      var result = await response.json();
+      console.log(result);
+  
+      return result;
+    } catch (e) {
+      alert(e)
+    }
+    return [];
+    // fetch("http://localhost:4000/getAllListings/")
+    // .then(res => res.json())
+    // .then(
+    //   (result) => {
+    //     // console.log(result);
+    //     setGeoJSON(JSON.stringify(result));
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
+  }
+
+  async getResultsGeoJSON(clusterNumber) {
+    try {
+      let response = await fetch(`http://localhost:4000/heatmap/resultsHeatmap/?clusterNumber=${clusterNumber}`)
     
       var result = await response.json();
       console.log(result);

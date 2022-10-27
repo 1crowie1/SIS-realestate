@@ -1,12 +1,14 @@
 import React from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import './header.css';
+import Logo from '../images/home_finder_4.svg';
 
 function Header() {
   return (
       <section className="header">
         <div className="header-logo">
-          <img src={require('.././images/3.png')} alt="Home Finder" width="70" height="70"></img>
+          {/* <img src={require('.././images/home_finder_4.svg')} alt="Home Finder" width="30%" height="30%"></img> */}
+          <img src={Logo} alt="Home Finder" width="150vw" height="150vh"></img>
         </div>
         {/* <h1>Find your dream home.</h1> */}
         <div className="header-text">

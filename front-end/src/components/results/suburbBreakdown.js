@@ -6,7 +6,19 @@ import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import {CanvasJSChart} from 'canvasjs-react-charts'
 // var CanvasJS = CanvasJSReact.CanvasJS;
 
-function SuburbBreakdown(listing_suburbs){
+function SuburbBreakdown({recommendedSuburbs}){
+    let total_listing_count = 0;
+    recommendedSuburbs.forEach((suburb) => {
+        total_listing_count += suburb.suburb_listing_count;
+
+        return total_listing_count;
+    });
+
+    const suburbDataPoints = [];
+    recommendedSuburbs.forEach((suburb) => {
+        suburbDataPoints.push({y: parseInt(suburb.suburb_listing_count / total_listing_count * 100),  name: suburb.name})
+    });
+    
     const suburb_options = {
         animationEnabled: true,
         title: {
@@ -23,18 +35,9 @@ function SuburbBreakdown(listing_suburbs){
             showInLegend: false,
             indexLabel: "{name}: {y}",
             yValueFormatString: "#,###'%'",
-            dataPoints: [
-                { name: "Paddington", y: 4 },
-                { name: "Zetland", y: 31 },
-                { name: "Bondi", y: 35 },
-                { name: "Ultimo", y: 17 },
-                { name: "Darlinghurst", y: 7 },
-                { name: "Surry Hills", y: 6 }
-            ]
+            dataPoints: suburbDataPoints,
         }]
     }
-
-    // old graph 
 
     return (
         <Row>
@@ -46,21 +49,26 @@ function SuburbBreakdown(listing_suburbs){
                     <CanvasJSChart options={suburb_options}
                         /* onRef = {ref => this.chart = ref} */
                     />
-                     
                 </Card.Body>
-                <Card.Body>
+                {/* <Card.Body>
                     {
-                        Array.from(listing_suburbs.listing_suburbs).map(
+                        Array.from(recommendedSuburbs).map(
                             (list) => (
-                                <Card.Text>
-                                    * {list.suburb_name}
-                                     {/* Listings Percentage on Other Section */}
-                                </Card.Text>
+                                <Col>
+                                    <Card.Text>
+                                        * {list.name}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        * {list.suburb_listing_count} listings
+                                    </Card.Text>
+                                    <Card.Text>
+                                        * {parseInt(list.suburb_listing_count / total_listing_count * 100)}% of listings
+                                    </Card.Text>
+                                </Col>
                             )
                         )
                     }
-                </Card.Body>   
-
+                </Card.Body>    */}
             </Card>
         </Row>
     )
