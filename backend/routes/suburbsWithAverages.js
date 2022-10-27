@@ -28,9 +28,8 @@ router.get('/', function(req, res, next) {
     const request = new Request(
     `SELECT SUBSTRING([suburb], 0, 25) AS suburb_name, AVG(price) AS suburb_price, COUNT(id) AS suburb_listing
     FROM [dbo].[big_property] 
-    WHERE PRICE IS NOT NULL 
-    GROUP BY SUBSTRING([suburb], 0, 25)
-    ORDER BY SUBSTRING([suburb], 0, 25)`,
+    WHERE PRICE > 50000 
+    GROUP BY SUBSTRING([suburb], 0, 25)`,
     (err, rowCount) => {
         if (err) {
             console.error(err.message);
