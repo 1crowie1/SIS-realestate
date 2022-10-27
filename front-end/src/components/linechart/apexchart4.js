@@ -31,25 +31,7 @@ function Graph4() {
       stroke: {
         curve: "smooth",
       },
-      yaxis:{
-        show: false,
-      labels: {
-        show: false,
-      },
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-      crosshairs: {
-        show: false,
-      },
-      tooltip: {
-        enabled: false,
-      },
-      },
-
+     
       yaxis:{
         show: false,
       labels: {
