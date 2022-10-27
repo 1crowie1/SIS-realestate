@@ -18,10 +18,10 @@ function App() {
   const [heatmapResults, setHeatmapResults] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  realestateUtil.getGeoJSON().then((response) => {
-    setHeatmapResults(response.data);
-    setLoading(false);
-  });
+  // loading && realestateUtil.getGeoJSON().then((data) => {
+  //   setHeatmapResults(data);
+  //   setLoading(false);
+  // });
 
   return (
     <div className='App'>
