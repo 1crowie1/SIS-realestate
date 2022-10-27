@@ -191,7 +191,7 @@ function getImgs(listingID, res){
   console.log('Query DB: Get Cluster Listings')
 
   const request = new Request(
-    `SELECT DISTINCT CAST(link AS VARCHAR(MAX))
+    `SELECT DISTINCT CAST(link AS VARCHAR(MAX)) AS img_link, id
     FROM dbo.big_property_images
     WHERE id = ${listingID};`,
     (err, rowCount) => {

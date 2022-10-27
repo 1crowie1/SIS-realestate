@@ -1,3 +1,8 @@
+.recommendations {
+    padding-bottom: 10vh;
+    padding-top: 10vh;
+}
+
 .preferences {
     display: flex;
     flex-direction: column;

@@ -43,9 +43,6 @@ function SuburbBreakdown({recommendedSuburbs}){
         <Row>
             <Card>
                 <Card.Body>
-                  
-                </Card.Body>
-                <Card.Body>
                     <CanvasJSChart options={suburb_options}
                         /* onRef = {ref => this.chart = ref} */
                     />

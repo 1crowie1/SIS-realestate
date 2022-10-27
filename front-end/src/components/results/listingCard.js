@@ -1,4 +1,4 @@
-import { Button, Container, Row, Col, Card, Carousel } from "react-bootstrap";
+import { Button, Container, Row, Col, Card, Carousel, ListGroup } from "react-bootstrap";
 // import {useNavigate} from "react-router-dom";
 
 function ListingCard(listing) {
@@ -44,11 +44,11 @@ function ListingCard(listing) {
       <Card.Body>
         <Card.Title>{listing.listing.short_address}</Card.Title>
         <Card.Text>${listing.listing.price}</Card.Text>
-        <Card.Body>
-          <Card.Text>Bathrooms: {listing.listing.bathrooms}</Card.Text>
-          <Card.Text>Bedrooms: {listing.listing.bedrooms}</Card.Text>
-          <Card.Text>Car Spaces: {listing.listing.parking_spaces}</Card.Text>
-        </Card.Body>
+        <ListGroup variant="flush">
+          <ListGroup.Item>Bathrooms: {listing.listing.bathrooms}</ListGroup.Item>
+          <ListGroup.Item>Bedrooms: {listing.listing.bedrooms}</ListGroup.Item>
+          <ListGroup.Item>Car Spaces: {listing.listing.parking_spaces}</ListGroup.Item>
+        </ListGroup>
         <Button variant="primary" href={listing.listing.url}>Look at RealEstate</Button>
       </Card.Body>
     </Card>

@@ -123,7 +123,7 @@ function Recommendations() {
     console.log(mapData);
 
     return (
-        <div className='recommendations'>   
+        <div>   
             <Container>
             {/* Recommendation Titles */}
             <Row>   

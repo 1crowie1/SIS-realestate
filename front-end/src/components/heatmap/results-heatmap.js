@@ -153,8 +153,8 @@ function ResultsMap({mapData}) {
         });
     });
     const mapStyle = {
-        height: '100vh',
-        width: '100vw',
+        height: '750px',
+        // width: '100%',
         margin: '0 auto',
     }
     
