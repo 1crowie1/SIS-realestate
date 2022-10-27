@@ -1,5 +1,6 @@
 import { Button, Container, Row, Col, Card, Carousel, ListGroup } from "react-bootstrap";
 // import {useNavigate} from "react-router-dom";
+import { FaBed, FaBath, FaCarSide } from 'react-icons/fa';
 
 function ListingCard(listing) {
   // const navigate = useNavigate()
@@ -59,14 +60,18 @@ function ListingCard(listing) {
         </Carousel> */}
 
         <Card.Body>
-          <Card.Title>{listing.listing.short_address}</Card.Title>
-          <Card.Text>${listing.listing.price}</Card.Text>
+          <Card.Body>
+            <Card.Title>{listing.listing.short_address}</Card.Title>
+            <Card.Text>${listing.listing.price}</Card.Text>
+          </Card.Body>
           <ListGroup variant="flush">
-            <ListGroup.Item>Bathrooms: {listing.listing.bathrooms}</ListGroup.Item>
-            <ListGroup.Item>Bedrooms: {listing.listing.bedrooms}</ListGroup.Item>
-            <ListGroup.Item>Car Spaces: {listing.listing.parking_spaces}</ListGroup.Item>
+            <ListGroup.Item><FaBed />Bedrooms: {listing.listing.bedrooms}</ListGroup.Item>
+            <ListGroup.Item><FaBath />Bathrooms: {listing.listing.bathrooms}</ListGroup.Item>
+            <ListGroup.Item><FaCarSide />Car Spaces: {listing.listing.parking_spaces}</ListGroup.Item>
           </ListGroup>
-          <Button variant="primary" href={listing.listing.url} target="_blank">Look at RealEstate</Button>
+          <Card.Body>
+            <Button variant="primary" href={listing.listing.url} target="_blank">Look at RealEstate</Button>
+          </Card.Body>
         </Card.Body>
       </Card>
     </div>

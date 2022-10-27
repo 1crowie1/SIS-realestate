@@ -20,9 +20,12 @@ function Results ({results, mapData, recommendedSuburbs}) { //{results}
     }
     return (
         <div>
-            <h1>Results</h1>
+            <div className='recommendations-title'>
+                <img src={require('../.././images/2.png')} alt="Home Finder" width="70" height="70"></img>
+                <h1>Results</h1>
+            </div>
             <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
-            <h2>Here are the results for your search</h2>
+            {/* <h2>Here are the results for your search</h2> */}
 
             <Container>
                 <Row>
@@ -35,6 +38,8 @@ function Results ({results, mapData, recommendedSuburbs}) { //{results}
                 </Row>
 
                 <Row className='padding-top' >
+                    <h2>Suburb Breakdown</h2>
+
                     <Col>
                         {/* // Suburb Breakdown */}
                         <SuburbBreakdown recommendedSuburbs={recommendedSuburbs} />
