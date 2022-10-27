@@ -1,6 +1,7 @@
 import React from 'react';
 // Import Components
 import Heatmap from '../heatmap/heatmap';
+import ResultsHeatmap from '../heatmap/results-heatmap';
 import GridListingCard from './gridListingCard';
 // Import Bootstrap
 import { Button, Container, Row, Col } from "react-bootstrap";
@@ -38,7 +39,7 @@ function Results ({results}) {
                         <GridListingCard listings={results} />
                     </Col>
                     <Col>
-                        <Heatmap />
+                        {/* <ResultsHeatmap /> */}
                     </Col>
                 </Row>
 
