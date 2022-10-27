@@ -189,7 +189,7 @@ class RealestateUtil {
 
   async getImgs(listingID) {
     try {
-      let response = await fetch(`http://localhost:4000/recommendation/getCluster/?listingID=${listingID}`)
+      let response = await fetch(`http://localhost:4000/recommendation/getImgs/?listingID=${listingID}`)
     
       var result = await response.json();
       console.log(result);
