@@ -13,13 +13,20 @@ import RealestateUtil from "../../util/RealestateUtil";
 const realestateUtil = new RealestateUtil();
 
 function Recommendations() {  
+    // Buttons
     const [results, setResults] = useState([]);
     const [luckyResults, setLuckyResults] = useState([]);
-    const [clusterResults, setClusterResults] = useState(null);
 
+    // Set Variables
+    const [mapData, setMapData] = useState(null);
+    const [clusterResults, setClusterResults] = useState(null);
+    const [recommendedSuburbs, setRecommendedSuburbs] = useState(null);
+
+    // Set Load
     const [loading, setLoading] = useState(false); // Loading state for the button
     const [buttonClicked, setButtonClicked] = useState(false);// Button Clicked
 
+    // Set Filters
     const [price, setPrice] = useState(null); //[0, 1000000]
     const [bedrooms, setBedrooms] = useState(null); //[0, 10]
 
@@ -56,14 +63,20 @@ function Recommendations() {
         // Algorithm - results
         var clusterNum = closest_cluster; // WRITE YOUR SHIT TO GET OUTPUT: clusterNum
 
+        // Get Results GeoJSOn
+        const resultsGeoJson = await realestateUtil.getResultsGeoJSON(clusterNum)
+        setMapData(resultsGeoJson);
+
         // Get Cluster - Variable: clusterResults
         const clusterListings = await realestateUtil.getCluster(clusterNum)
         setClusterResults(clusterListings);
-        
-        setButtonClicked(true);
-        setLoading(false);
 
-        return clusterResults;  
+        // Get Recommended Suburbs - Variable: recommendedSuburbs
+        const recommendedSuburbsListings = await realestateUtil.getRecommendedSuburbs(clusterNum)
+        setRecommendedSuburbs(recommendedSuburbsListings);
+
+        setButtonClicked(true);
+        setLoading(false); 
     }
 
     function feelingLucky() {
@@ -99,6 +112,9 @@ function Recommendations() {
         { key: 'design', text: 'Zetland', value: 'zetland' },
     ];
 
+    console.log(clusterResults);
+    console.log(mapData);
+
     return (
         <div className='recommendations'>   
             <Container>
@@ -133,8 +149,8 @@ function Recommendations() {
                                         <Form.Label>Land Size (m^2) </Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
-                                                aria-label="Temperature"
-                                                defaultValue={30}
+                                                aria-label="land-size"
+                                                defaultValue={0}
                                                 valueLabelDisplay="auto"
                                                 step={50}
                                                 marks
@@ -151,16 +167,16 @@ function Recommendations() {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Preference Area</Form.Label>
+                                        <Form.Label>Preference Area (kms)</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Preference Area"
-                                                defaultValue={30}
+                                                defaultValue={0}
                                                 valueLabelDisplay="auto"
-                                                step={5}
+                                                step={1}
                                                 marks
-                                                min={10}
-                                                max={1000}
+                                                min={0}
+                                                max={50}
                                             />
                                         </Box>
                                     </Form.Group>
@@ -190,14 +206,14 @@ function Recommendations() {
 
                         </Row>
                         <Row>
-                            {/* Price */}
+                            {/* Price $(AUD)*/}
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
                                         <Form.Label>Price</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
-                                                aria-label="Bedrooms"
+                                                aria-label="Price"
                                                 defaultValue={0}
                                                 valueLabelDisplay="auto"
                                                 step={50000}
@@ -243,11 +259,11 @@ function Recommendations() {
                                 </Form>
                             </Col>
                     
-                            {/* Increase Scope */}
+                            {/* Car Spaces */}
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Scope</Form.Label>
+                                        <Form.Label>Car Spaces</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Scope"
@@ -275,26 +291,26 @@ function Recommendations() {
                     
                         <Row >
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Public Transport */}
+                                {/* Bootstrap checkbox: Public Transport */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Public Transport`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Amazing View */}
+                                {/* Bootstrap checkbox: Amazing View */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Amazing View`}
                                         />
                                     </div>
@@ -303,25 +319,25 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to School */}
+                                {/* Bootstrap checkbox: Close to School */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to School`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Shops */}
+                                {/* Bootstrap checkbox: Close to Shops */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Shops`}
                                         />
                                     </div>
@@ -330,24 +346,24 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Park */}
+                                {/* Bootstrap checkbox: Close to Park */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Park`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Hospital */}
+                                {/* Bootstrap checkbox: Close to Hospital */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Hospital`}
                                         />  
                                     </div>
@@ -356,12 +372,12 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Beach */}
+                                {/* Bootstrap checkbox: Close to Beach */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Beach`}
                                         />
                                     </div>
@@ -396,7 +412,7 @@ function Recommendations() {
         ): buttonClicked && (
             <Container>
                 <div>
-                    <Results results={clusterResults} />
+                    <Results results={clusterResults} mapData={mapData} recommendedSuburbs={recommendedSuburbs} />
                 </div>
             </Container>
         )}

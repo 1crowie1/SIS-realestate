@@ -9,7 +9,7 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var suburbRouter = require('./routes/suburb')
 var recommendationRouter = require('./routes/recommendation')
-var suburbsWithAveragesRouter = require('./routes/suburbsWithAverages');
+var heatmap = require('./routes/heatmap');
 
 const port = process.env.PORT || 4000; // Keep PORT 4000!!!
 
@@ -30,8 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/suburb', suburbRouter);
 app.use('/recommendation', recommendationRouter);
-app.use('/suburbsWithAverages', suburbsWithAveragesRouter);
-app.use('/calculateNearestProperties/', suburbsWithAveragesRouter);
+app.use('/heatmap', heatmap);
 
 
 // // catch 404 and forward to error handler
