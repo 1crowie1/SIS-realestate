@@ -86,13 +86,13 @@ function SuburbBreakdown(listing_suburbs){
                                 </Card.Body>
                                 <Card.Body>
                                     <ReactApexChart
-                                        options={options}
+                                        options={options}                                    
                                         series={series}
                                         type="area"
                                         height={150}
                                     />
                                 </Card.Body>
-                                <Button variant="primary">Look at RealEstate</Button>
+                                
                             </Card.Body>
                         </Card>
                     </Col>
