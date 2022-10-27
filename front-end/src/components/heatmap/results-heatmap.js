@@ -8,7 +8,7 @@ import './map.css';
 
 
 function ResultsMap({mapData}) {
-    console.log("%cHeatmap Results", "color: red", mapData);
+    // console.log("%cResults Heatmap", "color: red", mapData);
     // const [onselect, setOnselect] = useState({});
     /* function determining what should happen onmouseover, this function updates our state*/
     // const highlightFeature = (e=> {

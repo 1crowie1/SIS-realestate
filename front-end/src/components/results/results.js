@@ -14,7 +14,7 @@ import SuburbBreakdown from './suburbBreakdown';
 import PriceBreakdown from './priceBreakdown';
 
 function Results ({results, mapData, recommendedSuburbs}) { //{results}
-    console.log("%Map Data in Results file", "color: aqua", mapData)
+    console.log("%Results Data in Results file", "color: aqua", results)
     if (results?.length === 0) {
         return (<></>);
     }
