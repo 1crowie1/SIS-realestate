@@ -151,7 +151,7 @@ function Recommendations() {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Preference Area</Form.Label>
+                                        <Form.Label>Preference Area (m^2)</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Preference Area"
@@ -194,7 +194,7 @@ function Recommendations() {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Price</Form.Label>
+                                        <Form.Label>Price ($AUD)</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
                                                 aria-label="Bedrooms"
@@ -247,10 +247,10 @@ function Recommendations() {
                             <Col xs={6} md={6}>
                                 <Form>
                                     <Form.Group controlId="formBasicCheckbox">
-                                        <Form.Label>Scope</Form.Label>
+                                        <Form.Label>Car Spaces</Form.Label>
                                         <Box sx={{ width: 300 }}>
                                             <Slider
-                                                aria-label="Scope"
+                                                aria-label="Car-Spaces"
                                                 defaultValue={0}
                                                 valueLabelDisplay="auto"
                                                 step={1}
