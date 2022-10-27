@@ -34,12 +34,11 @@ function App() {
             <span className='sr-only'>Loading...</span>
           </div>
         </div>
-        ) : heatmapResults && 
-          ( 
-            <Heatmap results={heatmapResults} />
-          )
-        }
-      
+      ) : heatmapResults && 
+        ( 
+          <Heatmap results={heatmapResults} />
+        )
+      }
 
       <hr style={{border: "1px solid black", width: "90%", margin: "5px auto",}}></hr>
 

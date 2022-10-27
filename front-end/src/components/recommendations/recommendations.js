@@ -275,26 +275,26 @@ function Recommendations() {
                     
                         <Row >
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Public Transport */}
+                                {/* Bootstrap checkbox: Public Transport */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Public Transport`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Amazing View */}
+                                {/* Bootstrap checkbox: Amazing View */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Amazing View`}
                                         />
                                     </div>
@@ -303,25 +303,25 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to School */}
+                                {/* Bootstrap checkbox: Close to School */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
                                             
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to School`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Shops */}
+                                {/* Bootstrap checkbox: Close to Shops */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Shops`}
                                         />
                                     </div>
@@ -330,24 +330,24 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Park */}
+                                {/* Bootstrap checkbox: Close to Park */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Park`}
                                         />
                                     </div>
                                 </Form>
                             </Col>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Hospital */}
+                                {/* Bootstrap checkbox: Close to Hospital */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Hospital`}
                                         />  
                                     </div>
@@ -356,12 +356,12 @@ function Recommendations() {
                         </Row>
                         <Row>
                             <Col xs={6} md={6}>
-                                {/* Bootstrap Radio: Close to Beach */}
+                                {/* Bootstrap checkbox: Close to Beach */}
                                 <Form>
-                                    <div key={`default-radio`} className="mb-3">
+                                    <div key={`default-checkbox`} className="mb-3">
                                         <Form.Check
-                                            type={'radio'}
-                                            id={`default-radio`}
+                                            type={'checkbox'}
+                                            id={`default-checkbox`}
                                             label={`Close to Beach`}
                                         />
                                     </div>

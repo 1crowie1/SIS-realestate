@@ -119,6 +119,9 @@ function Map({mapData}) {
     //   mapData.map(feature=>{
     //     return(feature);
     // });
+    if (mapData?.length === 0) {
+        return (<></>);
+    }
     return(
          <div className='container'>
             {/* {!onselect.county && (
@@ -156,6 +159,7 @@ function Map({mapData}) {
                 value={this.state.color}
                 onChange={this.colorChange}
             /> */}
+            <Legend />
         </div>
     )
 }
